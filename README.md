@@ -16,3 +16,19 @@ I chose Pong for this one. This is the "design document" based on what I remembe
 ## Credits
  - [Breakout Graphics (No Shadow)](https://opengameart.org/content/breakout-graphics-no-shadow) - Licensed CC0
  - [Kenny UI for Godot](https://azagaya.itch.io/kenneys-ui-theme) - Licensed CC0
+
+# X 01 Risk of SHMUP
+Combine a vertical scrolling shoot 'em up with Risk of Rain.
+
+## Credits
+
+## Possible Resources to Credit
+ - https://dos88.itch.io/dos-88-music-library
+ - https://runninblood.itch.io/460-futuristic-items
+ - https://free-game-assets.itch.io/free-different-sci-fi-item-icons
+
+
+# Future Work
+## Resources
+ - https://opengameart.org/content/assets-ui-minimalism-scifi
+ - https://craftpix.net/sets/top-down-shooter-pixel-art-collection/
