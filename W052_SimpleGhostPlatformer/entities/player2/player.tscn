@@ -24,12 +24,19 @@ script = ExtResource( 5 )
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
+base_max_horizontal_speed = null
+air_acceleration = null
+air_deceleration = null
+air_steering_power = null
+gravity = null
 
 [node name="Attack" type="Node" parent="StateMachine"]
 
 [node name="Die" type="Node" parent="StateMachine"]
 
 [node name="Ladder" type="Node" parent="StateMachine"]
+
+[node name="Falling" type="Node" parent="StateMachine"]
 
 [node name="Character0006" type="Sprite" parent="."]
 position = Vector2( 0, -12 )
@@ -45,3 +52,7 @@ text = "IDLE"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -10 )
 shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.333, 0.333 )
