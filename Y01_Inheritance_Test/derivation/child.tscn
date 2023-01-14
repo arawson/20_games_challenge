@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://derivation/parent.tscn" type="PackedScene" id=1]
+
+[node name="Node" type="Node"]
+
+[node name="Node2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -3, -4 )
+__meta__ = {
+"_editor_description_": "This scene will be a child no matter what. We can't derive a parent and add more nodes flatly."
+}
