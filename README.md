@@ -27,8 +27,8 @@ An in-progress creation of a sidescrolling platformer controller.
 I'm not super-interested in this so it's just going to be a testing ground for the time being.
 
 # X Series
-## X 01 Risk of SHMUP
-Combine a vertical scrolling shoot 'em up with Risk of Rain.
+## X 01 Risk of Tanks
+Combine an above-viewed tanks game with Risk of Rain's proc chain mechanic.
 
 # Y Series
 ## Y 01 Inheritance Tester
