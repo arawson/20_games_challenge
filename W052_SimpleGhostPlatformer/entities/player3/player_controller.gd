@@ -5,7 +5,11 @@ signal direction_changed(new_direction)
 
 onready var state_displayer = $Character0006/StateNameDisplayer
 
+# TODO learn what this syntax is
 var look_direction = Vector2.RIGHT setget set_look_direction
+
+# the sample had a take_damage and a set_dead, I don't need those just yet
+# mine will be different anyway
 
 func set_look_direction(value):
 	look_direction = value

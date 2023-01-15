@@ -1,5 +1,7 @@
 extends "../in_air.gd"
 
+export(float) var initial_vertical_speed = 200.0
+
 func initialize(speed, velocity):
 	horizontal_speed = speed
 	if speed > 0.0:
@@ -17,9 +19,7 @@ func enter():
 		horizontal_velocity = enter_velocity
 	else:
 		horizontal_velocity = Vector2()
-	vertical_speed = 600.0
-
-	# owner.get_node("AnimationPlayer").play("idle")
+	vertical_speed = initial_vertical_speed
 
 
 func update(delta):
@@ -27,9 +27,9 @@ func update(delta):
 	update_look_direction(input_direction)
 
 	move_horizontally(delta, input_direction)
-	animate_jump_height(delta)
+#	animate_jump_height(delta)
 	if height <= 0.0:
-		emit_signal("finished", "previous")
+		_signal_next_state(idle)
 
 
 func move_horizontally(delta, direction):

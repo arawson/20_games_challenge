@@ -1,6 +1,7 @@
 # Original Code: https://godotengine.org/asset-library/asset/516
 # Licensed MIT as of 2023-01-11
 
+class_name StateMachine
 extends Node
 # Base interface for a generic state machine.
 # It handles initializing, setting the machine active or not
@@ -14,30 +15,41 @@ signal state_changed(current_state)
 # from this state machine interface. If you don't, the game will default to
 # the first state in the state machine's children.
 export(NodePath) var start_state
-var states_map = {}
+var states_map : Dictionary = {}
 
 var states_stack = []
-var current_state = null
-var _active = false setget set_active
+var current_state : State = null
+var _active : bool = false setget set_active
 
 func _ready():
 	if not start_state:
 		start_state = get_child(0).get_path()
 	for child in get_children():
-		var err = child.connect("finished", self, "_change_state")
-		if err:
-			printerr(err)
-	initialize(start_state)
+		# Only want to deal with valid states
+		if child is State:
+			var obj = {}
+			obj.name = child
+			obj.path = self.get_path_to(child)
+			var err = child.connect("finished", self, "_change_state")
+			if err:
+				printerr(err)
 
+	initialize(get_node(start_state))
 
-func initialize(initial_state):
+# Handle custom state-transition logic here.
+# warning_ignore(unused_argument)
+func _prepare_change_state(from: State, to: State) -> void:
+	# when I get back from my run I want to fill in the logic which calls
+	# this new function, which is meant to be overriden
+	pass
+
+func initialize(initial_state: State):
 	set_active(true)
-	states_stack.push_front(get_node(initial_state))
+	states_stack.push_front(initial_state)
 	current_state = states_stack[0]
 	current_state.enter()
 
-
-func set_active(value):
+func set_active(value: bool):
 	_active = value
 	set_physics_process(value)
 	set_process_input(value)
@@ -50,28 +62,34 @@ func _unhandled_input(event):
 	current_state.handle_input(event)
 
 
-func _physics_process(delta):
+func _physics_process(delta: float):
 	current_state.update(delta)
 
 
-func _on_animation_finished(anim_name):
+func _on_animation_finished(anim_name: String):
 	if not _active:
 		return
 	current_state._on_animation_finished(anim_name)
 
 
-func _change_state(state_name):
+func _change_state(new_state: State, pop : bool = false) -> void:
 	if not _active:
 		return
+	
+	# This is the hook to allow the derived machines to handle custom logic
+	# on state transition.
+	_prepare_change_state(current_state, new_state)
+
 	current_state.exit()
 
-	if state_name == "previous":
+	if pop:
 		states_stack.pop_front()
 	else:
-		states_stack[0] = states_map[state_name]
+		states_stack[0] = new_state
 
 	current_state = states_stack[0]
+	
 	emit_signal("state_changed", current_state)
 
-	if state_name != "previous":
+	if !pop:
 		current_state.enter()

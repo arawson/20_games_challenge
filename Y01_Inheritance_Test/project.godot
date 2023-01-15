@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Y01_Inheritance_Test"
-run/main_scene="res://extensions/main.tscn"
+run/main_scene="res://relative_paths/main.tscn"
 config/icon="res://icon.png"
 
 [gui]

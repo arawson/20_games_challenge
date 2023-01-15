@@ -1,7 +1,7 @@
 extends "on_ground.gd"
 
-export(float) var max_walk_speed = 450
-export(float) var max_run_speed = 700
+export(float) var max_walk_speed = 450.0
+export(float) var max_run_speed = 700.0
 
 func enter():
 	speed = 0.0
@@ -19,7 +19,7 @@ func handle_input(event):
 func update(_delta):
 	var input_direction = get_input_direction()
 	if not input_direction:
-		emit_signal("finished", "idle")
+		._signal_next_state(idle)
 	update_look_direction(input_direction)
 
 	if Input.is_action_pressed("run"):
