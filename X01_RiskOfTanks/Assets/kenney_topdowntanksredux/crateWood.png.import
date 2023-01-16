@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crateWood.png-8748109442810ebe5961c9da42ae9700.stex"
+path="res://.import/crateWood.png-a759d349bd4ccae0d373d0cace37b890.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/crateWood.png"
-dest_files=[ "res://.import/crateWood.png-8748109442810ebe5961c9da42ae9700.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/crateWood.png"
+dest_files=[ "res://.import/crateWood.png-a759d349bd4ccae0d373d0cace37b890.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crateMetal_side.png-17532ca70b43d0e97d3b62cc02e4dda4.stex"
+path="res://.import/crateMetal_side.png-1605f4d201e507bf13a89858676e41e1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/crateMetal_side.png"
-dest_files=[ "res://.import/crateMetal_side.png-17532ca70b43d0e97d3b62cc02e4dda4.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/crateMetal_side.png"
+dest_files=[ "res://.import/crateMetal_side.png-1605f4d201e507bf13a89858676e41e1.stex" ]
 
 [params]
 

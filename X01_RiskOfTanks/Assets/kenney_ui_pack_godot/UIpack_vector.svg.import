@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/UIpack_vector.svg-966a5da9e638772aa32ed5cf9439266d.stex"
+path="res://.import/UIpack_vector.svg-6d1b2b913084776b39a9337ab8146544.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_ui_pack_godot/UIpack_vector.svg"
-dest_files=[ "res://.import/UIpack_vector.svg-966a5da9e638772aa32ed5cf9439266d.stex" ]
+source_file="res://assets/kenney_ui_pack_godot/UIpack_vector.svg"
+dest_files=[ "res://.import/UIpack_vector.svg-6d1b2b913084776b39a9337ab8146544.stex" ]
 
 [params]
 

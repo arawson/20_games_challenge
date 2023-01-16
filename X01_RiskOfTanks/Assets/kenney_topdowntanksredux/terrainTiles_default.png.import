@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/terrainTiles_default.png-a4e6bf553005c37026187f5b073d4834.stex"
+path="res://.import/terrainTiles_default.png-915a1bb8223494f4b350aec168be6bdc.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/terrainTiles_default.png"
-dest_files=[ "res://.import/terrainTiles_default.png-a4e6bf553005c37026187f5b073d4834.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/terrainTiles_default.png"
+dest_files=[ "res://.import/terrainTiles_default.png-915a1bb8223494f4b350aec168be6bdc.stex" ]
 
 [params]
 

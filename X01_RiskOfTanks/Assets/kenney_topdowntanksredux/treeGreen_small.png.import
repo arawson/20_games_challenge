@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/treeGreen_small.png-dd860815e048e597b17dd9b4959c18b5.stex"
+path="res://.import/treeGreen_small.png-2b0ef2eff52ed28e1ced8e80d7765f5b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/treeGreen_small.png"
-dest_files=[ "res://.import/treeGreen_small.png-dd860815e048e597b17dd9b4959c18b5.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/treeGreen_small.png"
+dest_files=[ "res://.import/treeGreen_small.png-2b0ef2eff52ed28e1ced8e80d7765f5b.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/crosshairs_tilesheet_white.png-93cfb498a104145ab0a2af52d1701dd1.stex"
+path="res://.import/crosshairs_tilesheet_white.png-910ba8f619d2dc5c6f064e8c453b97cd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_crosshairpack/crosshairs_tilesheet_white.png"
-dest_files=[ "res://.import/crosshairs_tilesheet_white.png-93cfb498a104145ab0a2af52d1701dd1.stex" ]
+source_file="res://assets/kenney_crosshairpack/crosshairs_tilesheet_white.png"
+dest_files=[ "res://.import/crosshairs_tilesheet_white.png-910ba8f619d2dc5c6f064e8c453b97cd.stex" ]
 
 [params]
 

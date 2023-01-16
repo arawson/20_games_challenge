@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barricadeMetal.png-c9b0a2b724226ff417ab371d9103bb98.stex"
+path="res://.import/barricadeMetal.png-518fedac8fbe52f9d3b6081d49242717.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/barricadeMetal.png"
-dest_files=[ "res://.import/barricadeMetal.png-c9b0a2b724226ff417ab371d9103bb98.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/barricadeMetal.png"
+dest_files=[ "res://.import/barricadeMetal.png-518fedac8fbe52f9d3b6081d49242717.stex" ]
 
 [params]
 

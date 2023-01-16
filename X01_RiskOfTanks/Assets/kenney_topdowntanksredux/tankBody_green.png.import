@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tankBody_green.png-f1785d5576ffaf7631163809f658d2dd.stex"
+path="res://.import/tankBody_green.png-813ac460142a20ca434410929a2159cd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/tankBody_green.png"
-dest_files=[ "res://.import/tankBody_green.png-f1785d5576ffaf7631163809f658d2dd.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/tankBody_green.png"
+dest_files=[ "res://.import/tankBody_green.png-813ac460142a20ca434410929a2159cd.stex" ]
 
 [params]
 

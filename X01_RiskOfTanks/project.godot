@@ -8,9 +8,37 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "FactionMember",
+"language": "GDScript",
+"path": "res://lib/faction/faction_member.gd"
+}, {
+"base": "Node",
+"class": "FactionProjectile",
+"language": "GDScript",
+"path": "res://lib/faction/faction_projectile.gd"
+}, {
+"base": "Node2D",
+"class": "ProcPool",
+"language": "GDScript",
+"path": "res://lib/proc/proc_pool.gd"
+}, {
+"base": "Node2D",
+"class": "Procable",
+"language": "GDScript",
+"path": "res://lib/proc/procable.gd"
+} ]
+_global_script_class_icons={
+"FactionMember": "",
+"FactionProjectile": "",
+"ProcPool": "",
+"Procable": ""
+}
+
 [application]
 
-config/name="X 01 Risk Of Shmup"
+config/name="X 01 Risk Of Tanks"
 run/main_scene="res://TestScene.tscn"
 config/icon="res://icon.png"
 

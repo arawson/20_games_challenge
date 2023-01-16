@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/explosionSmoke2.png-cd7c7f41a2acf58f90d91dac39ef7029.stex"
+path="res://.import/explosionSmoke2.png-fd243894347f59f0ac8640a26e60c9be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/explosionSmoke2.png"
-dest_files=[ "res://.import/explosionSmoke2.png-cd7c7f41a2acf58f90d91dac39ef7029.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/explosionSmoke2.png"
+dest_files=[ "res://.import/explosionSmoke2.png-fd243894347f59f0ac8640a26e60c9be.stex" ]
 
 [params]
 

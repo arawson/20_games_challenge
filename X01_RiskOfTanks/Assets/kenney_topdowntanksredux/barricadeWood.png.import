@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barricadeWood.png-b28e6288c6ce031990d885b06d6e81b8.stex"
+path="res://.import/barricadeWood.png-52757594e713ddd8a9fb295e322b7e1e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/barricadeWood.png"
-dest_files=[ "res://.import/barricadeWood.png-b28e6288c6ce031990d885b06d6e81b8.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/barricadeWood.png"
+dest_files=[ "res://.import/barricadeWood.png-52757594e713ddd8a9fb295e322b7e1e.stex" ]
 
 [params]
 

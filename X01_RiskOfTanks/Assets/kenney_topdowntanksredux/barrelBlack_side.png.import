@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barrelBlack_side.png-6184a8c3d81a2343cdf827016d0c29e3.stex"
+path="res://.import/barrelBlack_side.png-83bb2d974ea8e8184f8ef217c8063551.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/barrelBlack_side.png"
-dest_files=[ "res://.import/barrelBlack_side.png-6184a8c3d81a2343cdf827016d0c29e3.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/barrelBlack_side.png"
+dest_files=[ "res://.import/barrelBlack_side.png-83bb2d974ea8e8184f8ef217c8063551.stex" ]
 
 [params]
 

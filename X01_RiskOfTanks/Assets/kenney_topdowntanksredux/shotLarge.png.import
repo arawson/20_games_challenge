@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shotLarge.png-3fcaee72c068ed169d3941dba6aa763c.stex"
+path="res://.import/shotLarge.png-c4150f5864d0bb48125a374ac291448c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/shotLarge.png"
-dest_files=[ "res://.import/shotLarge.png-3fcaee72c068ed169d3941dba6aa763c.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/shotLarge.png"
+dest_files=[ "res://.import/shotLarge.png-c4150f5864d0bb48125a374ac291448c.stex" ]
 
 [params]
 

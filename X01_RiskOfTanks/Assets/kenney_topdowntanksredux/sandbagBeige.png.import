@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sandbagBeige.png-62e86d43460c9e92550d0152ce808841.stex"
+path="res://.import/sandbagBeige.png-d1e6a3db99bf40d439ee7b24a50ba385.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/sandbagBeige.png"
-dest_files=[ "res://.import/sandbagBeige.png-62e86d43460c9e92550d0152ce808841.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/sandbagBeige.png"
+dest_files=[ "res://.import/sandbagBeige.png-d1e6a3db99bf40d439ee7b24a50ba385.stex" ]
 
 [params]
 

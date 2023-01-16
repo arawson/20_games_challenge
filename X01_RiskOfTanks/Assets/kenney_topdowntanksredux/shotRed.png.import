@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shotRed.png-92ffcde9bb75bdacbc5512d5dc7ed528.stex"
+path="res://.import/shotRed.png-cd272c13487b5152d54553b7413a4fec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/shotRed.png"
-dest_files=[ "res://.import/shotRed.png-92ffcde9bb75bdacbc5512d5dc7ed528.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/shotRed.png"
+dest_files=[ "res://.import/shotRed.png-cd272c13487b5152d54553b7413a4fec.stex" ]
 
 [params]
 

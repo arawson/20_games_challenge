@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wireStraight.png-652f80f2218970514b12c82dfd5c06fb.stex"
+path="res://.import/wireStraight.png-9474ad1cab6aa9b4647617bdf268ef77.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/wireStraight.png"
-dest_files=[ "res://.import/wireStraight.png-652f80f2218970514b12c82dfd5c06fb.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/wireStraight.png"
+dest_files=[ "res://.import/wireStraight.png-9474ad1cab6aa9b4647617bdf268ef77.stex" ]
 
 [params]
 

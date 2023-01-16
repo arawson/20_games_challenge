@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barrelRust_top.png-f730a889cd5ce5ac22e55ee0202e8df6.stex"
+path="res://.import/barrelRust_top.png-e49d7fa875bc8fb414f4c3ff142b7939.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/barrelRust_top.png"
-dest_files=[ "res://.import/barrelRust_top.png-f730a889cd5ce5ac22e55ee0202e8df6.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/barrelRust_top.png"
+dest_files=[ "res://.import/barrelRust_top.png-e49d7fa875bc8fb414f4c3ff142b7939.stex" ]
 
 [params]
 

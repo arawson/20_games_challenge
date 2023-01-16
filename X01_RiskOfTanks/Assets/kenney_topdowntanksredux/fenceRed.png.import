@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fenceRed.png-95855789f594c0c5cfe4055fa2de3f04.stex"
+path="res://.import/fenceRed.png-8cd7f30c5a71e997ece124973de19efe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/fenceRed.png"
-dest_files=[ "res://.import/fenceRed.png-95855789f594c0c5cfe4055fa2de3f04.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/fenceRed.png"
+dest_files=[ "res://.import/fenceRed.png-8cd7f30c5a71e997ece124973de19efe.stex" ]
 
 [params]
 

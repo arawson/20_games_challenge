@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tracksDouble.png-54b1ccf1c27a753e8b4e05f7375cb3d0.stex"
+path="res://.import/tracksDouble.png-ce5b24221726daacd28ed39bc564d505.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/tracksDouble.png"
-dest_files=[ "res://.import/tracksDouble.png-54b1ccf1c27a753e8b4e05f7375cb3d0.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/tracksDouble.png"
+dest_files=[ "res://.import/tracksDouble.png-ce5b24221726daacd28ed39bc564d505.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/treeGreen_twigs.png-b58dcb09d70d6b2b44c9dc85a4f5f73d.stex"
+path="res://.import/treeGreen_twigs.png-a3110a416455aa8e6d40d15a02b46a3e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/treeGreen_twigs.png"
-dest_files=[ "res://.import/treeGreen_twigs.png-b58dcb09d70d6b2b44c9dc85a4f5f73d.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/treeGreen_twigs.png"
+dest_files=[ "res://.import/treeGreen_twigs.png-a3110a416455aa8e6d40d15a02b46a3e.stex" ]
 
 [params]
 

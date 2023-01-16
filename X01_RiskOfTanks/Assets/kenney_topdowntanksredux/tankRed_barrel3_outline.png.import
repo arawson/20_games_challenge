@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tankRed_barrel3_outline.png-6cf9c878101b251797d31b0156fcf2e1.stex"
+path="res://.import/tankRed_barrel3_outline.png-a05f0a84d4e8a82327629db39df73479.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/tankRed_barrel3_outline.png"
-dest_files=[ "res://.import/tankRed_barrel3_outline.png-6cf9c878101b251797d31b0156fcf2e1.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/tankRed_barrel3_outline.png"
+dest_files=[ "res://.import/tankRed_barrel3_outline.png-a05f0a84d4e8a82327629db39df73479.stex" ]
 
 [params]
 

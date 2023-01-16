@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bulletDark2_outline.png-7ea8f0e768f70c98dcc0d350153bd020.stex"
+path="res://.import/bulletDark2_outline.png-bde605f175cb2542a34a5ffacc4971f3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/bulletDark2_outline.png"
-dest_files=[ "res://.import/bulletDark2_outline.png-7ea8f0e768f70c98dcc0d350153bd020.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/bulletDark2_outline.png"
+dest_files=[ "res://.import/bulletDark2_outline.png-bde605f175cb2542a34a5ffacc4971f3.stex" ]
 
 [params]
 

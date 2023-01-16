@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bulletGreen1.png-8179a6ae93656b3c0ad5b7a2ab8e6ccc.stex"
+path="res://.import/bulletGreen1.png-c18da15db0e56c7412d61071290e2bb2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/bulletGreen1.png"
-dest_files=[ "res://.import/bulletGreen1.png-8179a6ae93656b3c0ad5b7a2ab8e6ccc.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/bulletGreen1.png"
+dest_files=[ "res://.import/bulletGreen1.png-c18da15db0e56c7412d61071290e2bb2.stex" ]
 
 [params]
 

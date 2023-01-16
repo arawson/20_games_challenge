@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/treeBrown_large.png-1554b8c526ad2400f141cabc3aa7d3e1.stex"
+path="res://.import/treeBrown_large.png-acaa8ccdcf18115f7ca697147910d82c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/treeBrown_large.png"
-dest_files=[ "res://.import/treeBrown_large.png-1554b8c526ad2400f141cabc3aa7d3e1.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/treeBrown_large.png"
+dest_files=[ "res://.import/treeBrown_large.png-acaa8ccdcf18115f7ca697147910d82c.stex" ]
 
 [params]
 

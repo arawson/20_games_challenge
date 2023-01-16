@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/wireCrooked.png-900a99e4ec44ae1755474ad0a0484e7e.stex"
+path="res://.import/wireCrooked.png-7ba4582baa1f09d45eefc72b46f87d3c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/kenney_topdowntanksredux/wireCrooked.png"
-dest_files=[ "res://.import/wireCrooked.png-900a99e4ec44ae1755474ad0a0484e7e.stex" ]
+source_file="res://assets/kenney_topdowntanksredux/wireCrooked.png"
+dest_files=[ "res://.import/wireCrooked.png-7ba4582baa1f09d45eefc72b46f87d3c.stex" ]
 
 [params]
 
