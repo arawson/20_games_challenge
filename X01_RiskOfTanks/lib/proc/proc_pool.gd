@@ -46,14 +46,16 @@ func trigger_on_hit(faction_member: FactionMember):
 	var activated_procs = [] # keep track of which procs fired this time
 	for proc in proc_on_hit:
 		if not proc.is_consumed and proc.roll_on_hit(faction_member, self):
-			
 			activated_procs.append(proc)
 	
 	for proc in activated_procs:
-		proc.is_consumed
-		# remove which would be really slow, it'll be a
+		proc.is_consumed = 1
 	
-	# loop again
+	var new_pool = .new()
+	new_pool.clone_from(self)
+
+	for proc in activated_procs:
+		proc.do_on_hit(faction_member, new_pool)
 	
 func trigger_on_kill():
 	print("procing on kill")

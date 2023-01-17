@@ -23,7 +23,7 @@ func _on_BasicBullet_body_entered(body):
 	
 	if body is FactionMember:
 		if body.faction_id != faction_id:
-			$Proc.trigger_on_hit()
+			$Proc.trigger_on_hit(body)
 			pass
 		
 	get_parent().remove_child(self)
