@@ -27,3 +27,6 @@ func _on_BasicBullet_body_entered(body):
 			pass
 		
 	get_parent().remove_child(self)
+
+func set_proc_pool(p: ProcPool) -> void:
+	self.add_child(p)

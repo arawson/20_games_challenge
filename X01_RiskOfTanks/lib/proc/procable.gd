@@ -3,8 +3,8 @@ extends Node2D
 
 export(bool) var is_consumed = false
 
-func clone() -> Procable:
-	return get_script().new()
+func clone() -> Node:
+	return self.duplicate(DUPLICATE_SCRIPTS)
 
 # todo use a enum for proc triggers
 func is_on_hit() -> bool:
@@ -24,4 +24,3 @@ func roll_on_kill(faction_member: FactionMember, proc_pool) -> bool:
 
 func do_on_kill(faction_member: FactionMember, new_proc_pool) -> void:
 	pass
-

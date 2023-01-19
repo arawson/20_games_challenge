@@ -6,6 +6,12 @@ extends Node2D
 var proc_on_hit = []
 var proc_on_kill = []
 
+func _ready() -> void:
+	initialize()
+	
+	for p in self.get_children():
+		register_procable(p)
+
 func initialize() -> void:
 	for p in get_children():
 		remove_child(p)
@@ -51,8 +57,8 @@ func trigger_on_hit(faction_member: FactionMember):
 	for proc in activated_procs:
 		proc.is_consumed = 1
 	
-	var new_pool = .new()
-	new_pool.clone_from(self)
+	var new_pool = self.duplicate(DUPLICATE_SCRIPTS)
+#	new_pool.clone_from(self)
 
 	for proc in activated_procs:
 		proc.do_on_hit(faction_member, new_pool)

@@ -35,6 +35,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("fire"):
 		var bullet = basic_bullet_scene.instance()
 		projectiles.add_child(bullet)
+		
 		bullet.faction_id = self.faction_id
 		bullet.global_position = self.global_position + 20*Vector2(0,-1).rotated(turn)
 		bullet.rotation = self.rotation
