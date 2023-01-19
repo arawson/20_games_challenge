@@ -10,7 +10,7 @@ onready var projectiles = $Projectiles
 onready var proc_pools = $ProcPools
 # these are kept up to date
 onready var current_proc_pool = $CurrentProcPool
-onready var basic_bullet_scene = load("res://Entities/Bullets/BasicBullet.tscn")
+onready var basic_bullet_scene = load("res://entities/bullets/BasicBullet.tscn")
 
 func _ready():
 	pass # Replace with function body.

@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/kenney_topdowntanksredux/tank_blue.png" type="Texture" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
 [ext_resource path="res://lib/proc/proc_pool.gd" type="Script" id=3]
-[ext_resource path="res://entities/Procs/DynamoEffect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/procs/DynamoEffect.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 21 )
