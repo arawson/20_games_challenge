@@ -18,17 +18,14 @@ __meta__ = {
 
 [node name="Enemy" parent="TeamRed" instance=ExtResource( 1 )]
 position = Vector2( 312, 106 )
-faction_id = 2
 
 [node name="Enemy2" parent="TeamRed" instance=ExtResource( 1 )]
 position = Vector2( 490, 111 )
-faction_id = 2
 
 [node name="TeamBlue" type="Node" parent="."]
 
 [node name="Player" parent="TeamBlue" instance=ExtResource( 2 )]
 position = Vector2( 319, 433 )
-faction_id = 1
 
 [node name="TestZoneBounds" type="StaticBody2D" parent="."]
 

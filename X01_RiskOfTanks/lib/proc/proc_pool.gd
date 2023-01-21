@@ -9,15 +9,18 @@ var proc_on_kill = []
 func _ready() -> void:
 	initialize()
 	
-	for p in self.get_children():
+	for p in get_children():
 		register_procable(p)
 
 func initialize() -> void:
-	for p in get_children():
-		remove_child(p)
-	
 	proc_on_hit = []
 	proc_on_kill = []
+	
+func clear() -> void:
+	initialize()
+	for p in get_children():
+		remove_child(p)
+		p.queue_free()
 	
 func clone_from(pool) -> void:
 	initialize()

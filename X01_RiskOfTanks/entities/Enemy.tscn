@@ -8,6 +8,7 @@ extents = Vector2( 22, 20.5 )
 
 [node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 2 )
+faction_id = 2
 
 [node name="TankBodyBigRed" type="Sprite" parent="."]
 texture = ExtResource( 1 )
