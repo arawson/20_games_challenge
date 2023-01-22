@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "BigOles",
+"language": "GDScript",
+"path": "res://relative_paths/main.gd"
+} ]
+_global_script_class_icons={
+"BigOles": ""
+}
+
 [application]
 
 config/name="Y01_Inheritance_Test"
