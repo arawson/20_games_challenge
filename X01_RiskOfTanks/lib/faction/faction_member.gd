@@ -7,7 +7,7 @@ export(NodePath) var proc_pool_path
 
 onready var proc_pool = get_node(proc_pool_path)
 
-func _setup_projectile(proj: FactionProjectile):
+func _setup_projectile(proj):
 	# step 1, copy our proc pool
 	var new_proc_pool = proc_pool.duplicate(DUPLICATE_SCRIPTS)
 	proj.proc_pool = new_proc_pool

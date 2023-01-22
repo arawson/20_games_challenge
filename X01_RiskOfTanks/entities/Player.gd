@@ -41,4 +41,6 @@ func _physics_process(delta):
 		bullet.linear_velocity = bullet.linear_velocity.rotated(turn)
 
 		_setup_projectile(bullet)
+		# bullet.proc_pool.visible = true # THIS CALLS THE SETTER?
+		bullet.get_proc_pool().visible = true # explicitly use the getter to work around the above
 		pass
