@@ -5,6 +5,8 @@ export(int) var faction_id = 0
 
 var proc_pool: ProcPool setget set_proc_pool, get_proc_pool
 
+# TODO: the projectile also acts as a builder of damage scaling
+
 func delete_self():
 	if is_inside_tree():
 		get_parent().remove_child(self)

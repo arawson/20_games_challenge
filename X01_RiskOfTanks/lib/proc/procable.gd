@@ -16,14 +16,14 @@ func is_on_hit() -> bool:
 func is_on_kill() -> bool:
 	return false
 
-func roll_on_hit(_faction_member, _proc_pool) -> bool:
+func roll_on_hit(_faction_projectile, _faction_member, _proc_pool) -> bool:
 	return false
 
-func do_on_hit(_faction_member, _new_proc_pool) -> void:
+func do_on_hit(_faction_projectile, _faction_member, _new_proc_pool) -> void:
 	pass
 	
-func roll_on_kill(_faction_member, _proc_pool) -> bool:
+func roll_on_kill(_faction_projectile, _faction_member, _proc_pool) -> bool:
 	return false
 
-func do_on_kill(_faction_member, _new_proc_pool) -> void:
+func do_on_kill(_faction_projectile, _faction_member, _new_proc_pool) -> void:
 	pass

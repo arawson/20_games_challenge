@@ -42,6 +42,10 @@ config/name="X 01 Risk Of Tanks"
 run/main_scene="res://TestScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Util="*res://lib/util.gd"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

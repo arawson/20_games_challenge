@@ -50,11 +50,11 @@ func remove_procable(p: Procable) -> void:
 		proc_on_kill.remove(proc_on_kill.find(p))
 	
 
-func trigger_on_hit(faction_member: FactionMember):
+func trigger_on_hit(faction_projectile, faction_member: FactionMember):
 	print("procing on hit")
 	var activated_procs = [] # keep track of which procs fired this time
 	for proc in proc_on_hit:
-		if not proc.is_consumed and proc.roll_on_hit(faction_member, self):
+		if not proc.is_consumed and proc.roll_on_hit(faction_projectile, faction_member, self):
 			activated_procs.append(proc)
 	
 	for proc in activated_procs:
@@ -64,7 +64,7 @@ func trigger_on_hit(faction_member: FactionMember):
 #	new_pool.clone_from(self)
 
 	for proc in activated_procs:
-		proc.do_on_hit(faction_member, new_pool)
+		proc.do_on_hit(faction_projectile, faction_member, new_pool)
 	
 func trigger_on_kill():
 	print("procing on kill")
