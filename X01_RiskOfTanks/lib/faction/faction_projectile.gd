@@ -2,6 +2,7 @@ class_name FactionProjectile
 extends Node
 
 export(int) var faction_id = 0
+export(float) var damage_base = 10.0
 
 var proc_pool: ProcPool setget set_proc_pool, get_proc_pool
 

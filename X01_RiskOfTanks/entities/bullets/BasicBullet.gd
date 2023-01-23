@@ -23,5 +23,8 @@ func _on_BasicBullet_body_entered(body):
 	if faction_member != null:
 		if faction_member.faction_id != faction_id:
 			
-			self.proc_pool.trigger_on_hit(self, body)
+			if faction_member.do_damage(damage_base):
+				self.proc_pool.trigger_on_kill(self, faction_member)
+
+			self.proc_pool.trigger_on_hit(self, faction_member)
 			delete_self()

@@ -1,4 +1,4 @@
-extends Procable
+extends ProcableDamage
 
 func _ready():
 	pass
@@ -35,5 +35,14 @@ func do_on_hit(projectile: FactionProjectile, member: FactionMember, _new_proc_p
 
 	for t in targets:
 		print("hitting target: %s" % t)
-		
+		if t.do_damage(damage):
+			# uhh, I need to run proc logic again?
+			# that's built into FactionProjectile
+			# so should I spawn a projectile then?
+			# missing that multiple inheritance
+
+			# to spawn a new projectile, I think I want to go up to the next layer
+			# add a new func to FactionProjectile, which spawns the new projectile
+			# as a sibling to itself
+		pass
 	pass

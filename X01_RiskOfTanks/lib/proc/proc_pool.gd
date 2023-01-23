@@ -66,5 +66,18 @@ func trigger_on_hit(faction_projectile, faction_member: FactionMember):
 	for proc in activated_procs:
 		proc.do_on_hit(faction_projectile, faction_member, new_pool)
 	
-func trigger_on_kill():
+func trigger_on_kill(faction_projectile, faction_member: FactionMember):
 	print("procing on kill")
+	# one instance of duplication for this isn't so bad
+	var activated_procs = []
+	for proc in proc_on_kill:
+		if not proc.is_consumed and proc.roll_on_kill(faction_projectile, faction_member, self):
+			activated_procs.append(proc)
+	
+	for proc in activated_procs:
+		proc.is_consumed = 1
+	
+	var new_pool = self.duplicate(DUPLICATE_SCRIPTS)
+
+	for proc in activated_procs:
+		proc.do_on_kill(faction_projectile, faction_member, new_pool)

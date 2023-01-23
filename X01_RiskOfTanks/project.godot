@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "Procable",
 "language": "GDScript",
 "path": "res://lib/proc/procable.gd"
+}, {
+"base": "Procable",
+"class": "ProcableDamage",
+"language": "GDScript",
+"path": "res://lib/proc/procable_damage.gd"
 } ]
 _global_script_class_icons={
 "FactionMember": "",
 "FactionProjectile": "",
 "ProcPool": "",
-"Procable": ""
+"Procable": "",
+"ProcableDamage": ""
 }
 
 [application]
