@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://entities/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/bullets/DynamoProjectile.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 558.5, 28 )
@@ -50,3 +51,6 @@ shape = SubResource( 2 )
 [node name="RightCollisionShape2D" type="CollisionShape2D" parent="TestZoneBounds"]
 position = Vector2( 1053, 312 )
 shape = SubResource( 2 )
+
+[node name="DynamoProjectile" parent="." instance=ExtResource( 3 )]
+position = Vector2( 437, 262 )

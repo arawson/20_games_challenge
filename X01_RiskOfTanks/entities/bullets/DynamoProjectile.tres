@@ -1,8 +1,4 @@
-[gd_scene load_steps=6 format=2]
-
-[ext_resource path="res://entities/bullets/DynamoProjectile.gd" type="Script" id=1]
-[ext_resource path="res://assets/white.png" type="Texture" id=2]
-[ext_resource path="res://entities/bullets/DynamoProjectile.tres" type="Material" id=3]
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -45,27 +41,12 @@ void fragment(){
 }
 "
 
-[sub_resource type="ShaderMaterial" id=2]
+[resource]
 shader = SubResource( 1 )
-shader_param/lightning_color = Color( 0.913725, 1, 0.317647, 1 )
+shader_param/lightning_color = Color( 0.992157, 1, 0.945098, 1 )
 shader_param/size = 0.03
 shader_param/width = 0.617
 shader_param/speed = 1.0
-shader_param/cycle = 1.0
+shader_param/cycle = 4.0
 shader_param/ratio = null
-shader_param/time_shift = 0.0
-
-[node name="DynamoProjectile" type="Node2D"]
-script = ExtResource( 1 )
-
-[node name="White" type="Sprite" parent="."]
-material = ExtResource( 3 )
-position = Vector2( -1, 1 )
-scale = Vector2( 0.21875, 1 )
-texture = ExtResource( 2 )
-
-[node name="White2" type="Sprite" parent="."]
-material = SubResource( 2 )
-position = Vector2( -1, 1 )
-scale = Vector2( 0.53125, 1 )
-texture = ExtResource( 2 )
+shader_param/time_shift = 0.3
