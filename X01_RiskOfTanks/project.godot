@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://lib/faction/faction_member.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "FactionProjectile",
 "language": "GDScript",
 "path": "res://lib/faction/faction_projectile.gd"

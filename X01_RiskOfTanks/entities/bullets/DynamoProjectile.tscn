@@ -60,12 +60,10 @@ script = ExtResource( 1 )
 
 [node name="White" type="Sprite" parent="."]
 material = ExtResource( 3 )
-position = Vector2( -1, 1 )
 scale = Vector2( 0.21875, 1 )
 texture = ExtResource( 2 )
 
 [node name="White2" type="Sprite" parent="."]
 material = SubResource( 2 )
-position = Vector2( -1, 1 )
 scale = Vector2( 0.53125, 1 )
 texture = ExtResource( 2 )

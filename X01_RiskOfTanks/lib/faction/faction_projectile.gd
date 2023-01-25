@@ -1,5 +1,5 @@
 class_name FactionProjectile
-extends Node
+extends Node2D
 
 export(int) var faction_id = 0
 export(float) var damage_base = 10.0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/bullets/DynamoProjectile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://TestScene.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 558.5, 28 )
@@ -11,6 +12,7 @@ extents = Vector2( 558.5, 28 )
 extents = Vector2( 29.5, 313 )
 
 [node name="TestScene" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="TeamRed" type="Node" parent="."]
 __meta__ = {
@@ -24,7 +26,7 @@ position = Vector2( 312, 106 )
 position = Vector2( 382, 109 )
 
 [node name="Enemy3" parent="TeamRed" instance=ExtResource( 1 )]
-position = Vector2( 441, 112 )
+position = Vector2( 622, 170 )
 
 [node name="Enemy4" parent="TeamRed" instance=ExtResource( 1 )]
 position = Vector2( 245, 107 )
