@@ -15,7 +15,7 @@ func roll_on_hit(_faction_projectile, _faction_member: FactionMember, _proc_pool
 	# Normally, you would want a probability to roll here
 	return true
 
-func do_on_hit(projectile: FactionProjectile, member: FactionMember, _new_proc_pool) -> void:
+func do_on_hit(projectile: FactionProjectile, member: FactionMember, updated_proc_pool) -> void:
 	# reveal the dynamo's collision to start a new proc pool
 	print("dynamo effect")
 	$AreaOfEffect.monitoring = true
@@ -37,19 +37,11 @@ func do_on_hit(projectile: FactionProjectile, member: FactionMember, _new_proc_p
 
 	for t in targets:
 		print("hitting target: %s" % t)
-		if t.do_damage(damage_base):
-			# uhh, I need to run proc logic again?
-			# that's built into FactionProjectile
-			# so should I spawn a projectile then?
-			# missing that multiple inheritance
-
-			# to spawn a new projectile, I think I want to go up to the next layer
-			# add a new func to FactionProjectile, which spawns the new projectile
-			# as a sibling to itself
-
-			# I think the best approach here is going to be to spawn a
-			# DynamoProjectile instance, then that instance is what pushes the
-			# proc chain along. This way, I don't need the DynamoEffect to be
-			# both a Procable and a FactionProjectile
+		if !t.do_damage(damage_base):
+			print("spawn dynamo projectile")
+			var proj = projectile_scene.instance()
+			proj.initialize(member, t)
+			proj.proc_pool = updated_proc_pool.duplicate(DUPLICATE_SCRIPTS)
+			projectile.get_parent().add_child(proj)
 			pass
 	pass

@@ -1,10 +1,18 @@
 extends FactionProjectile
 
 var source : Node2D
+
+# The target of the lightning effect. We will proc this one after the effect times out.
 var destination : Node2D
+
 var length : float
 
+func initialize(src: Node2D, dest: Node2D):
+	self.source = src
+	self.destination = dest
+
 func _ready():
+	# TODO this could be made static
 	length = $White2.texture.get_height() * $White2.scale.y
 	pass
 
@@ -26,6 +34,10 @@ func _process(_delta):
 	position = center
 	rotation = angle_to
 	scale.y = scale_to
-	
-	# transform = Transform2D().scaled(Vector2(scale, scale)).rotated(angle).translated(center)
-	
+
+func _on_Timer_timeout():
+	# doing the proccing on timeout, more for fun than anything else.
+
+	var _thunk = do_proc_on(destination)
+
+	delete_self()

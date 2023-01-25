@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://entities/procs/DynamoEffect.gd" type="Script" id=1]
-[ext_resource path="res://assets/pixel_icons_by_oceansdream.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 219.385
@@ -14,10 +13,5 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaOfEffect"]
 shape = SubResource( 1 )
-
-[node name="PixelIconsByOceansdream" type="Sprite" parent="."]
-texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 96.7485, 73.692, 21.2076, 20.9003 )
 
 [connection signal="body_entered" from="AreaOfEffect" to="." method="_on_AreaOfEffect_body_entered"]

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://entities/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://entities/bullets/DynamoProjectile.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/pixel_icons_by_oceansdream.png" type="Texture" id=3]
 [ext_resource path="res://TestScene.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -26,7 +26,7 @@ position = Vector2( 312, 106 )
 position = Vector2( 382, 109 )
 
 [node name="Enemy3" parent="TeamRed" instance=ExtResource( 1 )]
-position = Vector2( 622, 170 )
+position = Vector2( 390, 182 )
 
 [node name="Enemy4" parent="TeamRed" instance=ExtResource( 1 )]
 position = Vector2( 245, 107 )
@@ -54,5 +54,7 @@ shape = SubResource( 2 )
 position = Vector2( 1053, 312 )
 shape = SubResource( 2 )
 
-[node name="DynamoProjectile" parent="." instance=ExtResource( 3 )]
-position = Vector2( 437, 262 )
+[node name="PixelIconsByOceansdream" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 96.7485, 73.692, 21.2076, 20.9003 )

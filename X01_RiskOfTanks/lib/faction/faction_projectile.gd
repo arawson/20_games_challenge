@@ -26,3 +26,17 @@ func set_proc_pool(p: ProcPool) -> void:
 
 func get_proc_pool():
 	return proc_pool
+
+# returns true if the target was valid to proc on
+func do_proc_on(body) -> bool:
+	var faction_member = body as FactionMember
+	if faction_member != null:
+		if faction_member.faction_id != faction_id:
+			
+			if faction_member.do_damage(damage_base):
+				self.proc_pool.trigger_on_kill(self, faction_member)
+
+			self.proc_pool.trigger_on_hit(self, faction_member)
+		return true
+	
+	return false
