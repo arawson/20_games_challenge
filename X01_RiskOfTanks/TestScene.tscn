@@ -55,6 +55,7 @@ position = Vector2( 1053, 312 )
 shape = SubResource( 2 )
 
 [node name="PixelIconsByOceansdream" type="Sprite" parent="."]
+position = Vector2( -89, 0 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 96.7485, 73.692, 21.2076, 20.9003 )
