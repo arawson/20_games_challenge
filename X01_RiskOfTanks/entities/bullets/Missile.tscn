@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://entities/bullets/Missile.gd" type="Script" id=1]
+[ext_resource path="res://assets/kenney_tankspack/tank_bullet4.png" type="Texture" id=2]
+[ext_resource path="res://entities/bullets/MissileProjectile.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.0
+height = 18.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 209.038
+
+[node name="Missile" type="KinematicBody2D"]
+script = ExtResource( 1 )
+faction_projectile_path = NodePath("MissileProjectile")
+angle_speed = 3.0
+speed = 5.0
+
+[node name="MissileCollision" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="TankBullet4" type="Sprite" parent="."]
+scale = Vector2( 0.730769, 0.730769 )
+texture = ExtResource( 2 )
+
+[node name="Homing" type="Area2D" parent="."]
+
+[node name="HomingShape" type="CollisionShape2D" parent="Homing"]
+shape = SubResource( 2 )
+
+[node name="MissileProjectile" type="Node2D" parent="."]
+script = ExtResource( 3 )
+projectile_root_path = NodePath("..")

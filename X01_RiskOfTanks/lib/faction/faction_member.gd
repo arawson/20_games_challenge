@@ -17,6 +17,8 @@ func _setup_projectile(proj):
 	# print(new_proc_pool.get_instance_id())
 	# For some reason, proc_pool and new_proc_pool share the same path but
 	# will have different IDs. Very strange.
+
+	proj.faction_id = faction_id
 	pass
 
 # Returns if the damage would kill the unit

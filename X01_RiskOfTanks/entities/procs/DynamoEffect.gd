@@ -42,6 +42,6 @@ func do_on_hit(projectile: FactionProjectile, member: FactionMember, updated_pro
 			var proj = projectile_scene.instance()
 			proj.initialize(member, t)
 			proj.proc_pool = updated_proc_pool.duplicate(DUPLICATE_SCRIPTS)
-			projectile.get_parent().add_child(proj)
+			projectile.projectile_root.get_parent().add_child(proj)
 			pass
 	pass

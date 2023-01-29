@@ -10,7 +10,7 @@ func _physics_process(delta: float):
 		arm_time -= delta
 	lifetime_max -= delta
 	if lifetime_max <= 0:
-		delete_self()
+		Util.delete_node(self)
 
 
 func _on_BasicBullet_body_entered(body):
@@ -28,4 +28,4 @@ func _on_BasicBullet_body_entered(body):
 
 	# 		self.proc_pool.trigger_on_hit(self, faction_member)
 	if do_proc_on(body):
-		delete_self()
+		Util.delete_node(self)
