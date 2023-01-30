@@ -4,14 +4,10 @@
 [ext_resource path="res://entities/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/pixel_icons_by_oceansdream.png" type="Texture" id=3]
 [ext_resource path="res://TestScene.gd" type="Script" id=4]
+[ext_resource path="res://entities/items/DynamoItem.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=6]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 558.5, 28 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 29.5, 313 )
-
-[node name="TestScene" type="Node2D"]
+[node name="TestScene" type="Node"]
 script = ExtResource( 4 )
 
 [node name="TeamRed" type="Node" parent="."]
@@ -35,27 +31,17 @@ position = Vector2( 245, 107 )
 
 [node name="Player" parent="TeamBlue" instance=ExtResource( 2 )]
 position = Vector2( 319, 433 )
-
-[node name="TestZoneBounds" type="StaticBody2D" parent="."]
-
-[node name="TopCollisionShape2D" type="CollisionShape2D" parent="TestZoneBounds"]
-position = Vector2( 506.5, -28 )
-shape = SubResource( 1 )
-
-[node name="BotCollisionShape2D" type="CollisionShape2D" parent="TestZoneBounds"]
-position = Vector2( 509, 628 )
-shape = SubResource( 1 )
-
-[node name="LeftCollisionShape2D" type="CollisionShape2D" parent="TestZoneBounds"]
-position = Vector2( -29.5, 308 )
-shape = SubResource( 2 )
-
-[node name="RightCollisionShape2D" type="CollisionShape2D" parent="TestZoneBounds"]
-position = Vector2( 1053, 312 )
-shape = SubResource( 2 )
+gui_path = NodePath("../../CanvasLayer/GUI")
 
 [node name="PixelIconsByOceansdream" type="Sprite" parent="."]
 position = Vector2( -89, 0 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 96.7485, 73.692, 21.2076, 20.9003 )
+
+[node name="Node2D" parent="." instance=ExtResource( 5 )]
+position = Vector2( 310, 237 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GUI" parent="CanvasLayer" instance=ExtResource( 6 )]

@@ -5,6 +5,7 @@ extends Node2D
 
 var proc_on_hit = []
 var proc_on_kill = []
+var procs : Dictionary = {}
 
 func _ready() -> void:
 	initialize()

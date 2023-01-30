@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 # Test Scene Script full of garbage and nonsense
 
