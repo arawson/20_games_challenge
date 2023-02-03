@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/terrainTiles_default.png-915a1bb8223494f4b350aec168be6bdc.stex"
+path="res://.import/shipsMiscellaneous_sheet.png-8fe3c17280e7f6494380e4723f1868e7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kenney_topdowntanksredux/terrainTiles_default.png"
-dest_files=[ "res://.import/terrainTiles_default.png-915a1bb8223494f4b350aec168be6bdc.stex" ]
+source_file="res://assets/kenney_piratepack/shipsMiscellaneous_sheet.png"
+dest_files=[ "res://.import/shipsMiscellaneous_sheet.png-8fe3c17280e7f6494380e4723f1868e7.stex" ]
 
 [params]
 
