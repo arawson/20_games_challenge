@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "FactionAbility",
+"language": "GDScript",
+"path": "res://lib/faction/faction_ability.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "FactionMember",
 "language": "GDScript",
@@ -50,6 +55,7 @@ _global_script_classes=[ {
 "path": "res://lib/proc/procable_damage.gd"
 } ]
 _global_script_class_icons={
+"FactionAbility": "",
 "FactionMember": "",
 "FactionProjectile": "",
 "Inventory": "",
@@ -78,6 +84,7 @@ window/stretch/aspect="expand"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/custom="res://assets/kenney_ui_pack_godot/kenneyUI-yellow.tres"
 
 [importer_defaults]
 

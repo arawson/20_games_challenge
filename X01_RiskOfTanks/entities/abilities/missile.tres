@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://lib/faction/faction_ability.gd" type="Script" id=1]
+[ext_resource path="res://assets/icons_mashed_up_from_kenney/missile_launch.png" type="Texture" id=2]
+
+[resource]
+script = ExtResource( 1 )
+base_cooldown = 5.0
+icon = ExtResource( 2 )
+name = "Launch Missile"
+from_barrel = false

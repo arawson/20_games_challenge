@@ -61,7 +61,7 @@ position = Vector2( 280, -153 )
 [node name="TeamBlue" type="Node" parent="."]
 
 [node name="Player" parent="TeamBlue" instance=ExtResource( 2 )]
-position = Vector2( 69, 324 )
+position = Vector2( 120, 394 )
 gui_path = NodePath("../../CanvasLayer/GUI")
 
 [node name="DynamoItem" parent="." instance=ExtResource( 5 )]

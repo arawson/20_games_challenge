@@ -2,7 +2,7 @@
 
 [ext_resource path="res://entities/bullets/BasicBullet.gd" type="Script" id=1]
 [ext_resource path="res://lib/proc/proc_pool.gd" type="Script" id=2]
-[ext_resource path="res://assets/kenney_topdowntanksredux/bulletRed2_outline.png" type="Texture" id=3]
+[ext_resource path="res://assets/kenney_topdowntanksredux/shotRed.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5, 7.5 )
@@ -18,6 +18,7 @@ script = ExtResource( 1 )
 projectile_root_path = NodePath(".")
 
 [node name="BulletRed2Outline" type="Sprite" parent="."]
+position = Vector2( 0, 9 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
