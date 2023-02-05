@@ -65,7 +65,7 @@ region_rect = Rect2( 96.7485, 73.692, 21.2076, 20.9003 )
 position = Vector2( 1.19209e-07, 5.96046e-08 )
 scale = Vector2( 0.214844, 0.214844 )
 frames = SubResource( 9 )
-frame = 6
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
