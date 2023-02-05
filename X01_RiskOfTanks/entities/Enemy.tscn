@@ -7,6 +7,7 @@
 extents = Vector2( 22, 20.5 )
 
 [node name="Enemy" type="KinematicBody2D"]
+collision_mask = 0
 script = ExtResource( 2 )
 faction_id = 2
 

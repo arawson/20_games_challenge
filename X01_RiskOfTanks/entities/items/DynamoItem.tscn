@@ -48,8 +48,8 @@ animations = [ {
 radius = 8.0
 
 [node name="Item" type="Area2D"]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 8
+collision_mask = 0
 monitoring = false
 script = ExtResource( 1 )
 pickup_name = "Dynamo"
@@ -65,7 +65,7 @@ region_rect = Rect2( 96.7485, 73.692, 21.2076, 20.9003 )
 position = Vector2( 1.19209e-07, 5.96046e-08 )
 scale = Vector2( 0.214844, 0.214844 )
 frames = SubResource( 9 )
-frame = 2
+frame = 6
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,17 +1,9 @@
 class_name Inventory
 extends Node
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+# An inventory needs:
+# 1. A dictionary of keys
+# 2. Each key maps to a resource
+# 3. Those resources each have a "count" to track how many of that object are there
+# 4. Methods going in to add and remove items from the inventory
+# 5. Signals going out to notify of inventory changed
