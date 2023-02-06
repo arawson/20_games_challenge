@@ -1,4 +1,5 @@
 extends Control
+class_name GUI
 
 # TODO this seems like an OK practice, have a GUI object to front for the entire
 # UI and then if I need to change anything I can just change the methods
@@ -15,4 +16,23 @@ func hide_pickup_label():
 	pass
 
 func _ready():
-	$HFlowContainer/AbilityButton.set_ability(load("res://entities/abilities/gun_tank.tres"))
+	# $HFlowContainer/AbilityButton.set_ability(load("res://entities/abilities/gun_tank.tres"))
+	pass
+
+func set_ability_button(slot: int, ability: FactionAbility):
+	var target: AbilityButton = null
+	if slot == BaseUnit.ABILITY_SLOT.LMB:
+		target = $HFlowContainer/SlotLMB
+	elif slot == BaseUnit.ABILITY_SLOT.SPACE:
+		target = $HFlowContainer/SlotSpace
+	elif slot == BaseUnit.ABILITY_SLOT.F:
+		target = $HFlowContainer/SlotF
+	else:
+		return
+
+	target.set_ability(ability)
+
+func clear_ability_buttons():
+	set_ability_button(BaseUnit.ABILITY_SLOT.F, FactionUtil.ABILITY_NOTHING)
+	set_ability_button(BaseUnit.ABILITY_SLOT.SPACE, FactionUtil.ABILITY_NOTHING)
+	set_ability_button(BaseUnit.ABILITY_SLOT.LMB, FactionUtil.ABILITY_NOTHING)

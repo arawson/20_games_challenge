@@ -43,21 +43,21 @@ anchor_bottom = 1.0
 margin_left = -231.0
 margin_top = -94.0
 
-[node name="AbilityButton" parent="HFlowContainer" instance=ExtResource( 2 )]
+[node name="SlotLMB" parent="HFlowContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 72.0
 margin_bottom = 94.0
 key_helper = "LMB"
 
-[node name="AbilityButton2" parent="HFlowContainer" instance=ExtResource( 2 )]
+[node name="SlotF" parent="HFlowContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 76.0
 margin_right = 148.0
 margin_bottom = 94.0
 
-[node name="AbilityButton3" parent="HFlowContainer" instance=ExtResource( 2 )]
+[node name="SlotSpace" parent="HFlowContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 152.0

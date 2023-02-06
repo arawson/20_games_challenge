@@ -1,10 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://entities/units/tanks/TankA.tscn" type="PackedScene" id=1]
+[ext_resource path="res://controllers/PlayerLocalController.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/units/tanks/TankAStats.tres" type="Resource" id=3]
 [ext_resource path="res://TestScene.gd" type="Script" id=4]
 [ext_resource path="res://entities/items/DynamoItem.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://terrain/tileset_arena_1.tres" type="TileSet" id=7]
+[ext_resource path="res://entities/abilities/missile.tres" type="Resource" id=8]
+[ext_resource path="res://entities/abilities/nothing.tres" type="Resource" id=9]
+[ext_resource path="res://entities/abilities/gun_tank.tres" type="Resource" id=10]
 
 [node name="TestScene" type="Node"]
 script = ExtResource( 4 )
@@ -48,8 +53,15 @@ __meta__ = {
 [node name="TeamBlue" type="Node" parent="."]
 
 [node name="TankA" parent="TeamBlue" instance=ExtResource( 1 )]
-position = Vector2( -1, 157 )
-gui_path = NodePath("../../CanvasLayer/GUI")
+position = Vector2( -51, 157 )
+unit_stats_base = ExtResource( 3 )
+ability_f_base = ExtResource( 8 )
+ability_space_base = ExtResource( 10 )
+ability_lmb_base = ExtResource( 9 )
+
+[node name="Player" parent="TeamBlue/TankA" instance=ExtResource( 2 )]
+faction_id = 1
+unit_path = NodePath("..")
 
 [node name="DynamoItem" parent="." instance=ExtResource( 5 )]
 position = Vector2( 91, 144 )

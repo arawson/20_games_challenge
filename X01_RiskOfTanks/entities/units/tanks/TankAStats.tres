@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://entities/units/UnitStats.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+speed_max = 300.0
+turn_max = 3.0
+base_health = 100.0

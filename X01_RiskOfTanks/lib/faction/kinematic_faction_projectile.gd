@@ -17,6 +17,7 @@ onready var faction_projectile: FactionProjectile = get_node(faction_projectile_
 
 # TODO recreating a var, would like a better solution
 # can't make an export var with setters and getters (probably for editor support reasons)
+# or at least it didn't work very well when I tried it
 export(int) var faction_id = 0
 
 var proc_pool: ProcPool setget set_proc_pool, get_proc_pool

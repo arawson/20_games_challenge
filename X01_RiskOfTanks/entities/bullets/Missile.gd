@@ -59,9 +59,9 @@ func _physics_process(delta):
 	# skip collisions if we are deleting ourself
 	lifetime_max -= delta
 	if lifetime_max <= 0:
-		Util.delete_node(self)
+		NodeUtil.delete(self)
 		return
 
 	if collision != null:
 		if do_proc_on(collision.collider):
-			Util.delete_node(self)
+			NodeUtil.delete(self)
