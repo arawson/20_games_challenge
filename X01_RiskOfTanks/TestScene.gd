@@ -11,4 +11,8 @@ func _ready():
 	# if this were the real game, some kind of LevelController would setup
 	# the level to have the correct controllers and activate the connections
 	$TeamBlue/TankA/Player.attach_gui($CanvasLayer/GUI as GUI)
+
+	$OverheadCamera.set_follow_arrive_at_then_instant($TeamBlue/TankA, Vector2(1575,-750), 5.0)
+	# $OverheadCamera.set_follow_instant($TeamBlue/TankA)
+
 	pass

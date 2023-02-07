@@ -14,9 +14,6 @@ projectile_pool_path = NodePath("Projectiles")
 [node name="ProcPool" type="Node2D" parent="."]
 script = ExtResource( 2 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-
 [node name="ItemScanner" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
