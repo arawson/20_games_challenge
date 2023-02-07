@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://lib/faction/kinematic_faction_projectile.gd"
 }, {
+"base": "Camera2D",
+"class": "OverheadCamera",
+"language": "GDScript",
+"path": "res://lib/entities/OverheadCamera.gd"
+}, {
 "base": "Node2D",
 "class": "ProcPool",
 "language": "GDScript",
@@ -90,6 +95,7 @@ _global_script_class_icons={
 "Inventory": "",
 "Item": "",
 "KinematicFactionProjectile": "",
+"OverheadCamera": "",
 "ProcPool": "",
 "Procable": "",
 "ProcableDamage": "",

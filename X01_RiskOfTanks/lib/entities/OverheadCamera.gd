@@ -1,4 +1,5 @@
 extends Camera2D
+class_name OverheadCamera
 
 # how do you use the OverheadCamera?
 # 1. Send commands to the camera all the time
@@ -8,7 +9,7 @@ extends Camera2D
 
 enum MOVE_TYPE { INSTANT, LINEAR, TIMED_SLERP }
 
-signal camera_reached_target(target)
+signal camera_reached_target(camera, target)
 
 export(float) var default_target_follow_speed = 4.0
 export(NodePath) var initial_target_path
@@ -39,7 +40,7 @@ func set_follow_arrive_at_then_instant(node: Node2D, start_pos: Vector2, arrival
 func set_target_follow_speed(follow_speed: float = -1):
 	target_follow_speed_max = follow_speed if follow_speed > 0 else default_target_follow_speed
 
-func _physics_process(delta):
+func _process(delta):
 	if target == null:
 		return
 	# essentially a tiny state machine
@@ -51,10 +52,8 @@ func _physics_process(delta):
 		# is clamp really more clear than min here?
 		target_track_time = clamp(target_track_time + delta, 0.0, target_arrival_time)
 		var weight = target_track_time / target_arrival_time
-		var slerpy = lerp(timed_start_pos, target.global_position, weight)
-		global_position = slerpy
-		print(slerpy)
+		global_position = lerp(timed_start_pos, target.global_position, weight)
 
 		if target_track_time >= target_arrival_time:
-			emit_signal("camera_reached_target", target)
 			move_type = MOVE_TYPE.INSTANT
+			emit_signal("camera_reached_target", self, target)

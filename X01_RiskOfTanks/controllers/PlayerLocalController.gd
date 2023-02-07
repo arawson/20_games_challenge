@@ -4,6 +4,8 @@ var pickup_tracking : Item = null
 onready var pickup_label = $UISeperator/CenterContainer/PickupLabel
 onready var item_scanner = $ItemScanner
 
+var camera: OverheadCamera = null
+
 func _physics_process(_delta):
 	if unit == null:
 		return
@@ -32,6 +34,11 @@ func _physics_process(_delta):
 		_setup_projectiles(unit.trigger_ability_f())
 	
 	# TODO LMB processing
+
+func set_camera(cam: OverheadCamera):
+	camera = cam
+	cam.set_follow_linear($MouseTransformDecoupler/MouseWidget, 4.0)
+	pass
 
 func _on_ItemScanner_area_shape_changed(_area_rid, _area, _area_shape_index, _local_shape_index):
 	var items = item_scanner.get_overlapping_areas()

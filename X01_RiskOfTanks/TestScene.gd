@@ -16,3 +16,8 @@ func _ready():
 	# $OverheadCamera.set_follow_instant($TeamBlue/TankA)
 
 	pass
+
+
+func _on_OverheadCamera_camera_reached_target(camera, target):
+	if target == $TeamBlue/TankA:
+		$TeamBlue/TankA/Player.set_camera(camera)

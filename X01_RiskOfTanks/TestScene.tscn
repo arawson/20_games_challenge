@@ -72,5 +72,8 @@ position = Vector2( 91, 144 )
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 6 )]
 
 [node name="OverheadCamera" parent="." instance=ExtResource( 11 )]
+position = Vector2( 133, -322 )
 current = true
 initial_target_path = NodePath("../TeamBlue/TankA")
+
+[connection signal="camera_reached_target" from="OverheadCamera" to="." method="_on_OverheadCamera_camera_reached_target"]
