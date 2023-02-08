@@ -76,5 +76,6 @@ position = Vector2( 133, -322 )
 current = true
 initial_target_path = NodePath("../TeamBlue/TankA")
 
+[connection signal="ability_fired" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_ability_fired"]
 [connection signal="health_change" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_health_change"]
 [connection signal="camera_reached_target" from="OverheadCamera" to="." method="_on_OverheadCamera_camera_reached_target"]

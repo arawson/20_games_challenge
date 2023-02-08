@@ -6,6 +6,8 @@ onready var item_scanner = $ItemScanner
 
 var camera: OverheadCamera = null
 
+onready var mouse_widget: Node2D = $MouseTransformDecoupler/MouseWidget
+
 func _physics_process(_delta):
 	if unit == null:
 		return
@@ -27,17 +29,21 @@ func _physics_process(_delta):
 		send_input.y += 1
 	unit.set_input_direction(send_input)
 
-	if Input.is_action_just_pressed("fire"):
-		_setup_projectiles(unit.trigger_ability_space())
+	var aim_vector = (mouse_widget.global_position - global_position).normalized()
 
-	if Input.is_action_just_pressed("special"):
-		_setup_projectiles(unit.trigger_ability_f())
+	if Input.is_action_pressed("fire"):
+		_setup_projectiles(unit.trigger_ability(BaseUnit.ABILITY_SLOT.SPACE,aim_vector))
+
+	if Input.is_action_pressed("special"):
+		_setup_projectiles(unit.trigger_ability(BaseUnit.ABILITY_SLOT.F, aim_vector))
 	
 	# TODO LMB processing
+	if Input.is_action_pressed("light"):
+		_setup_projectiles(unit.trigger_ability(BaseUnit.ABILITY_SLOT.LMB, aim_vector))
 
 func set_camera(cam: OverheadCamera):
 	camera = cam
-	cam.set_follow_linear($MouseTransformDecoupler/MouseWidget, 4.0)
+	cam.set_follow_linear(mouse_widget, 4.0)
 	pass
 
 func _on_ItemScanner_area_shape_changed(_area_rid, _area, _area_shape_index, _local_shape_index):
@@ -53,5 +59,11 @@ func _on_ItemScanner_area_shape_changed(_area_rid, _area, _area_shape_index, _lo
 	else:
 		gui.set_and_show_pickup_label(pickup_tracking)
 
-func _on_health_change(old_value, new_value):
+func _on_health_change(_old_value, new_value):
 	gui.set_health(new_value, unit.health_max, 0)
+
+func _on_ability_fired(slot: int, cooldown: float):
+	gui.activate_ability(slot, cooldown)
+
+func _on_ability_off_cooldown(slot: int):
+	gui.reset_ability(slot)

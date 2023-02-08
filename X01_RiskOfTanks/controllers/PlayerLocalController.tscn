@@ -10,6 +10,8 @@ radius = 95.0842
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
+faction_id = null
+unit_path = null
 proc_pool_path = NodePath("ProcPool")
 projectile_pool_path = NodePath("Projectiles")
 

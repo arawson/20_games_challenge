@@ -9,6 +9,12 @@ onready var pickup_label = $CenterContainer/VBoxContainer/PickupLabel
 onready var health_bar = $HealthBar
 onready var health_text = $HealthBar/HealthLabel
 
+onready var ability_button_f: AbilityButton = $HFlowContainer/SlotF
+onready var ability_button_lmb: AbilityButton = $HFlowContainer/SlotLMB
+onready var ability_button_space: AbilityButton = $HFlowContainer/SlotSpace
+
+onready var ability_buttons: Array = [ability_button_lmb, ability_button_space, ability_button_f]
+
 func set_and_show_pickup_label(item: Item):
 	pickup_label.text = "Press E to Pick Up %s" % item.pickup_name
 	pickup_label.visible = true
@@ -23,22 +29,24 @@ func _ready():
 	pass
 
 func set_ability_button(slot: int, ability: FactionAbility):
-	var target: AbilityButton = null
-	if slot == BaseUnit.ABILITY_SLOT.LMB:
-		target = $HFlowContainer/SlotLMB
-	elif slot == BaseUnit.ABILITY_SLOT.SPACE:
-		target = $HFlowContainer/SlotSpace
-	elif slot == BaseUnit.ABILITY_SLOT.F:
-		target = $HFlowContainer/SlotF
-	else:
+	if not slot in BaseUnit.ABILITY_SLOT.values():
 		return
-
-	target.set_ability(ability)
+	ability_buttons[slot].set_ability(ability)
 
 func clear_ability_buttons():
-	set_ability_button(BaseUnit.ABILITY_SLOT.F, FactionUtil.ABILITY_NOTHING)
-	set_ability_button(BaseUnit.ABILITY_SLOT.SPACE, FactionUtil.ABILITY_NOTHING)
-	set_ability_button(BaseUnit.ABILITY_SLOT.LMB, FactionUtil.ABILITY_NOTHING)
+	for s in BaseUnit.ABILITY_SLOT.values():
+		set_ability_button(s, FactionUtil.ABILITY_NOTHING)
+
+func activate_ability(slot: int, cooldown: float):
+	if not slot in BaseUnit.ABILITY_SLOT.values():
+		return
+	ability_buttons[slot].start_cooldown(cooldown)
+
+func reset_ability(slot: int):
+	# TODO should these all be asserts? for performance on release builds?
+	if not slot in BaseUnit.ABILITY_SLOT.values():
+		return
+	ability_buttons[slot].reset_cooldown()
 
 func set_health(health: float, max_health: float, precision: int):
 	var format = "%%2.%df/%%2.%df" % [precision, precision]
