@@ -5,6 +5,7 @@ export(NodePath) var projectile_root_path
 export(int) var faction_id = 0
 export(float) var damage_base = 10.0
 
+# see BaseController._setup_projectile, seems like setget is more trouble than it's worth
 var proc_pool: ProcPool setget set_proc_pool, get_proc_pool
 onready var projectile_root: Node = get_node(projectile_root_path)
 

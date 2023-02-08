@@ -1,4 +1,5 @@
 extends Control
+class_name AbilityButton
 
 export(String) var key_helper = "F"
 

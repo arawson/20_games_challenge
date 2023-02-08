@@ -33,7 +33,7 @@ func do_on_hit(projectile: FactionProjectile, member: FactionMember, updated_pro
 		hittables.append(member2)
 	
 	# randomly select targets out of list
-	var targets = Util.random_pick(2, hittables)
+	var targets = RandomUtil.pick(2, hittables)
 
 	for t in targets:
 		print("hitting target: %s" % t)

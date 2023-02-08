@@ -40,4 +40,4 @@ func _on_Timer_timeout():
 
 	var _thunk = do_proc_on(destination)
 
-	Util.delete_node(self)
+	NodeUtil.delete(self)

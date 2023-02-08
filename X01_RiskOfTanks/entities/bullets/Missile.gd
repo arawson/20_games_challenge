@@ -8,7 +8,6 @@ export(float) var arm_time: float = 0.1
 export(float) var lifetime_max: float = 3
 export(float) var angle_speed = 0.5
 export(float) var speed = 2.0
-export(float) var angle = 0.0
 
 onready var homing : Area2D = $Homing
 
@@ -16,7 +15,6 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	rotation = angle
 	# do movement always
 	# do our "AI" to seek towards the nearest FactionMember not matching our FactionID
 	var current_target: FactionMember = null
@@ -42,12 +40,12 @@ func _physics_process(delta):
 	if current_target != null:
 		var angle_to_t = current_target.position.angle_to_point(position)
 		# var angle_to_t = position.angle_to_point(current_target.position)
-		if (angle < angle_to_t):
-			angle += angle_speed * delta
-		if (angle > angle_to_t):
-			angle -= angle_speed * delta
+		if (rotation < angle_to_t):
+			rotation += angle_speed * delta
+		if (rotation > angle_to_t):
+			rotation -= angle_speed * delta
 	
-	var vel: Vector2 = Vector2(speed * cos(angle), speed * sin(angle))
+	var vel: Vector2 = Vector2(speed * cos(rotation), speed * sin(rotation))
 
 	var collision: KinematicCollision2D = move_and_collide(vel)
 	
@@ -59,9 +57,9 @@ func _physics_process(delta):
 	# skip collisions if we are deleting ourself
 	lifetime_max -= delta
 	if lifetime_max <= 0:
-		Util.delete_node(self)
+		NodeUtil.delete(self)
 		return
 
 	if collision != null:
 		if do_proc_on(collision.collider):
-			Util.delete_node(self)
+			NodeUtil.delete(self)

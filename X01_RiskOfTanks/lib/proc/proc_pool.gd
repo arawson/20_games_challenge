@@ -2,6 +2,7 @@ class_name ProcPool
 extends Node2D
 
 # A proc pool contains all of the items which can proc
+# TODO: Document why ProcPool extends Node2D instead of Node
 
 var proc_on_hit = []
 var proc_on_kill = []
