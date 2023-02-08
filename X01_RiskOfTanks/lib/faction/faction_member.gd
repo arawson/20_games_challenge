@@ -8,13 +8,13 @@ onready var unit_stats: UnitStats = unit_stats_base
 
 var health_max: float
 var health: float
-signal health_lost(old_value, new_value)
+signal health_change(old_value, new_value)
 
 # Returns if the damage would kill the unit
 func do_damage(damage: float) -> bool:
 	var starting_health = health
 	health = clamp(health - damage, 0, health_max)
-	emit_signal("health_lost", starting_health, health)
+	emit_signal("health_change", starting_health, health)
 	if health <= 0:
 		health = 0
 		return true
@@ -26,3 +26,4 @@ func _ready():
 	assert(faction_id != 0)
 	health = unit_stats.base_health
 	health_max = unit_stats.base_health
+	call_deferred("emit_signal", "health_change", health_max, health_max)

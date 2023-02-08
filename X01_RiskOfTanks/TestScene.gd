@@ -14,7 +14,6 @@ func _ready():
 
 	$OverheadCamera.set_follow_arrive_at_then_instant($TeamBlue/TankA, Vector2(1575,-750), 5.0)
 	# $OverheadCamera.set_follow_instant($TeamBlue/TankA)
-
 	pass
 
 

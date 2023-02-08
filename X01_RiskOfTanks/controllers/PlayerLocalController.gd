@@ -52,5 +52,6 @@ func _on_ItemScanner_area_shape_changed(_area_rid, _area, _area_shape_index, _lo
 		gui.hide_pickup_label()
 	else:
 		gui.set_and_show_pickup_label(pickup_tracking)
-		
-	
+
+func _on_health_change(old_value, new_value):
+	gui.set_health(new_value, unit.health_max, 0)
