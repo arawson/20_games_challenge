@@ -5,12 +5,6 @@ var projectile_scene = preload("res://entities/bullets/DynamoProjectile.tscn")
 func _ready():
 	pass
 
-func is_on_hit() -> bool:
-	return true
-	
-func is_on_kill() -> bool:
-	return false
-
 func roll_on_hit(_faction_projectile, _faction_member: FactionMember, _proc_pool) -> bool:
 	# Normally, you would want a probability to roll here
 	return true

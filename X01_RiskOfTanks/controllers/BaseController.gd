@@ -7,10 +7,13 @@ export(NodePath) var unit_path
 onready var unit: BaseUnit = get_node(unit_path) as BaseUnit
 
 export(NodePath) var proc_pool_path
-onready var proc_pool: ProcPool = get_node(proc_pool_path)
+onready var proc_pool: ProcPool = get_node(proc_pool_path) as ProcPool
 
 export(NodePath) var projectile_pool_path
 onready var projectile_pool: Node = get_node(projectile_pool_path)
+
+export(NodePath) var inventory_path
+onready var inventory: Inventory = get_node(inventory_path) as Inventory
 
 var gui: GUI
 
@@ -18,17 +21,26 @@ func _ready():
 	assert(unit != null)
 	assert(projectile_pool != null)
 	assert(proc_pool != null)
+	assert(inventory != null)
 
 func attach_gui(g: GUI):
 	if unit == null:
 		return
+	
+	g.connect_health_bar(unit)
+
 	gui = g
+	# TODO shouldn't the gui be attached to signals from the controller?
 	gui.set_ability_button(BaseUnit.ABILITY_SLOT.LMB, unit.ability_lmb)
 	gui.set_ability_button(BaseUnit.ABILITY_SLOT.SPACE, unit.ability_space)
 	gui.set_ability_button(BaseUnit.ABILITY_SLOT.F, unit.ability_f)
 
 # might be unnecessary
 func detach_gui():
+	# TODO shouldn't the gui be attached to signals from the controller?
+	gui = null
+	gui.clear_ability_buttons()
+	# TODO can I use a mock from GUT here instead of checking null all over the place?
 	pass
 
 func _setup_projectile(proj):

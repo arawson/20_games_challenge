@@ -7,7 +7,6 @@ class_name GUI
 onready var pickup_label = $CenterContainer/VBoxContainer/PickupLabel
 
 onready var health_bar = $HealthBar
-onready var health_text = $HealthBar/HealthLabel
 
 onready var ability_button_f: AbilityButton = $HFlowContainer/SlotF
 onready var ability_button_lmb: AbilityButton = $HFlowContainer/SlotLMB
@@ -15,7 +14,7 @@ onready var ability_button_space: AbilityButton = $HFlowContainer/SlotSpace
 
 onready var ability_buttons: Array = [ability_button_lmb, ability_button_space, ability_button_f]
 
-func set_and_show_pickup_label(item: Item):
+func set_and_show_pickup_label(item: ProcItem):
 	pickup_label.text = "Press E to Pick Up %s" % item.pickup_name
 	pickup_label.visible = true
 	pass
@@ -48,8 +47,9 @@ func reset_ability(slot: int):
 		return
 	ability_buttons[slot].reset_cooldown()
 
-func set_health(health: float, max_health: float, precision: int):
-	var format = "%%2.%df/%%2.%df" % [precision, precision]
-	health_text.text = format % [health, max_health]
-	health_bar.max_value = max_health
-	health_bar.value = health
+# new signal + "interface" approach for handling this
+
+func connect_health_bar(faction_member: FactionMember):
+	var _x = faction_member.connect("health_change", $HealthBar, "set_health")
+
+

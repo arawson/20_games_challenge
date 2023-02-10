@@ -1,20 +1,21 @@
 class_name Procable
 extends Node2D
 
-export(bool) var is_consumed = false
+var item: ProcItem
+var is_consumed: bool = false
+var quantity: int = 1
 
 func _ready():
-	pass
+	assert(item != null)
+
+func is_on_hit() -> bool:
+	return item.on_hit
+
+func is_on_kill() -> bool:
+	return item.on_kill
 
 func clone() -> Node:
 	return self.duplicate(DUPLICATE_SCRIPTS)
-
-# todo use a enum for proc triggers
-func is_on_hit() -> bool:
-	return false
-	
-func is_on_kill() -> bool:
-	return false
 
 func roll_on_hit(_faction_projectile, _faction_member, _proc_pool) -> bool:
 	return false

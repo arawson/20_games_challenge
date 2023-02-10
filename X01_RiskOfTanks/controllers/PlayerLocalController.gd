@@ -1,6 +1,6 @@
 extends BaseController
 
-var pickup_tracking : Item = null
+var pickup_tracking : ItemPickup = null
 onready var pickup_label = $UISeperator/CenterContainer/PickupLabel
 onready var item_scanner = $ItemScanner
 
@@ -13,8 +13,10 @@ func _physics_process(_delta):
 		return
 
 	if pickup_tracking != null and Input.is_action_just_pressed("interact"):
+		inventory.add_item(pickup_tracking)
 		NodeUtil.delete(pickup_tracking)
-		# does change handle clearing out the pickup? it does!
+		# let the area 2d handle our delete by sending the signal
+		pass
 	
 	var send_input = Vector2()
 	# extracted from TankA / old Player
@@ -37,9 +39,9 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("special"):
 		_setup_projectiles(unit.trigger_ability(BaseUnit.ABILITY_SLOT.F, aim_vector))
 	
-	# TODO LMB processing
 	if Input.is_action_pressed("light"):
 		_setup_projectiles(unit.trigger_ability(BaseUnit.ABILITY_SLOT.LMB, aim_vector))
+
 
 func set_camera(cam: OverheadCamera):
 	camera = cam
@@ -55,12 +57,13 @@ func _on_ItemScanner_area_shape_changed(_area_rid, _area, _area_shape_index, _lo
 	
 	if pickups_in_range <= 0:
 		pickup_tracking = null
+		# TODO shouldn't the gui be attached to signals from the controller?
 		gui.hide_pickup_label()
 	else:
-		gui.set_and_show_pickup_label(pickup_tracking)
+		gui.set_and_show_pickup_label(pickup_tracking.proc_item)
 
-func _on_health_change(_old_value, new_value):
-	gui.set_health(new_value, unit.health_max, 0)
+# func _on_health_change(_old_value, new_value):
+# 	gui.set_health(new_value, unit.health_max, 0)
 
 func _on_ability_fired(slot: int, cooldown: float):
 	gui.activate_ability(slot, cooldown)

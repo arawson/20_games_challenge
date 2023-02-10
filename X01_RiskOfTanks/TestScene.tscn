@@ -1,16 +1,17 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://entities/units/tanks/TankA.tscn" type="PackedScene" id=1]
 [ext_resource path="res://controllers/PlayerLocalController.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/units/tanks/TankAStats.tres" type="Resource" id=3]
 [ext_resource path="res://TestScene.gd" type="Script" id=4]
-[ext_resource path="res://entities/items/DynamoItem.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/items/ItemPickup.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=6]
 [ext_resource path="res://terrain/tileset_arena_1.tres" type="TileSet" id=7]
 [ext_resource path="res://entities/abilities/missile.tres" type="Resource" id=8]
 [ext_resource path="res://entities/abilities/nothing.tres" type="Resource" id=9]
 [ext_resource path="res://entities/abilities/gun_tank.tres" type="Resource" id=10]
 [ext_resource path="res://lib/entities/OverheadCamera.tscn" type="PackedScene" id=11]
+[ext_resource path="res://entities/procs/Dynamo.tres" type="Resource" id=12]
 
 [node name="TestScene" type="Node"]
 script = ExtResource( 4 )
@@ -64,9 +65,6 @@ ability_lmb_base = ExtResource( 9 )
 faction_id = 1
 unit_path = NodePath("..")
 
-[node name="DynamoItem" parent="." instance=ExtResource( 5 )]
-position = Vector2( 91, 144 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 6 )]
@@ -76,7 +74,10 @@ position = Vector2( 133, -322 )
 current = true
 initial_target_path = NodePath("../TeamBlue/TankA")
 
+[node name="ItemPickup" parent="." instance=ExtResource( 5 )]
+position = Vector2( 98, 26 )
+proc_item = ExtResource( 12 )
+
 [connection signal="ability_fired" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_ability_fired"]
 [connection signal="ability_off_cooldown" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_ability_off_cooldown"]
-[connection signal="health_change" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_health_change"]
 [connection signal="camera_reached_target" from="OverheadCamera" to="." method="_on_OverheadCamera_camera_reached_target"]

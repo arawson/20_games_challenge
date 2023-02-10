@@ -1,19 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://controllers/PlayerLocalController.gd" type="Script" id=1]
 [ext_resource path="res://lib/proc/proc_pool.gd" type="Script" id=2]
 [ext_resource path="res://assets/kenney_crosshairpack/crosshairs_tilesheet_white.png" type="Texture" id=3]
 [ext_resource path="res://lib/ConstrainedMouseFollower.gd" type="Script" id=4]
+[ext_resource path="res://lib/proc/inventory.gd" type="Script" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 95.0842
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
-faction_id = null
-unit_path = null
 proc_pool_path = NodePath("ProcPool")
 projectile_pool_path = NodePath("Projectiles")
+inventory_path = NodePath("Inventory")
 
 [node name="ProcPool" type="Node2D" parent="."]
 script = ExtResource( 2 )
@@ -38,6 +38,10 @@ leader_path = NodePath("../..")
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 207, 69, 64, 64 )
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource( 5 )
+proc_pool_path = NodePath("../ProcPool")
 
 [connection signal="area_shape_entered" from="ItemScanner" to="." method="_on_ItemScanner_area_shape_changed"]
 [connection signal="area_shape_exited" from="ItemScanner" to="." method="_on_ItemScanner_area_shape_changed"]

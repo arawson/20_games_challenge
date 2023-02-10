@@ -2,19 +2,7 @@
 
 [ext_resource path="res://GUI.gd" type="Script" id=1]
 [ext_resource path="res://gui/ability_button.tscn" type="PackedScene" id=2]
-
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.839216, 0.0156863, 0.027451, 1 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0.8, 0.8, 0.8, 0 )
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 4
+[ext_resource path="res://gui/HealthBar.tscn" type="PackedScene" id=3]
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -78,18 +66,4 @@ margin_right = 224.0
 margin_bottom = 94.0
 key_helper = "Space"
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = 21.0
-margin_top = 566.0
-margin_right = 400.0
-margin_bottom = 584.0
-custom_styles/fg = SubResource( 1 )
-value = 50.0
-percent_visible = false
-
-[node name="HealthLabel" type="Label" parent="HealthBar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-text = "100/100"
-align = 1
-valign = 1
+[node name="HealthBar" parent="." instance=ExtResource( 3 )]
