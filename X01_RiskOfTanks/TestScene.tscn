@@ -80,4 +80,5 @@ proc_item = ExtResource( 12 )
 
 [connection signal="ability_fired" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_ability_fired"]
 [connection signal="ability_off_cooldown" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_ability_off_cooldown"]
+[connection signal="health_change" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_health_change"]
 [connection signal="camera_reached_target" from="OverheadCamera" to="." method="_on_OverheadCamera_camera_reached_target"]

@@ -1,6 +1,9 @@
 extends Control
 class_name AbilityButton
 
+export(Resource) var blank_faction_ability_r
+onready var blank_faction_ability = blank_faction_ability_r as FactionAbility
+
 export(String) var key_helper = "F"
 
 onready var countdown = $Panel/Countdown
@@ -14,11 +17,15 @@ var cooldown: float = 1.0
 var cooldown_remaining: float = 0.0
 
 func _ready():
-	# TODO: is there a way to skip this set in the _ready?
+	assert(blank_faction_ability != null)
 	$TextureRect/Key.text = key_helper
 
 func set_ability(ability: FactionAbility):
 	$Panel/AbilityIcon.texture = ability.icon
+
+func clear_ability():
+	set_ability(blank_faction_ability)
+	NodeUtil.disconnect_incoming_connections(self)
 
 # Trigger the cooldown
 func start_cooldown(seconds: float):

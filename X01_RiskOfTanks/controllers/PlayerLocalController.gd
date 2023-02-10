@@ -8,6 +8,8 @@ var camera: OverheadCamera = null
 
 onready var mouse_widget: Node2D = $MouseTransformDecoupler/MouseWidget
 
+signal pickup_in_range(item_pickup)
+
 func _physics_process(_delta):
 	if unit == null:
 		return
@@ -43,6 +45,13 @@ func _physics_process(_delta):
 		_setup_projectiles(unit.trigger_ability(BaseUnit.ABILITY_SLOT.LMB, aim_vector))
 
 
+func attach_gui(gui: GUI) -> void:
+	.attach_gui(gui)
+	gui.connect_player_controller(self)
+
+func detach_gui(gui:GUI) -> void:
+	.detach_gui(gui)
+
 func set_camera(cam: OverheadCamera):
 	camera = cam
 	cam.set_follow_linear(mouse_widget, 4.0)
@@ -58,15 +67,15 @@ func _on_ItemScanner_area_shape_changed(_area_rid, _area, _area_shape_index, _lo
 	if pickups_in_range <= 0:
 		pickup_tracking = null
 		# TODO shouldn't the gui be attached to signals from the controller?
-		gui.hide_pickup_label()
+		emit_signal("pickup_in_range", null)
 	else:
-		gui.set_and_show_pickup_label(pickup_tracking.proc_item)
+		emit_signal("pickup_in_range", pickup_tracking)
 
-# func _on_health_change(_old_value, new_value):
-# 	gui.set_health(new_value, unit.health_max, 0)
+func _on_health_change(_old_value, new_value):
+	pass
 
 func _on_ability_fired(slot: int, cooldown: float):
-	gui.activate_ability(slot, cooldown)
+	pass
 
 func _on_ability_off_cooldown(slot: int):
-	gui.reset_ability(slot)
+	pass

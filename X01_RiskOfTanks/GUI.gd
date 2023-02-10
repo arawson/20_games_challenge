@@ -14,34 +14,33 @@ onready var ability_button_space: AbilityButton = $HFlowContainer/SlotSpace
 
 onready var ability_buttons: Array = [ability_button_lmb, ability_button_space, ability_button_f]
 
-func set_and_show_pickup_label(item: ProcItem):
+func _set_and_show_pickup_label(item: ProcItem):
+	if item == null:
+		pickup_label.visible = false
+		return
+
 	pickup_label.text = "Press E to Pick Up %s" % item.pickup_name
 	pickup_label.visible = true
-	pass
-
-func hide_pickup_label():
-	pickup_label.visible = false
-	pass
 
 func _ready():
 	# $HFlowContainer/AbilityButton.set_ability(load("res://entities/abilities/gun_tank.tres"))
 	pass
 
-func set_ability_button(slot: int, ability: FactionAbility):
+func _set_ability_button(slot: int, ability: FactionAbility):
 	if not slot in BaseUnit.ABILITY_SLOT.values():
 		return
 	ability_buttons[slot].set_ability(ability)
 
-func clear_ability_buttons():
+func _clear_ability_buttons():
 	for s in BaseUnit.ABILITY_SLOT.values():
-		set_ability_button(s, FactionUtil.ABILITY_NOTHING)
+		_set_ability_button(s, FactionUtil.ABILITY_NOTHING)
 
-func activate_ability(slot: int, cooldown: float):
+func _activate_ability(slot: int, cooldown: float):
 	if not slot in BaseUnit.ABILITY_SLOT.values():
 		return
 	ability_buttons[slot].start_cooldown(cooldown)
 
-func reset_ability(slot: int):
+func _reset_ability(slot: int):
 	# TODO should these all be asserts? for performance on release builds?
 	if not slot in BaseUnit.ABILITY_SLOT.values():
 		return
@@ -49,7 +48,37 @@ func reset_ability(slot: int):
 
 # new signal + "interface" approach for handling this
 
+func disconnect_health_bar():
+	NodeUtil.disconnect_incoming_connections_for($HealthBar, "_set_health")
+
 func connect_health_bar(faction_member: FactionMember):
-	var _x = faction_member.connect("health_change", $HealthBar, "set_health")
+	disconnect_health_bar()
+	if faction_member == null:
+		return
+	var _x = faction_member.connect("health_change", $HealthBar, "_set_health")
 
+func disconnect_abilities():
+	ability_button_f.clear_ability()
+	ability_button_space.clear_ability()
+	ability_button_lmb.clear_ability()
+	NodeUtil.disconnect_incoming_connections_for(self, "_activate_ability")
+	NodeUtil.disconnect_incoming_connections_for(self, "_reset_ability")
 
+func connect_abilities(unit: BaseUnit):
+	disconnect_abilities()
+	if unit == null:
+		return
+	var _x
+	_x = unit.connect("ability_fired", self, "_activate_ability")
+	_x = unit.connect("ability_off_cooldown", self, "_reset_ability")
+	ability_button_f.set_ability(unit.ability_f)
+	ability_button_lmb.set_ability(unit.ability_lmb)
+	ability_button_space.set_ability(unit.ability_space)
+
+func connect_player_controller(controller):
+	# this is where interfaces shine, preventing these cyclic dependancies
+	# but also giving a scaffold to the contracts classes present
+	# whether the Godot devs like it or not
+	# but I guess we can just guess at which signals are available...
+	NodeUtil.disconnect_incoming_connections_for(self, "_set_and_show_pickup_label")
+	controller.connect("pickup_in_range", self, "_set_and_show_pickup_label")
