@@ -49,13 +49,13 @@ func _reset_ability(slot: int):
 # new signal + "interface" approach for handling this
 
 func disconnect_health_bar():
-	NodeUtil.disconnect_incoming_connections_for($HealthBar, "_set_health")
+	NodeUtil.disconnect_incoming_connections_for($HealthBar, "set_health")
 
 func connect_health_bar(faction_member: FactionMember):
 	disconnect_health_bar()
 	if faction_member == null:
 		return
-	var _x = faction_member.connect("health_change", $HealthBar, "_set_health")
+	var _x = faction_member.connect("health_changed", $HealthBar, "set_health")
 
 func disconnect_abilities():
 	ability_button_f.clear_ability()
