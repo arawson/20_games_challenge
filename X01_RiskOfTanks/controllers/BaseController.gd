@@ -7,35 +7,37 @@ export(NodePath) var unit_path
 onready var unit: BaseUnit = get_node(unit_path) as BaseUnit
 
 export(NodePath) var proc_pool_path
-onready var proc_pool: ProcPool = get_node(proc_pool_path)
+onready var proc_pool: ProcPool = get_node(proc_pool_path) as ProcPool
 
 export(NodePath) var projectile_pool_path
 onready var projectile_pool: Node = get_node(projectile_pool_path)
 
-var gui: GUI
+export(NodePath) var inventory_path
+onready var inventory: Inventory = get_node(inventory_path) as Inventory
 
 func _ready():
 	assert(unit != null)
 	assert(projectile_pool != null)
 	assert(proc_pool != null)
+	assert(inventory != null)
 
-func attach_gui(g: GUI):
+func attach_gui(gui: GUI) -> void:
 	if unit == null:
 		return
-	gui = g
-	gui.set_ability_button(BaseUnit.ABILITY_SLOT.LMB, unit.ability_lmb)
-	gui.set_ability_button(BaseUnit.ABILITY_SLOT.SPACE, unit.ability_space)
-	gui.set_ability_button(BaseUnit.ABILITY_SLOT.F, unit.ability_f)
+	
+	gui.connect_health_bar(unit)
+	gui.connect_abilities(unit)
 
 # might be unnecessary
-func detach_gui():
-	pass
+func detach_gui(gui: GUI) -> void:
+	gui.clear_ability_buttons()
 
 func _setup_projectile(proj):
 	# step 0, add to tree to get it ready
 	projectile_pool.add_child(proj)
 	# step 1, copy our proc pool
-	var new_proc_pool = proc_pool.duplicate(DUPLICATE_SCRIPTS)
+	var new_proc_pool = ProcPool.new()
+	new_proc_pool.clone_from(proc_pool)
 	# why is get_proc_pool getting called here, on a set operation?
 	proj.set_proc_pool(new_proc_pool)
 	# proj.proc_pool = new_proc_pool

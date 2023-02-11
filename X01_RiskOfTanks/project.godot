@@ -50,9 +50,9 @@ _global_script_classes=[ {
 "path": "res://lib/proc/inventory.gd"
 }, {
 "base": "Area2D",
-"class": "Item",
+"class": "ItemPickup",
 "language": "GDScript",
-"path": "res://lib/proc/item.gd"
+"path": "res://entities/items/ItemPickup.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "KinematicFactionProjectile",
@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "OverheadCamera",
 "language": "GDScript",
 "path": "res://lib/entities/OverheadCamera.gd"
+}, {
+"base": "Resource",
+"class": "ProcItem",
+"language": "GDScript",
+"path": "res://lib/proc/ProcItem.gd"
 }, {
 "base": "Node2D",
 "class": "ProcPool",
@@ -93,9 +98,10 @@ _global_script_class_icons={
 "FactionProjectile": "",
 "GUI": "",
 "Inventory": "",
-"Item": "",
+"ItemPickup": "",
 "KinematicFactionProjectile": "",
 "OverheadCamera": "",
+"ProcItem": "",
 "ProcPool": "",
 "Procable": "",
 "ProcableDamage": "",

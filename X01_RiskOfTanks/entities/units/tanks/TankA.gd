@@ -52,7 +52,7 @@ func set_input_direction(input: Vector2):
 	_input_direction = input
 
 func _physics_process(delta):
-	._physics_process(delta)
+	#._physics_process(delta) this gets called automatically
 	velocity = Vector2()
 
 	turn += _input_direction.x * turn_max * delta * turn_boost
