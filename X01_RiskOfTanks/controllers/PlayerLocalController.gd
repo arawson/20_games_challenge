@@ -1,7 +1,6 @@
 extends BaseController
 
 var pickup_tracking : ItemPickup = null
-onready var pickup_label = $UISeperator/CenterContainer/PickupLabel
 onready var item_scanner = $ItemScanner
 
 var camera: OverheadCamera = null
@@ -9,6 +8,7 @@ var camera: OverheadCamera = null
 onready var mouse_widget: Node2D = $MouseTransformDecoupler/MouseWidget
 
 signal pickup_in_range(item_pickup)
+# signal picked_up(item_pickup)
 
 func _physics_process(_delta):
 	if unit == null:
@@ -48,6 +48,7 @@ func _physics_process(_delta):
 func attach_gui(gui: GUI) -> void:
 	.attach_gui(gui)
 	gui.connect_player_controller(self)
+	gui.connect_inventory($Inventory)
 
 func detach_gui(gui:GUI) -> void:
 	.detach_gui(gui)
@@ -69,7 +70,7 @@ func _on_ItemScanner_area_shape_changed(_area_rid, _area, _area_shape_index, _lo
 		# TODO shouldn't the gui be attached to signals from the controller?
 		emit_signal("pickup_in_range", null)
 	else:
-		emit_signal("pickup_in_range", pickup_tracking)
+		emit_signal("pickup_in_range", pickup_tracking.proc_item)
 
 func _on_health_change(_old_value, new_value):
 	pass

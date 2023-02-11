@@ -1,34 +1,53 @@
 class_name Inventory
 extends Node
 
-# An inventory needs:
-# 1. A dictionary of keys
-# 2. Each key maps to a resource
-# 3. Those resources each have a "count" to track how many of that object are there
-# 4. Methods going in to add and remove items from the inventory
-# 5. Signals going out to notify of inventory changed
+signal added_item(item, quantity, current_quantity)
+signal removed_item(item, quantity, current_quantity)
+
+class ItemEntry:
+	var item: ProcItem
+	var quantity: int
 
 var items: Array = []
 
-export(NodePath) var proc_pool_path
-onready var proc_pool: ProcPool = get_node(proc_pool_path) as ProcPool
-
-var gui: GUI
-
-
-
 func _ready():
-	assert(proc_pool != null)
-
-func add_item(pickup: ItemPickup):
-	if gui != null:
-		# TODO shouldn't the gui just be connected to the signals of the inventory
-		pass
 	pass
 
-func attach_gui(g: GUI):
-	gui = g
+func add_item(pickup: ItemPickup, quantity: int = 1):
+	var entry: ItemEntry = null
+	# would be nice to have a predicate search...
+	for c in len(items):
+		var e = items[c]
+		if e.item.pickup_name == pickup.proc_item.pickup_name:
+			entry = items[c]
+			break
+	if entry == null:
+		entry = ItemEntry.new()
+		entry.item = pickup.proc_item
+		entry.quantity = 0
+		items.append(entry)
+	entry.quantity += 1
+	emit_signal("added_item", pickup.proc_item, quantity, entry.quantity)
+
+func remove_item(item: ProcItem, quantity: int = 1):
+	var entry: ItemEntry = null
+	var index: int = 0
+	for c in len(items):
+		var e = items[c]
+		if e.pickup_name == item.name:
+			entry = items[c]
+			index = c
+			break
+	if entry == null:
+		return
+	entry.quantity -= quantity
+	if entry.quantity <= 0:
+		items.remove(index)
+	emit_signal("removed_item", item, quantity, entry.quantity)
+
+func attach_gui(gui: GUI):
+	gui.connect_inventory(self)
 
 func detach_gui():
-	gui = null
+	# TODO manufacture some way to switch which inventory is being shown
 	pass

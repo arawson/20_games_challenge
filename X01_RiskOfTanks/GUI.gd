@@ -14,6 +14,8 @@ onready var ability_button_space: AbilityButton = $HFlowContainer/SlotSpace
 
 onready var ability_buttons: Array = [ability_button_lmb, ability_button_space, ability_button_f]
 
+onready var inventory_display = $InventoryDisplay
+
 func _set_and_show_pickup_label(item: ProcItem):
 	if item == null:
 		pickup_label.visible = false
@@ -82,3 +84,8 @@ func connect_player_controller(controller):
 	# but I guess we can just guess at which signals are available...
 	NodeUtil.disconnect_incoming_connections_for(self, "_set_and_show_pickup_label")
 	controller.connect("pickup_in_range", self, "_set_and_show_pickup_label")
+
+func connect_inventory(inventory):
+	NodeUtil.disconnect_incoming_connections(inventory_display)
+	inventory.connect("added_item", inventory_display, "add_item")
+	inventory.connect("removed_item", inventory_display, "remove_item")

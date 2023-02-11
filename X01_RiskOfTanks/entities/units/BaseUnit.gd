@@ -34,39 +34,37 @@ var ability_cooldowns: Array = [0.0, 0.0, 0.0]
 # TODO rethink that
 
 func trigger_ability(slot: int, aim_vector: Vector2) -> Array:
-    if not slot in ABILITY_SLOT.values():
-        return []
-    if ability_cooldowns[slot] > 0:
-        return []
-    
-    var cooldown_calc = abilities[slot].base_cooldown
-    ability_cooldowns[slot] = cooldown_calc
-    emit_signal("ability_fired", slot, cooldown_calc)
+	if not slot in ABILITY_SLOT.values():
+		return []
+	if ability_cooldowns[slot] > 0:
+		return []
+	
+	var cooldown_calc = abilities[slot].base_cooldown
+	ability_cooldowns[slot] = cooldown_calc
+	emit_signal("ability_fired", slot, cooldown_calc)
 
-    return _trigger_ability(slot, aim_vector)
+	return _trigger_ability(slot, aim_vector)
 
 func _trigger_ability(_slot: int, _aim_vector: Vector2) -> Array:
-    # TODO make resource-driven projectile creation abilities
-    return []
+	# TODO make resource-driven projectile creation abilities
+	return []
 
 # Movement is handled with just a vector for now
 func set_input_direction(_input: Vector2):
-    pass
+	pass
 
 # _ready is used to perform asserts on the preconditions of the unit
 func _ready():
-    ._ready()
-    assert(ability_f != null)
-    assert(ability_space != null)
-    assert(ability_lmb != null)
-    abilities = [ability_lmb, ability_space, ability_f]
+	._ready()
+	assert(ability_f != null)
+	assert(ability_space != null)
+	assert(ability_lmb != null)
+	abilities = [ability_lmb, ability_space, ability_f]
 
 func _physics_process(delta):
-    # TODO HOW ON EARTH DID I GET SOME FILES WITH TABS AND SOME WITH SPACES? WHAT DID I EVEN DO?!?!?
-    # TODO research: is it idiomatic to do timing like this?
-    for slot in range(len(ability_cooldowns)):
-        if ability_cooldowns[slot] > 0:
-            ability_cooldowns[slot] = clamp(ability_cooldowns[slot] - delta, 0, INF)
-            # ugh not sure how to reduce this nesting
-            if ability_cooldowns[slot] <= 0:
-                emit_signal("ability_off_cooldown", slot)
+	for slot in len(ability_cooldowns):
+		if ability_cooldowns[slot] > 0:
+			ability_cooldowns[slot] = clamp(ability_cooldowns[slot] - delta, 0, INF)
+			# ugh not sure how to reduce this nesting
+			if ability_cooldowns[slot] <= 0:
+				emit_signal("ability_off_cooldown", slot)

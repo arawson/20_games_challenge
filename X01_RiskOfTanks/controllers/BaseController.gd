@@ -36,7 +36,8 @@ func _setup_projectile(proj):
 	# step 0, add to tree to get it ready
 	projectile_pool.add_child(proj)
 	# step 1, copy our proc pool
-	var new_proc_pool = proc_pool.duplicate(DUPLICATE_SCRIPTS)
+	var new_proc_pool = ProcPool.new()
+	new_proc_pool.clone_from(proc_pool)
 	# why is get_proc_pool getting called here, on a set operation?
 	proj.set_proc_pool(new_proc_pool)
 	# proj.proc_pool = new_proc_pool

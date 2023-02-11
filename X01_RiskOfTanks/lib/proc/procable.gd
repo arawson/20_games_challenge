@@ -14,8 +14,8 @@ func is_on_hit() -> bool:
 func is_on_kill() -> bool:
 	return item.on_kill
 
-func clone() -> Node:
-	return self.duplicate(DUPLICATE_SCRIPTS)
+# func clone() -> Node:
+# 	return self.duplicate(DUPLICATE_SCRIPTS)
 
 func roll_on_hit(_faction_projectile, _faction_member, _proc_pool) -> bool:
 	return false

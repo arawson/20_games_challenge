@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://GUI.gd" type="Script" id=1]
 [ext_resource path="res://gui/ability_button.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gui/HealthBar.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/abilities/nothing.tres" type="Resource" id=4]
+[ext_resource path="res://gui/InventoryDisplay.tscn" type="PackedScene" id=5]
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -77,3 +78,9 @@ margin_left = 24.0
 margin_top = -35.0
 margin_right = 403.0
 margin_bottom = -17.0
+
+[node name="InventoryDisplay" parent="." instance=ExtResource( 5 )]
+margin_left = 10.0
+margin_top = 9.0
+margin_right = 775.0
+margin_bottom = 108.0

@@ -4,52 +4,98 @@ extends Node2D
 # A proc pool contains all of the items which can proc
 # TODO: Document why ProcPool extends Node2D instead of Node
 
-var proc_on_hit = []
-var proc_on_kill = []
-var procs : Dictionary = {}
+# TODO: setup proc pool to listen to inventory signals to manage its procs!
+
+var proc_on_hit: Array = []
+var proc_on_kill: Array = []
+var procs: Array = []
+
+
+# I'm going to do this through the UI, but I'm writing it out to understand the
+# functionality around it
+func connect_to_inventory(inventory: Inventory):
+	disconnect_from_inventory()
+	var _e
+	_e = inventory.connect("added_item", self, "add_item")
+	_e = inventory.connect("removed_item", self, "remove_item")
+
+func disconnect_from_inventory():
+	NodeUtil.disconnect_incoming_connections(self)
+
+func add_item(item: ProcItem, quantity: int = 1, current_quantity: int = -1):
+	var proc: Procable = null
+	for p in procs:
+		if p.item == item:
+			proc = p
+			proc.quantity += quantity
+			break
+	if proc == null:
+		proc = item.procable.new()
+		proc.item = item
+		proc.quantity = current_quantity if current_quantity > 0 else 1
+		add_child(proc)
+		procs.append(proc)
+		if proc.is_on_hit():
+			proc_on_hit.append(proc)
+		if proc.is_on_kill():
+			proc_on_kill.append(proc)
+	
+	if proc.quantity != current_quantity and current_quantity > 0:
+		proc.quantity = current_quantity
+
+func remove_item(item: ProcItem, quantity: int = 1, current_quantity: int = -1):
+	var proc: Procable = null
+	for p in procs:
+		if p.item == item:
+			proc = p
+			break
+	if proc == null:
+		return
+	
+	proc.quantity -= quantity
+	if proc.quantity != current_quantity and current_quantity > 0:
+		proc.quantity = current_quantity
+	if proc.quantity > 0:
+		return
+
+	if proc in get_children():
+		remove_child(proc)
+	procs.erase(proc)
+	proc_on_hit.erase(proc)
+	proc_on_kill.erase(proc)
+
 
 func _ready() -> void:
-	initialize()
-	
-	for p in get_children():
-		register_procable(p)
-
-func initialize() -> void:
-	proc_on_hit = []
-	proc_on_kill = []
+	refresh_procables()
 	
 func clear() -> void:
-	initialize()
 	for p in get_children():
 		remove_child(p)
 		p.queue_free()
+	refresh_procables()
 	
 func clone_from(pool) -> void:
-	initialize()
 	for p in pool.get_children():
-		var c = p.clone()
-		register_procable(c)
-	pass
+		# var c = p.clone()
+		var c = p.duplicate(DUPLICATE_SCRIPTS)
+		# WTF? duplicate is really buggy!
+		c.item = p.item
+		add_child(c)
+	refresh_procables()
 
-func register_procable(p: Procable) -> void:
-	if p == null: return
-	if not p in get_children(): add_child(p)
+func refresh_procables() -> void:
+	procs = []
+	proc_on_hit = []
+	proc_on_kill = []
+	for p in get_children():
+		if not p is Procable:
+			continue
+		procs.append(p)
+		if p.is_on_kill():
+			proc_on_kill.append(p)
+		if p.is_on_hit():
+			proc_on_hit.append(p)
 	
-	if p.is_on_hit() and not p in proc_on_hit:
-		proc_on_hit.append(p)
-	
-	if p.is_on_kill() and not p in proc_on_kill:
-		proc_on_kill.append(p)
-	
-func remove_procable(p: Procable) -> void:
-	if p == null: return
-	if p in get_children(): remove_child(p)
-	
-	while p in proc_on_hit:
-		proc_on_hit.remove(proc_on_hit.find(p))
-		
-	while p in proc_on_kill:
-		proc_on_kill.remove(proc_on_kill.find(p))
 	
 
 func trigger_on_hit(faction_projectile, faction_member: FactionMember):

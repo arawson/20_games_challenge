@@ -11,6 +11,8 @@ radius = 95.0842
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
+faction_id = null
+unit_path = null
 proc_pool_path = NodePath("ProcPool")
 projectile_pool_path = NodePath("Projectiles")
 inventory_path = NodePath("Inventory")
@@ -41,7 +43,8 @@ region_rect = Rect2( 207, 69, 64, 64 )
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource( 5 )
-proc_pool_path = NodePath("../ProcPool")
 
 [connection signal="area_shape_entered" from="ItemScanner" to="." method="_on_ItemScanner_area_shape_changed"]
 [connection signal="area_shape_exited" from="ItemScanner" to="." method="_on_ItemScanner_area_shape_changed"]
+[connection signal="added_item" from="Inventory" to="ProcPool" method="add_item"]
+[connection signal="removed_item" from="Inventory" to="ProcPool" method="remove_item"]
