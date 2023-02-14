@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://entities/units/bugs/Rusher.gd" type="Script" id=1]
+[ext_resource path="res://lib/proc/proc_pool.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://entities/units/bugs/RusherBody.gd" type="Script" id=4]
+[ext_resource path="res://lib/proc/inventory.gd" type="Script" id=5]
+[ext_resource path="res://entities/abilities/nothing.tres" type="Resource" id=6]
+[ext_resource path="res://entities/units/bugs/RusherBaseStats.tres" type="Resource" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12, 12 )
+
+[node name="Rusher" type="Node2D"]
+script = ExtResource( 1 )
+unit_path = NodePath("RusherBody")
+proc_pool_path = NodePath("ProcPool")
+projectile_pool_path = NodePath("Projectiles")
+inventory_path = NodePath("Inventory")
+
+[node name="ProcPool" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="TempSprite" type="Sprite" parent="."]
+position = Vector2( 1.90735e-06, 1.90735e-06 )
+scale = Vector2( 0.4375, 0.4375 )
+texture = ExtResource( 3 )
+
+[node name="RusherBody" type="KinematicBody2D" parent="."]
+script = ExtResource( 4 )
+unit_stats_base = ExtResource( 7 )
+ability_f_base = ExtResource( 6 )
+ability_space_base = ExtResource( 6 )
+ability_lmb_base = ExtResource( 6 )
+
+[node name="NavAgent" type="NavigationAgent2D" parent="RusherBody"]
+
+[node name="RusherShape" type="CollisionShape2D" parent="RusherBody"]
+shape = SubResource( 1 )
+
+[node name="Projectiles" type="Node" parent="."]
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="RetargetTimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[connection signal="added_item" from="Inventory" to="ProcPool" method="add_item"]
+[connection signal="removed_item" from="Inventory" to="ProcPool" method="remove_item"]
+[connection signal="timeout" from="RetargetTimer" to="." method="_on_RetargetTimer_timeout"]

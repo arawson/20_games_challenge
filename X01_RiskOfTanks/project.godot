@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://lib/faction/faction_ability.gd"
 }, {
+"base": "Node",
+"class": "FactionContainer",
+"language": "GDScript",
+"path": "res://lib/faction/FactionContainer.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "FactionMember",
 "language": "GDScript",
@@ -94,6 +99,7 @@ _global_script_class_icons={
 "BaseController": "",
 "BaseUnit": "",
 "FactionAbility": "",
+"FactionContainer": "",
 "FactionMember": "",
 "FactionProjectile": "",
 "GUI": "",
