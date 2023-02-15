@@ -11,42 +11,47 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 12 )
 
-[node name="Rusher" type="Node2D"]
-script = ExtResource( 1 )
-unit_path = NodePath("RusherBody")
-proc_pool_path = NodePath("ProcPool")
-projectile_pool_path = NodePath("Projectiles")
-inventory_path = NodePath("Inventory")
-
-[node name="ProcPool" type="Node2D" parent="."]
-script = ExtResource( 2 )
-
-[node name="TempSprite" type="Sprite" parent="."]
-position = Vector2( 1.90735e-06, 1.90735e-06 )
-scale = Vector2( 0.4375, 0.4375 )
-texture = ExtResource( 3 )
-
-[node name="RusherBody" type="KinematicBody2D" parent="."]
+[node name="RusherBody" type="KinematicBody2D"]
 script = ExtResource( 4 )
 unit_stats_base = ExtResource( 7 )
 ability_f_base = ExtResource( 6 )
 ability_space_base = ExtResource( 6 )
 ability_lmb_base = ExtResource( 6 )
 
-[node name="NavAgent" type="NavigationAgent2D" parent="RusherBody"]
+[node name="TempSprite" type="Sprite" parent="."]
+position = Vector2( 1.90735e-06, 1.90735e-06 )
+scale = Vector2( 0.4375, 0.4375 )
+texture = ExtResource( 3 )
 
-[node name="RusherShape" type="CollisionShape2D" parent="RusherBody"]
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+avoidance_enabled = true
+
+[node name="RusherShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Projectiles" type="Node" parent="."]
+[node name="Rusher" type="Node2D" parent="."]
+script = ExtResource( 1 )
+unit_path = NodePath("..")
+proc_pool_path = NodePath("ProcPool")
+projectile_pool_path = NodePath("Projectiles")
+inventory_path = NodePath("Inventory")
 
-[node name="Inventory" type="Node" parent="."]
+[node name="ProcPool" type="Node2D" parent="Rusher"]
+script = ExtResource( 2 )
+
+[node name="Projectiles" type="Node" parent="Rusher"]
+
+[node name="Inventory" type="Node" parent="Rusher"]
 script = ExtResource( 5 )
 
-[node name="RetargetTimer" type="Timer" parent="."]
+[node name="RetargetTimer" type="Timer" parent="Rusher"]
 wait_time = 0.75
 one_shot = true
 
-[connection signal="added_item" from="Inventory" to="ProcPool" method="add_item"]
-[connection signal="removed_item" from="Inventory" to="ProcPool" method="remove_item"]
-[connection signal="timeout" from="RetargetTimer" to="." method="_on_RetargetTimer_timeout"]
+[connection signal="path_changed" from="NavAgent" to="." method="_on_NavAgent_path_changed"]
+[connection signal="velocity_computed" from="NavAgent" to="." method="_on_NavAgent_velocity_computed"]
+[connection signal="added_item" from="Rusher/Inventory" to="Rusher/ProcPool" method="add_item"]
+[connection signal="removed_item" from="Rusher/Inventory" to="Rusher/ProcPool" method="remove_item"]
+[connection signal="timeout" from="Rusher/RetargetTimer" to="Rusher" method="_on_RetargetTimer_timeout"]

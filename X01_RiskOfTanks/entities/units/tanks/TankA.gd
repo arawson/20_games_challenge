@@ -33,7 +33,7 @@ func trigger_ability_space(_aim_vector: Vector2) -> Array:
 	# TODO document this: bullet.proc_pool.visible = true # THIS CALLS THE SETTER?
 	# bullet.get_proc_pool().visible = true # explicitly use the getter to work around the above
 	return [bullet]
-	
+
 func trigger_ability_f(aim_vector: Vector2) -> Array:
 	var missile = Projectiles.MISSILE.instance()
 	missile.global_position = self.global_position + (40 * aim_vector)
