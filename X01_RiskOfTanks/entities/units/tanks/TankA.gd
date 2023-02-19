@@ -12,6 +12,8 @@ var _input_direction: Vector2 = Vector2()
 
 var _trigger_fns: Array = []
 
+onready var _exclusion_radius = $TankCollision.shape.extents.y / 2
+
 func _ready():
 	._ready()
 	_trigger_fns = [\
@@ -62,3 +64,11 @@ func _physics_process(delta):
 	velocity = velocity.rotated(turn)
 	rotation = turn
 	velocity = move_and_slide(velocity)
+
+
+func get_exclusion_radius() -> float:
+	return _exclusion_radius
+
+
+func get_velocity() -> Vector2:
+	return velocity

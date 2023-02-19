@@ -8,4 +8,4 @@ script = ExtResource( 1 )
 base_cooldown = 1.0
 icon = ExtResource( 2 )
 name = "Squawk"
-from_barrel = false
+targeting_type = 0

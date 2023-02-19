@@ -1,6 +1,9 @@
 class_name KinematicFactionProjectile
 extends KinematicBody2D
 
+# TODO can I get rid of this by putting a FactionProjectile derived script on
+# top of a KinematicBody2D node and then accessing the real sub-type anyway?
+
 # KinematicFactionProjectile wraps the functionality of the standard
 # FactionProjectile
 
