@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Y01_Inheritance_Test"
-run/main_scene="res://relative_paths/main.tscn"
+run/main_scene="res://skewed_extension/skewed_extension.tscn"
 config/icon="res://icon.png"
 
 [gui]
