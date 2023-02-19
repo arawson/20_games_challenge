@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://entities/units/tanks/TankA.tscn" type="PackedScene" id=1]
 [ext_resource path="res://controllers/PlayerLocalController.tscn" type="PackedScene" id=2]
@@ -14,11 +14,12 @@
 [ext_resource path="res://entities/procs/Dynamo.tres" type="Resource" id=12]
 [ext_resource path="res://lib/faction/FactionContainer.gd" type="Script" id=13]
 [ext_resource path="res://entities/units/bugs/Rusher.tscn" type="PackedScene" id=14]
+[ext_resource path="res://entities/bullets/RusherExplosion.tscn" type="PackedScene" id=15]
 
 [sub_resource type="NavigationPolygon" id=1]
-vertices = PoolVector2Array( -208, 872, -224, 736, 512, 720, 848, 856, 864, 592, 512, 448, -24, -616, -32, -1120, 552, -1112, 1472, -840, 1472, -640, 1376, -408, 1184, 8, 1120, 88, 552, -1184, 1472, -1200, 1472, -1112, 1472, -880, -112, -104, -128, -336, -104, -616, 520, 56, 1472, -424, 120, 72, -112, 24, 1120, 336, 512, 248 )
-polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 3, 2, 5 ), PoolIntArray( 6, 7, 8, 9, 10, 11, 12, 13 ), PoolIntArray( 14, 15, 16, 8 ), PoolIntArray( 8, 16, 17 ), PoolIntArray( 18, 19, 20, 6, 13, 21 ), PoolIntArray( 10, 22, 11 ), PoolIntArray( 23, 24, 18, 21 ), PoolIntArray( 8, 17, 9 ), PoolIntArray( 13, 25, 4, 5, 26, 21 ) ]
-outlines = [ PoolVector2Array( -32, -1120, 552, -1112, 552, -1184, 1472, -1200, 1472, -1112, 1472, -880, 1472, -840, 1472, -640, 1472, -424, 1376, -408, 1184, 8, 1120, 88, 1120, 336, 864, 592, 848, 856, -208, 872, -224, 736, 512, 720, 512, 448, 512, 248, 520, 56, 120, 72, -112, 24, -112, -104, -128, -336, -104, -616, -24, -616 ) ]
+vertices = PoolVector2Array( -208, 872, -224, 736, 512, 720, 848, 856, 864, 592, 512, 448, -24, -616, -32, -1120, 552, -1112, 1472, -840, 1472, -640, 1376, -408, 1184, 8, 1120, 88, 552, -1184, 1472, -1200, 1472, -1112, 1472, -880, -128, -104, -128, -328, -104, -616, 520, 56, 1472, -424, 120, 72, -112, 24, 1120, 336, 512, 248 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 3, 2, 5 ), PoolIntArray( 6, 7, 8, 9, 10, 11, 12, 13 ), PoolIntArray( 14, 15, 16, 8 ), PoolIntArray( 8, 16, 17 ), PoolIntArray( 18, 19, 20, 6, 13, 21 ), PoolIntArray( 10, 22, 11 ), PoolIntArray( 8, 17, 9 ), PoolIntArray( 23, 24, 18, 21 ), PoolIntArray( 13, 25, 4, 5, 26, 21 ) ]
+outlines = [ PoolVector2Array( -32, -1120, 552, -1112, 552, -1184, 1472, -1200, 1472, -1112, 1472, -880, 1472, -840, 1472, -640, 1472, -424, 1376, -408, 1184, 8, 1120, 88, 1120, 336, 864, 592, 848, 856, -208, 872, -224, 736, 512, 720, 512, 448, 512, 248, 520, 56, 120, 72, -112, 24, -128, -104, -128, -328, -104, -616, -24, -616 ) ]
 
 [sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 1472, -1096, 1472, -1200, 2272, -1192, 1792, -1096, 1760, -424, 1472, -424, 1472, -640, 1792, -640, 1848, -544, 1792, -840, 1472, -840, 1472, -880, 1536, -880, 1552, -1008, 1712, -1008, 1728, -880, 1792, -880, 2400, -864, 2392, -736, 2264, -616, 2112, -608, 2064, -544 )
@@ -26,9 +27,9 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8 ), PoolIntA
 outlines = [ PoolVector2Array( 1472, -1200, 2272, -1192, 2400, -864, 2392, -736, 2264, -616, 2112, -608, 2064, -544, 1848, -544, 1760, -424, 1472, -424, 1472, -640, 1792, -640, 1792, -840, 1472, -840, 1472, -880, 1536, -880, 1552, -1008, 1712, -1008, 1728, -880, 1792, -880, 1792, -1096, 1472, -1096 ) ]
 
 [sub_resource type="NavigationPolygon" id=3]
-vertices = PoolVector2Array( 120, 264, 512, 248, 512, 448, 320, 448, 128, 440, 128, 728, -224, 736, -224, 160, 120, 72, -112, 24, -352, 160, -344, -280, -200, -104, -112, -104, -200, -328, -104, -616, -128, -328 )
-polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 4, 5, 6, 7, 0 ), PoolIntArray( 8, 0, 7, 9 ), PoolIntArray( 9, 7, 10, 11, 12 ), PoolIntArray( 12, 13, 9 ), PoolIntArray( 14, 12, 11 ), PoolIntArray( 14, 11, 15 ), PoolIntArray( 15, 16, 14 ) ]
-outlines = [ PoolVector2Array( -104, -616, -344, -280, -352, 160, -224, 160, -224, 736, 128, 728, 128, 440, 320, 448, 512, 448, 512, 248, 120, 264, 120, 72, -112, 24, -112, -104, -200, -104, -200, -328, -128, -328 ) ]
+vertices = PoolVector2Array( 120, 264, 512, 248, 512, 448, 320, 448, 128, 440, 128, 728, -224, 736, -224, 160, 120, 72, -112, 24, -352, 160, -344, -280, -200, -104, -104, -616, -128, -328, -200, -328, -128, -104 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 4, 5, 6, 7, 0 ), PoolIntArray( 8, 0, 7, 9 ), PoolIntArray( 9, 7, 10, 11, 12 ), PoolIntArray( 13, 14, 15 ), PoolIntArray( 11, 13, 15 ), PoolIntArray( 11, 15, 12 ), PoolIntArray( 9, 12, 16 ) ]
+outlines = [ PoolVector2Array( -104, -616, -344, -280, -352, 160, -224, 160, -224, 736, 128, 728, 128, 440, 320, 448, 512, 448, 512, 248, 120, 264, 120, 72, -112, 24, -128, -104, -200, -104, -200, -328, -128, -328 ) ]
 
 [node name="TestScene" type="Node"]
 script = ExtResource( 4 )
@@ -100,7 +101,6 @@ faction_id = 1
 unit_path = NodePath("..")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 6 )]
 
@@ -120,6 +120,9 @@ proc_item = ExtResource( 12 )
 [node name="Line2D" type="Line2D" parent="."]
 width = 5.0
 default_color = Color( 1, 0.415686, 0.4, 1 )
+
+[node name="RusherExplosion" parent="." instance=ExtResource( 15 )]
+position = Vector2( 359, -192 )
 
 [connection signal="path_changed" from="TeamRed/Rusher" to="." method="_on_Rusher_path_changed"]
 [connection signal="ability_fired" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_ability_fired"]

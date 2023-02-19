@@ -1,15 +1,74 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://entities/units/bugs/Rusher.gd" type="Script" id=1]
+[ext_resource path="res://entities/units/bugs/RusherController.gd" type="Script" id=1]
 [ext_resource path="res://lib/proc/proc_pool.gd" type="Script" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://entities/units/bugs/RusherBody.gd" type="Script" id=4]
 [ext_resource path="res://lib/proc/inventory.gd" type="Script" id=5]
 [ext_resource path="res://entities/abilities/nothing.tres" type="Resource" id=6]
 [ext_resource path="res://entities/units/bugs/RusherBaseStats.tres" type="Resource" id=7]
+[ext_resource path="res://assets/kenney_spaceshooter/PNG/ufoYellow.png" type="Texture" id=8]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12, 12 )
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("UfoYellow:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Rotate"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("UfoYellow:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Rotation"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 14.0
 
 [node name="RusherBody" type="KinematicBody2D"]
 script = ExtResource( 4 )
@@ -18,10 +77,15 @@ ability_f_base = ExtResource( 6 )
 ability_space_base = ExtResource( 6 )
 ability_lmb_base = ExtResource( 6 )
 
-[node name="TempSprite" type="Sprite" parent="."]
-position = Vector2( 1.90735e-06, 1.90735e-06 )
-scale = Vector2( 0.4375, 0.4375 )
-texture = ExtResource( 3 )
+[node name="UfoYellow" type="Sprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 8 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../UfoYellow")
+anims/RESET = SubResource( 2 )
+anims/Rotate = SubResource( 3 )
+anims/Rotation = SubResource( 4 )
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0
@@ -31,27 +95,27 @@ avoidance_enabled = true
 [node name="RusherShape" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Rusher" type="Node2D" parent="."]
+[node name="RusherController" type="Node2D" parent="."]
 script = ExtResource( 1 )
 unit_path = NodePath("..")
 proc_pool_path = NodePath("ProcPool")
 projectile_pool_path = NodePath("Projectiles")
 inventory_path = NodePath("Inventory")
 
-[node name="ProcPool" type="Node2D" parent="Rusher"]
+[node name="ProcPool" type="Node2D" parent="RusherController"]
 script = ExtResource( 2 )
 
-[node name="Projectiles" type="Node" parent="Rusher"]
+[node name="Projectiles" type="Node" parent="RusherController"]
 
-[node name="Inventory" type="Node" parent="Rusher"]
+[node name="Inventory" type="Node" parent="RusherController"]
 script = ExtResource( 5 )
 
-[node name="RetargetTimer" type="Timer" parent="Rusher"]
+[node name="RetargetTimer" type="Timer" parent="RusherController"]
 wait_time = 0.75
 one_shot = true
 
+[connection signal="collided_with_enemy" from="." to="RusherController" method="_on_RusherBody_collided_with_enemy"]
 [connection signal="path_changed" from="NavAgent" to="." method="_on_NavAgent_path_changed"]
-[connection signal="velocity_computed" from="NavAgent" to="." method="_on_NavAgent_velocity_computed"]
-[connection signal="added_item" from="Rusher/Inventory" to="Rusher/ProcPool" method="add_item"]
-[connection signal="removed_item" from="Rusher/Inventory" to="Rusher/ProcPool" method="remove_item"]
-[connection signal="timeout" from="Rusher/RetargetTimer" to="Rusher" method="_on_RetargetTimer_timeout"]
+[connection signal="added_item" from="RusherController/Inventory" to="RusherController/ProcPool" method="add_item"]
+[connection signal="removed_item" from="RusherController/Inventory" to="RusherController/ProcPool" method="remove_item"]
+[connection signal="timeout" from="RusherController/RetargetTimer" to="RusherController" method="_on_RetargetTimer_timeout"]

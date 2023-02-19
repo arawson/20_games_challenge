@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://lib/faction/projectile_definition.gd" type="Script" id=1]
+[ext_resource path="res://entities/bullets/BasicBullet.tscn" type="PackedScene" id=2]
+
+[resource]
+script = ExtResource( 1 )
+scene = ExtResource( 2 )
+homing_type = 0
+speed_base = 300.0
+homing_lockon_distance = 0.0
+homing_steer_speed = 0.0
+lifetime_base = 2.5
+armtime_base = 0.1
+exclusion_radius = 0.0

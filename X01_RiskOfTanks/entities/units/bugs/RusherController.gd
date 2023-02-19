@@ -2,25 +2,23 @@ extends BaseController
 
 # TODO: Rusher, and other NPCs, don't really have their own proc pools
 
-onready var body = unit
 var target: FactionMember = null
 
 func _ready():
 	var container = owner.get_parent() as FactionContainer
 	if container != null:
 		faction_id = container.faction_id
-		body.faction_id =  container.faction_id
+		unit.faction_id =  container.faction_id
 
 func _physics_process(_delta):
 	# TODO: shouldn't I just be using an "i died" signal?
 	if target == null:
 		retarget()
 
-	body.target_vector = target.global_position
+	unit.target_vector = target.global_position
 
 # TODO move this into FactionUtil
 func retarget():
-	# 1. get other factions and find a target
 	var factions = FactionUtil.get_other_faction_containers(faction_id)
 	var nearest_target: FactionMember = null
 	var nearest_target_d2: float = INF
@@ -43,3 +41,11 @@ func _on_tree_exited_target():
 
 func _on_RetargetTimer_timeout():
 	retarget()
+
+# TODO should this go up to BaseController?
+func _on_RusherBody_collided_with_enemy(_faction_member: FactionMember):
+	# Rusher's are a special type of kamikaze enemy
+	# they only fire off their ability when they collide
+	# then they die!
+	_setup_projectiles(unit.trigger_ability(BaseUnit.ABILITY_SLOT.F, Vector2()))
+	NodeUtil.delete(unit)
