@@ -35,7 +35,12 @@ func do_on_hit(projectile: FactionProjectile, member: FactionMember, updated_pro
 			print("spawn dynamo projectile")
 			var proj = projectile_scene.instance()
 			proj.initialize(member, t)
-			proj.proc_pool = updated_proc_pool.duplicate(DUPLICATE_SCRIPTS)
+			
+			# take this up into Procable as a helper function
+			proj.proc_pool = ProcPool.new()
+			proj.proc_pool.clone_from(updated_proc_pool)
+			# TODO UMM how do we get faction_id through? proj.faction_id = faction_id
+
 			projectile.projectile_root.get_parent().add_child(proj)
 			pass
 	pass

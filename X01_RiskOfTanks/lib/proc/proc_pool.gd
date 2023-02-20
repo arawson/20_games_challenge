@@ -30,7 +30,7 @@ func add_item(item: ProcItem, quantity: int = 1, current_quantity: int = -1):
 			proc.quantity += quantity
 			break
 	if proc == null:
-		proc = item.procable.new()
+		proc = item.procable_scene.instance()
 		proc.item = item
 		proc.quantity = current_quantity if current_quantity > 0 else 1
 		add_child(proc)

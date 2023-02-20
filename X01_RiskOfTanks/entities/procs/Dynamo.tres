@@ -2,7 +2,7 @@
 
 [ext_resource path="res://lib/proc/ProcItem.gd" type="Script" id=1]
 [ext_resource path="res://assets/spark_on_black.png" type="Texture" id=2]
-[ext_resource path="res://entities/procs/DynamoEffect.gd" type="Script" id=3]
+[ext_resource path="res://entities/procs/DynamoEffect.tscn" type="PackedScene" id=3]
 
 [resource]
 script = ExtResource( 1 )
@@ -10,4 +10,4 @@ pickup_name = "Dynamo"
 on_hit = true
 on_kill = false
 icon = ExtResource( 2 )
-procable = ExtResource( 3 )
+procable_scene = ExtResource( 3 )

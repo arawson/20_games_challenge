@@ -14,7 +14,7 @@
 [ext_resource path="res://entities/procs/Dynamo.tres" type="Resource" id=12]
 [ext_resource path="res://lib/faction/FactionContainer.gd" type="Script" id=13]
 [ext_resource path="res://entities/units/bugs/Rusher.tscn" type="PackedScene" id=14]
-[ext_resource path="res://entities/bullets/RusherExplosion.tscn" type="PackedScene" id=15]
+[ext_resource path="res://entities/units/tanks/Enemy.tscn" type="PackedScene" id=16]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( -208, 872, -224, 736, 512, 720, 848, 856, 864, 592, 512, 448, -24, -616, -32, -1120, 552, -1112, 1472, -840, 1472, -640, 1376, -408, 1184, 8, 1120, 88, 552, -1184, 1472, -1200, 1472, -1112, 1472, -880, -128, -104, -128, -328, -104, -616, 520, 56, 1472, -424, 120, 72, -112, 24, 1120, 336, 512, 248 )
@@ -83,6 +83,15 @@ faction_id = 2
 
 [node name="Rusher" parent="TeamRed" instance=ExtResource( 14 )]
 position = Vector2( 94, -64 )
+faction_id = 2
+
+[node name="Enemy" parent="TeamRed" instance=ExtResource( 16 )]
+position = Vector2( 235, -709 )
+unit_stats_base = ExtResource( 3 )
+
+[node name="Enemy2" parent="TeamRed" instance=ExtResource( 16 )]
+position = Vector2( 318, -696 )
+unit_stats_base = ExtResource( 3 )
 
 [node name="TeamBlue" type="Node" parent="." groups=["faction_container"]]
 script = ExtResource( 13 )
@@ -120,9 +129,6 @@ proc_item = ExtResource( 12 )
 [node name="Line2D" type="Line2D" parent="."]
 width = 5.0
 default_color = Color( 1, 0.415686, 0.4, 1 )
-
-[node name="RusherExplosion" parent="." instance=ExtResource( 15 )]
-position = Vector2( 359, -192 )
 
 [connection signal="path_changed" from="TeamRed/Rusher" to="." method="_on_Rusher_path_changed"]
 [connection signal="ability_fired" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_ability_fired"]
