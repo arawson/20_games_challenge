@@ -15,6 +15,18 @@ onready var projectile_root: Node = get_node(projectile_root_path)
 
 # TODO: the projectile also acts as a builder of damage scaling
 
+func initialize_projectile(\
+	root_path: NodePath,\
+	faction_id_input: int,\
+	damage_base_input: float,\
+	pool: ProcPool\
+) -> void:
+	projectile_root_path = root_path
+	faction_id = faction_id_input
+	damage_base = damage_base_input
+	set_proc_pool(pool)
+
+
 func set_proc_pool(p: ProcPool) -> void:
 	if (proc_pool != null):
 		self.remove_child(proc_pool)

@@ -77,9 +77,11 @@ func clear() -> void:
 func clone_from(pool) -> void:
 	for p in pool.get_children():
 		# var c = p.clone()
-		var c = p.duplicate(DUPLICATE_SCRIPTS)
+		var c = p.duplicate(DUPLICATE_SCRIPTS) as Procable
 		# WTF? duplicate is really buggy!
-		c.item = p.item
+		c.clone_from(p)
+		# c.item = p.item
+		# c.is_consumed = p.is_consumed
 		add_child(c)
 	refresh_procables()
 
@@ -106,10 +108,10 @@ func trigger_on_hit(faction_projectile, faction_member: FactionMember):
 			activated_procs.append(proc)
 	
 	for proc in activated_procs:
-		proc.is_consumed = 1
+		proc.is_consumed = true
 	
-	var new_pool = self.duplicate(DUPLICATE_SCRIPTS)
-#	new_pool.clone_from(self)
+	var new_pool = get_script().new() as ProcPool # self.duplicate(DUPLICATE_SCRIPTS)
+	new_pool.clone_from(self)
 
 	for proc in activated_procs:
 		proc.do_on_hit(faction_projectile, faction_member, new_pool)
