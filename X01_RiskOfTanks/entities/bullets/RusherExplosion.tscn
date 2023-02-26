@@ -78,7 +78,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=18]
 radius = 95.021
 
-[node name="RusherExplosion" type="Node2D"]
+[node name="RusherExplosion" type="Area2D"]
 script = ExtResource( 2 )
 __meta__ = {
 "_editor_description_": "TODO Replace this animation, it has a rough boundary."
@@ -86,11 +86,9 @@ __meta__ = {
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 17 )
-frame = 1
+frame = 4
 speed_scale = 3.0
 playing = true
 
-[node name="Detection" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 18 )

@@ -47,5 +47,3 @@ func do_on_hit(projectile: FactionProjectile, member: FactionMember, updated_pro
 			proj.initialize(member, t)
 
 			projectile.projectile_root.get_parent().add_child(proj)
-			pass
-	pass
