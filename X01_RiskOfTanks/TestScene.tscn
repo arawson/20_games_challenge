@@ -84,6 +84,7 @@ faction_id = 2
 [node name="Rusher" parent="TeamRed" instance=ExtResource( 14 )]
 position = Vector2( 94, -64 )
 faction_id = 2
+projectile_pool_path = NodePath("../../Projectiles")
 
 [node name="Enemy" parent="TeamRed" instance=ExtResource( 16 )]
 position = Vector2( 235, -709 )
@@ -108,6 +109,8 @@ ability_lmb_base = ExtResource( 9 )
 visible = false
 faction_id = 1
 unit_path = NodePath("..")
+
+[node name="Projectiles" type="Node" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

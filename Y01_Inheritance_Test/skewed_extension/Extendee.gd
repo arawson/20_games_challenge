@@ -14,7 +14,10 @@ func _physics_process(delta):
 	var velocity = Vector2(0,10)
 	# var kinematic_body_2d = self as KinematicBody2D # not OK
 	# var kinematic_body_2d = self # yes OK
-	var kinematic_body_2d = get_node(".") as KinematicBody2D # yes OK
+	# var kinematic_body_2d = get_node(".") as KinematicBody2D # yes OK
+	var area_2d = get_node(".") as Area2D
 	
-	velocity = kinematic_body_2d.move_and_slide(velocity)
-	pass
+	print ("chicken extendees")
+	
+	for b in area_2d.get_overlapping_bodies():
+		print("overlapping b.name = %s" % b.name)

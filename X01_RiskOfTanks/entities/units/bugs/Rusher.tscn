@@ -99,13 +99,10 @@ shape = SubResource( 1 )
 script = ExtResource( 1 )
 unit_path = NodePath("..")
 proc_pool_path = NodePath("ProcPool")
-projectile_pool_path = NodePath("Projectiles")
 inventory_path = NodePath("Inventory")
 
 [node name="ProcPool" type="Node2D" parent="RusherController"]
 script = ExtResource( 2 )
-
-[node name="Projectiles" type="Node" parent="RusherController"]
 
 [node name="Inventory" type="Node" parent="RusherController"]
 script = ExtResource( 5 )

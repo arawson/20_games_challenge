@@ -5,12 +5,17 @@ signal collided_with_enemy(faction_member)
 # future signals might be "in_range_of_enemy"(faction_member, ability)
 
 export(float) var MAX_SPEED = 200.0
+export(NodePath) var projectile_pool_path
 
 onready var nav_agent = $NavAgent as NavigationAgent2D
 
 var velocity = Vector2.ZERO
 var did_arrive = false
 var target_vector: Vector2 setget _set_target_vector, _get_target_vector
+
+
+func _ready():
+	$RusherController.projectile_pool = get_node(projectile_pool_path)
 
 
 func _physics_process(_delta):

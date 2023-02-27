@@ -2,24 +2,23 @@ extends FactionProjectile
 
 # Goes kaboom in place and does a load of damage.
 
+# This is a "skew extension" pattern. Area2D and FactionProjectile
+# both descend from Node2D
 onready var area = get_node(".") as Area2D
 
 func _ready():
-	print("rusher explosion attached")
-	area.monitoring = true
+	$AnimatedSprite.play("default")
 
-	var hittables = []
 
-	for b in area.get_overlapping_bodies():
-		var target: FactionMember = b
-		if (target == null
-			or target.faction_id == faction_id
-			):
-			continue
-		hittables.append(target)
+func _on_AnimatedSprite_animation_finished():
+	NodeUtil.delete(self)
 
-	print("have %s targets to hit" % len(hittables))
 
-	for h in hittables:
-		var _x = do_proc_on(h)
-		print("rusher explosion do damage")
+func _on_RusherExplosion_body_entered(body):
+	# for some reason, this works but not get_overlapping_bodies
+	print("body entered explosion: %s" % body.name)
+	var target = body as FactionMember
+	if target == null or target.faction_id == faction_id:
+		return
+	
+	var _x = do_proc_on(target)
