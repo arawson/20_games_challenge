@@ -16,7 +16,6 @@ func _on_AnimatedSprite_animation_finished():
 
 func _on_RusherExplosion_body_entered(body):
 	# for some reason, this works but not get_overlapping_bodies
-	print("body entered explosion: %s" % body.name)
 	var target = body as FactionMember
 	if target == null or target.faction_id == faction_id:
 		return

@@ -14,7 +14,8 @@ signal health_changed(old_value, new_value)
 func do_damage(damage: float) -> bool:
 	var starting_health = health
 	health = clamp(health - damage, 0, health_max)
-	emit_signal("health_changed", starting_health, health)
+	if health != starting_health:
+		emit_signal("health_changed", health, health_max)
 	if health <= 0:
 		health = 0
 		return true
