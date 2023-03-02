@@ -8,6 +8,15 @@ var quantity: int = 1
 func _ready():
 	assert(item != null)
 
+
+func clone_from(procable):
+	# "no cyclic dependancies" sure is "easy"...
+	print ("base procable clone")
+	item = procable.item
+	is_consumed = procable.is_consumed
+	quantity = procable.quantity
+
+
 func is_on_hit() -> bool:
 	return item.on_hit
 

@@ -12,6 +12,8 @@ var _input_direction: Vector2 = Vector2()
 
 var _trigger_fns: Array = []
 
+onready var _exclusion_radius = $TankCollision.shape.extents.y / 2
+
 func _ready():
 	._ready()
 	_trigger_fns = [\
@@ -33,7 +35,7 @@ func trigger_ability_space(_aim_vector: Vector2) -> Array:
 	# TODO document this: bullet.proc_pool.visible = true # THIS CALLS THE SETTER?
 	# bullet.get_proc_pool().visible = true # explicitly use the getter to work around the above
 	return [bullet]
-	
+
 func trigger_ability_f(aim_vector: Vector2) -> Array:
 	var missile = Projectiles.MISSILE.instance()
 	missile.global_position = self.global_position + (40 * aim_vector)
@@ -62,3 +64,11 @@ func _physics_process(delta):
 	velocity = velocity.rotated(turn)
 	rotation = turn
 	velocity = move_and_slide(velocity)
+
+
+func get_exclusion_radius() -> float:
+	return _exclusion_radius
+
+
+func get_velocity() -> Vector2:
+	return velocity

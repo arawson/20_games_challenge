@@ -1,11 +1,15 @@
-[gd_resource type="Resource" load_steps=3 format=2]
+[gd_resource type="Resource" load_steps=5 format=2]
 
 [ext_resource path="res://lib/faction/faction_ability.gd" type="Script" id=1]
 [ext_resource path="res://assets/icons_mashed_up_from_kenney/gun_shoot.png" type="Texture" id=2]
+[ext_resource path="res://entities/bullets/basic_bullet/basic_bullet_definition.tres" type="Resource" id=3]
+[ext_resource path="res://lib/faction/ballistic_bullet_spawn_behavior.gd" type="Script" id=4]
 
 [resource]
 script = ExtResource( 1 )
 base_cooldown = 1.0
 icon = ExtResource( 2 )
 name = "Shoot Gun"
-from_barrel = true
+targeting_type = 1
+bullet_spawn_behavior = ExtResource( 4 )
+projectile_definition = ExtResource( 3 )

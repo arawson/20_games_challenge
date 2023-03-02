@@ -23,3 +23,7 @@ func disconnect_incoming_connections_for(target: Object, method_name: String):
 		if connection.method_name != method_name:
 			continue
 		connection.source.disconnect(connection.signal_name, target, connection.method_name)
+
+func weak_ref_is_in_tree(weak_ref: WeakRef):
+	var ref = weak_ref.get_ref()
+	return not (ref == null or not ref.is_inside_tree())

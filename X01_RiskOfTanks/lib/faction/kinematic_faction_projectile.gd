@@ -1,6 +1,9 @@
 class_name KinematicFactionProjectile
 extends KinematicBody2D
 
+# TODO can I get rid of this by putting a FactionProjectile derived script on
+# top of a KinematicBody2D node and then accessing the real sub-type anyway?
+
 # KinematicFactionProjectile wraps the functionality of the standard
 # FactionProjectile
 
@@ -8,7 +11,7 @@ extends KinematicBody2D
 # `as` keyword to check for both of these projectile type hierarchies at the
 # same time. This is a time where interfaces come in handy.
 
-# Design Flaw: it almos makes more sense for the faction projectile to be
+# Design Flaw: it almost makes more sense for the faction projectile to be
 # kinematic by default. However, that doesn't let us make the existing bouncy
 # bullets very nicely.
 

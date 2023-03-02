@@ -1,4 +1,4 @@
-extends KinematicFactionProjectile
+extends FactionProjectile
 
 # A missile projectile travels in a straight line until its Homing Area2D
 # picks up a FactionMember to track.
@@ -10,6 +10,7 @@ export(float) var angle_speed = 0.5
 export(float) var speed = 2.0
 
 onready var homing : Area2D = $Homing
+onready var body = get_node(".") as KinematicBody2D
 
 func _ready():
 	pass
@@ -47,7 +48,7 @@ func _physics_process(delta):
 	
 	var vel: Vector2 = Vector2(speed * cos(rotation), speed * sin(rotation))
 
-	var collision: KinematicCollision2D = move_and_collide(vel)
+	var collision: KinematicCollision2D = body.move_and_collide(vel)
 	
 	# skip collisions unless we are armed
 	if (arm_time >= 0):

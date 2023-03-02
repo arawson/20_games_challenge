@@ -17,7 +17,6 @@ onready var inventory: Inventory = get_node(inventory_path) as Inventory
 
 func _ready():
 	assert(unit != null)
-	assert(projectile_pool != null)
 	assert(proc_pool != null)
 	assert(inventory != null)
 
@@ -33,6 +32,7 @@ func detach_gui(gui: GUI) -> void:
 	gui.clear_ability_buttons()
 
 func _setup_projectile(proj):
+	assert(projectile_pool != null)
 	# step 0, add to tree to get it ready
 	projectile_pool.add_child(proj)
 	# step 1, copy our proc pool

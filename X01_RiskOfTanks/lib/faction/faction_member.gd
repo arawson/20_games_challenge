@@ -14,7 +14,8 @@ signal health_changed(old_value, new_value)
 func do_damage(damage: float) -> bool:
 	var starting_health = health
 	health = clamp(health - damage, 0, health_max)
-	emit_signal("health_changed", starting_health, health)
+	if health != starting_health:
+		emit_signal("health_changed", health, health_max)
 	if health <= 0:
 		health = 0
 		return true
@@ -22,7 +23,8 @@ func do_damage(damage: float) -> bool:
 
 func _ready():
 	assert(unit_stats != null)
-	assert(faction_id != 0)
+	# TODO do I even need this assert?
+	#assert(faction_id != 0)
 	health = unit_stats.base_health
 	health_max = unit_stats.base_health
 	call_deferred("emit_signal", "health_changed", health_max, health_max)

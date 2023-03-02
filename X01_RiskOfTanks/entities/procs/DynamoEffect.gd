@@ -33,9 +33,17 @@ func do_on_hit(projectile: FactionProjectile, member: FactionMember, updated_pro
 		print("hitting target: %s" % t)
 		if !t.do_damage(damage_base):
 			print("spawn dynamo projectile")
+			# take this up into Procable as a helper function
+			var proc_pool = ProcPool.new()
+			proc_pool.clone_from(updated_proc_pool)
+
 			var proj = projectile_scene.instance()
+			proj.initialize_projectile(
+				projectile.projectile_root_path,
+				projectile.faction_id,
+				projectile.damage_base,
+				proc_pool
+			)
 			proj.initialize(member, t)
-			proj.proc_pool = updated_proc_pool.duplicate(DUPLICATE_SCRIPTS)
+
 			projectile.projectile_root.get_parent().add_child(proj)
-			pass
-	pass

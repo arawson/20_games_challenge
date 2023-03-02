@@ -45,13 +45,16 @@ func trigger_ability(slot: int, aim_vector: Vector2) -> Array:
 
 	return _trigger_ability(slot, aim_vector)
 
+
 func _trigger_ability(_slot: int, _aim_vector: Vector2) -> Array:
 	# TODO make resource-driven projectile creation abilities
 	return []
 
+
 # Movement is handled with just a vector for now
 func set_input_direction(_input: Vector2):
 	pass
+
 
 # _ready is used to perform asserts on the preconditions of the unit
 func _ready():
@@ -61,6 +64,7 @@ func _ready():
 	assert(ability_lmb != null)
 	abilities = [ability_lmb, ability_space, ability_f]
 
+
 func _physics_process(delta):
 	for slot in len(ability_cooldowns):
 		if ability_cooldowns[slot] > 0:
@@ -68,3 +72,11 @@ func _physics_process(delta):
 			# ugh not sure how to reduce this nesting
 			if ability_cooldowns[slot] <= 0:
 				emit_signal("ability_off_cooldown", slot)
+
+
+func get_exclusion_radius() -> float:
+	return 0.0
+
+
+func get_velocity() -> Vector2:
+	return Vector2.ZERO

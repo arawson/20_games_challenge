@@ -4,3 +4,4 @@ extends Node
 
 const BULLET = preload("res://entities/bullets/BasicBullet.tscn")
 const MISSILE = preload("res://entities/bullets/Missile.tscn")
+const RUSHER_EXPLOSION = preload("res://entities/bullets/RusherExplosion.tscn")

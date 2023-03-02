@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://entities/units/tanks/TankA.tscn" type="PackedScene" id=1]
 [ext_resource path="res://controllers/PlayerLocalController.tscn" type="PackedScene" id=2]
@@ -12,6 +12,24 @@
 [ext_resource path="res://entities/abilities/gun_tank.tres" type="Resource" id=10]
 [ext_resource path="res://lib/entities/OverheadCamera.tscn" type="PackedScene" id=11]
 [ext_resource path="res://entities/procs/Dynamo.tres" type="Resource" id=12]
+[ext_resource path="res://lib/faction/FactionContainer.gd" type="Script" id=13]
+[ext_resource path="res://entities/units/bugs/Rusher.tscn" type="PackedScene" id=14]
+[ext_resource path="res://entities/units/tanks/Enemy.tscn" type="PackedScene" id=16]
+
+[sub_resource type="NavigationPolygon" id=1]
+vertices = PoolVector2Array( -208, 872, -224, 736, 512, 720, 848, 856, 864, 592, 512, 448, -24, -616, -32, -1120, 552, -1112, 1472, -840, 1472, -640, 1376, -408, 1184, 8, 1120, 88, 552, -1184, 1472, -1200, 1472, -1112, 1472, -880, -128, -104, -128, -328, -104, -616, 520, 56, 1472, -424, 120, 72, -112, 24, 1120, 336, 512, 248 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 3, 2, 5 ), PoolIntArray( 6, 7, 8, 9, 10, 11, 12, 13 ), PoolIntArray( 14, 15, 16, 8 ), PoolIntArray( 8, 16, 17 ), PoolIntArray( 18, 19, 20, 6, 13, 21 ), PoolIntArray( 10, 22, 11 ), PoolIntArray( 8, 17, 9 ), PoolIntArray( 23, 24, 18, 21 ), PoolIntArray( 13, 25, 4, 5, 26, 21 ) ]
+outlines = [ PoolVector2Array( -32, -1120, 552, -1112, 552, -1184, 1472, -1200, 1472, -1112, 1472, -880, 1472, -840, 1472, -640, 1472, -424, 1376, -408, 1184, 8, 1120, 88, 1120, 336, 864, 592, 848, 856, -208, 872, -224, 736, 512, 720, 512, 448, 512, 248, 520, 56, 120, 72, -112, 24, -128, -104, -128, -328, -104, -616, -24, -616 ) ]
+
+[sub_resource type="NavigationPolygon" id=2]
+vertices = PoolVector2Array( 1472, -1096, 1472, -1200, 2272, -1192, 1792, -1096, 1760, -424, 1472, -424, 1472, -640, 1792, -640, 1848, -544, 1792, -840, 1472, -840, 1472, -880, 1536, -880, 1552, -1008, 1712, -1008, 1728, -880, 1792, -880, 2400, -864, 2392, -736, 2264, -616, 2112, -608, 2064, -544 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ), PoolIntArray( 4, 5, 6, 7, 8 ), PoolIntArray( 9, 10, 11, 12 ), PoolIntArray( 12, 13, 14, 15 ), PoolIntArray( 9, 12, 15 ), PoolIntArray( 9, 15, 16 ), PoolIntArray( 16, 3, 2, 17, 18, 19, 20 ), PoolIntArray( 9, 16, 20 ), PoolIntArray( 8, 7, 9, 20, 21 ) ]
+outlines = [ PoolVector2Array( 1472, -1200, 2272, -1192, 2400, -864, 2392, -736, 2264, -616, 2112, -608, 2064, -544, 1848, -544, 1760, -424, 1472, -424, 1472, -640, 1792, -640, 1792, -840, 1472, -840, 1472, -880, 1536, -880, 1552, -1008, 1712, -1008, 1728, -880, 1792, -880, 1792, -1096, 1472, -1096 ) ]
+
+[sub_resource type="NavigationPolygon" id=3]
+vertices = PoolVector2Array( 120, 264, 512, 248, 512, 448, 320, 448, 128, 440, 128, 728, -224, 736, -224, 160, 120, 72, -112, 24, -352, 160, -344, -280, -200, -104, -104, -616, -128, -328, -200, -328, -128, -104 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ), PoolIntArray( 4, 5, 6, 7, 0 ), PoolIntArray( 8, 0, 7, 9 ), PoolIntArray( 9, 7, 10, 11, 12 ), PoolIntArray( 13, 14, 15 ), PoolIntArray( 11, 13, 15 ), PoolIntArray( 11, 15, 12 ), PoolIntArray( 9, 12, 16 ) ]
+outlines = [ PoolVector2Array( -104, -616, -344, -280, -352, 160, -224, 160, -224, 736, 128, 728, 128, 440, 320, 448, 512, 448, 512, 248, 120, 264, 120, 72, -112, 24, -128, -104, -200, -104, -200, -328, -128, -328 ) ]
 
 [node name="TestScene" type="Node"]
 script = ExtResource( 4 )
@@ -47,23 +65,52 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( -1310713, 3, 0, -1310712, 3, 0, -1310711, 3, 0, -1310710, 3, 0, -1310709, 3, 0, -1310708, 3, 0, -1310707, 3, 0, -1310706, 3, 0, -1310705, 3, 0, -1310704, 3, 0, -1310703, 3, 0, -1310702, 3, 0, -1310701, 3, 0, -1310700, 3, 0, -1310699, 3, 0, -1310698, 3, 0, -1310697, 3, 0, -1310696, 3, 0, -1310695, 3, 0, -1310694, 3, 0, -1310693, 3, 0, -1310692, 3, 0, -1310691, 3, 0, -1310690, 3, 0, -1310689, 3, 0, -1310688, 3, 0, -1310687, 3, 0, -1310686, 3, 0, -1310685, 3, 0, -1310684, 3, 0, -1179650, 3, 0, -1179649, 3, 0, -1245184, 3, 0, -1245183, 3, 0, -1245182, 3, 0, -1245181, 3, 0, -1245180, 3, 0, -1245179, 3, 0, -1245178, 3, 0, -1245177, 3, 0, -1245148, 3, 0, -1245147, 3, 0, -1114114, 3, 0, -1179611, 3, 0, -1048578, 3, 0, -1114075, 3, 0, -983042, 3, 0, -1048539, 3, 0, -1048538, 3, 0, -917506, 3, 0, -983002, 3, 0, -851970, 3, 0, -917466, 3, 0, -786434, 3, 0, -851930, 3, 0, -720898, 3, 0, -786394, 3, 0, -655364, 3, 0, -655363, 3, 0, -655362, 3, 0, -720859, 3, 0, -720858, 3, 0, -589828, 3, 0, -655324, 3, 0, -655323, 3, 0, -524293, 3, 0, -524292, 3, 0, -589791, 3, 0, -589790, 3, 0, -589789, 3, 0, -589788, 3, 0, -458758, 3, 0, -458757, 3, 0, -524259, 3, 0, -524258, 3, 0, -524257, 3, 0, -524256, 3, 0, -524255, 3, 0, -393222, 3, 0, -458724, 3, 0, -458723, 3, 0, -327687, 3, 0, -327686, 3, 0, -393194, 3, 0, -393193, 3, 0, -393192, 3, 0, -393191, 3, 0, -393190, 3, 0, -393189, 3, 0, -393188, 3, 0, -262151, 3, 0, -327659, 3, 0, -327658, 3, 0, -196615, 3, 0, -262123, 3, 0, -131079, 3, 0, -196587, 3, 0, -65543, 3, 0, -131052, 3, 0, -131051, 3, 0, -7, 3, 0, -65516, 3, 0, 65529, 3, 0, 19, 3, 0, 20, 3, 0, 131065, 3, 0, 65554, 3, 0, 65555, 3, 0, 196601, 3, 0, 131090, 3, 0, 262137, 3, 0, 262138, 3, 0, 262139, 3, 0, 196626, 3, 0, 327675, 3, 0, 262162, 3, 0, 393211, 3, 0, 327698, 3, 0, 458747, 3, 0, 393233, 3, 0, 393234, 3, 0, 524283, 3, 0, 458768, 3, 0, 458769, 3, 0, 589819, 3, 0, 524303, 3, 0, 524304, 3, 0, 655355, 3, 0, 589838, 3, 0, 589839, 3, 0, 720891, 3, 0, 655374, 3, 0, 786427, 3, 0, 720910, 3, 0, 851963, 3, 0, 786446, 3, 0, 917499, 3, 0, 851982, 3, 0, 983035, 3, 0, 983036, 3, 0, 983037, 3, 0, 983038, 3, 0, 983039, 3, 0, 917504, 3, 0, 917505, 3, 0, 917506, 3, 0, 917507, 3, 0, 917508, 3, 0, 917509, 3, 0, 917510, 3, 0, 917511, 3, 0, 917512, 3, 0, 917513, 3, 0, 917514, 3, 0, 917515, 3, 0, 917516, 3, 0, 917517, 3, 0, 917518, 3, 0 )
 
-[node name="TeamRed" type="Node" parent="."]
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Terrain"]
+navpoly = SubResource( 1 )
+
+[node name="NavigationPolygonInstance2" type="NavigationPolygonInstance" parent="Terrain"]
+navpoly = SubResource( 2 )
+
+[node name="NavigationPolygonInstance3" type="NavigationPolygonInstance" parent="Terrain"]
+navpoly = SubResource( 3 )
+
+[node name="TeamRed" type="Node" parent="." groups=["faction_container"]]
+script = ExtResource( 13 )
 __meta__ = {
 "_editor_description_": "This is a grouping for the red team."
 }
+faction_id = 2
 
-[node name="TeamBlue" type="Node" parent="."]
+[node name="Rusher" parent="TeamRed" instance=ExtResource( 14 )]
+position = Vector2( 94, -64 )
+faction_id = 2
+projectile_pool_path = NodePath("../../Projectiles")
+
+[node name="Enemy" parent="TeamRed" instance=ExtResource( 16 )]
+position = Vector2( 235, -709 )
+unit_stats_base = ExtResource( 3 )
+
+[node name="Enemy2" parent="TeamRed" instance=ExtResource( 16 )]
+position = Vector2( 318, -696 )
+unit_stats_base = ExtResource( 3 )
+
+[node name="TeamBlue" type="Node" parent="." groups=["faction_container"]]
+script = ExtResource( 13 )
+faction_id = 1
 
 [node name="TankA" parent="TeamBlue" instance=ExtResource( 1 )]
-position = Vector2( -51, 157 )
+position = Vector2( 184, -232 )
 unit_stats_base = ExtResource( 3 )
 ability_f_base = ExtResource( 8 )
 ability_space_base = ExtResource( 10 )
 ability_lmb_base = ExtResource( 9 )
 
 [node name="Player" parent="TeamBlue/TankA" instance=ExtResource( 2 )]
+visible = false
 faction_id = 1
 unit_path = NodePath("..")
+
+[node name="Projectiles" type="Node" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -82,6 +129,11 @@ proc_item = ExtResource( 12 )
 position = Vector2( 210, -130 )
 proc_item = ExtResource( 12 )
 
+[node name="Line2D" type="Line2D" parent="."]
+width = 5.0
+default_color = Color( 1, 0.415686, 0.4, 1 )
+
+[connection signal="path_changed" from="TeamRed/Rusher" to="." method="_on_Rusher_path_changed"]
 [connection signal="ability_fired" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_ability_fired"]
 [connection signal="ability_off_cooldown" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_ability_off_cooldown"]
 [connection signal="camera_reached_target" from="OverheadCamera" to="." method="_on_OverheadCamera_camera_reached_target"]
