@@ -20,6 +20,8 @@ func _ready():
 	assert(proc_pool != null)
 	assert(inventory != null)
 
+	proc_pool.originator = unit.get_path()
+
 func attach_gui(gui: GUI) -> void:
 	if unit == null:
 		return

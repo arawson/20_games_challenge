@@ -9,7 +9,7 @@ extends Node2D
 var proc_on_hit: Array = []
 var proc_on_kill: Array = []
 var procs: Array = []
-
+var originator: NodePath = "" # to a FactionMember instance
 
 # I'm going to do this through the UI, but I'm writing it out to understand the
 # functionality around it
@@ -75,6 +75,7 @@ func clear() -> void:
 	refresh_procables()
 	
 func clone_from(pool) -> void:
+	originator = pool.originator
 	for p in pool.get_children():
 		# var c = p.clone()
 		var c = p.duplicate(DUPLICATE_SCRIPTS) as Procable
