@@ -12,6 +12,17 @@ export(float) var speed = 2.0
 onready var homing : Area2D = $Homing
 onready var body = get_node(".") as KinematicBody2D
 
+
+func initialize(source_path: NodePath, angle: float):
+	rotation = angle
+
+	var source = get_node(source_path)
+	assert(source != null)
+	assert(source is BaseUnit)
+	global_position = source.global_position + Vector2.RIGHT.rotated(angle)*source.get_exclusion_radius()
+	# TODO implement exclusion zone around originator
+
+
 func _ready():
 	pass
 
