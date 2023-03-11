@@ -2,8 +2,6 @@ extends Node
 
 # Test Scene Script full of garbage and nonsense
 
-onready var debug_line = $Line2D
-
 func _ready():
 	# var source_node = $TeamRed/Enemy2
 	# var dest_node = $DynamoProjectile
@@ -22,7 +20,3 @@ func _ready():
 func _on_OverheadCamera_camera_reached_target(camera, target):
 	if target == $TeamBlue/TankA:
 		$TeamBlue/TankA/Player.set_camera(camera)
-
-
-func _on_Rusher_path_changed(path):
-	debug_line.points = path

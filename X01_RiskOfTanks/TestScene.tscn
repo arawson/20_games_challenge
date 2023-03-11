@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://entities/units/tanks/TankA.tscn" type="PackedScene" id=1]
 [ext_resource path="res://controllers/PlayerLocalController.tscn" type="PackedScene" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://lib/entities/OverheadCamera.tscn" type="PackedScene" id=11]
 [ext_resource path="res://entities/procs/Dynamo.tres" type="Resource" id=12]
 [ext_resource path="res://lib/faction/FactionContainer.gd" type="Script" id=13]
-[ext_resource path="res://entities/units/bugs/Rusher.tscn" type="PackedScene" id=14]
 [ext_resource path="res://entities/procs/MissilePack.tres" type="Resource" id=15]
 [ext_resource path="res://entities/units/tanks/Enemy.tscn" type="PackedScene" id=16]
 
@@ -82,16 +81,11 @@ __meta__ = {
 }
 faction_id = 2
 
-[node name="Rusher" parent="TeamRed" instance=ExtResource( 14 )]
-position = Vector2( 94, -64 )
-faction_id = 2
-projectile_pool_path = NodePath("../../Projectiles")
-
-[node name="Enemy" parent="TeamRed" instance=ExtResource( 16 )]
+[node name="Dummy" parent="TeamRed" instance=ExtResource( 16 )]
 position = Vector2( 235, -709 )
 unit_stats_base = ExtResource( 3 )
 
-[node name="Enemy2" parent="TeamRed" instance=ExtResource( 16 )]
+[node name="Dummy2" parent="TeamRed" instance=ExtResource( 16 )]
 position = Vector2( 318, -696 )
 unit_stats_base = ExtResource( 3 )
 
@@ -130,11 +124,6 @@ proc_item = ExtResource( 12 )
 position = Vector2( 210, -130 )
 proc_item = ExtResource( 15 )
 
-[node name="Line2D" type="Line2D" parent="."]
-width = 5.0
-default_color = Color( 1, 0.415686, 0.4, 1 )
-
-[connection signal="path_changed" from="TeamRed/Rusher" to="." method="_on_Rusher_path_changed"]
 [connection signal="ability_fired" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_ability_fired"]
 [connection signal="ability_off_cooldown" from="TeamBlue/TankA" to="TeamBlue/TankA/Player" method="_on_ability_off_cooldown"]
 [connection signal="camera_reached_target" from="OverheadCamera" to="." method="_on_OverheadCamera_camera_reached_target"]
