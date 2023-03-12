@@ -17,10 +17,10 @@ func _init(node:Node, property:String, parent:Node = null):
 	var cast_i = property.find(">")
 	if cast_i != -1:
 		self.property = property.substr(0, cast_i)
-		
+
 		var format_argument = property.substr(cast_i + 1, property.length())
 		format = FORMAT_STRING
-		
+
 		if format_argument.begins_with("%"):
 			format = FORMAT_STRING
 			format_string = format_argument
@@ -36,9 +36,11 @@ func _init(node:Node, property:String, parent:Node = null):
 					format = ANGLE
 	else:
 		self.property = property
-	
+
 	if parent and node != parent:
-		self.property_name = str(parent.get_path_to(node)) + " > " + self.property
+		# I hated this with my long node names
+		self.property_name = self.property
+		# self.property_name = str(parent.get_path_to(node)) + " > " + self.property
 	else:
 		self.property_name = self.property
 
@@ -75,7 +77,7 @@ func format(value):
 				if value is Vector2:
 					return value.angle()
 				return value
-	
+
 
 func store_value():
 	backlog.push_front(get_value())

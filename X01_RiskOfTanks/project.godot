@@ -206,15 +206,21 @@ config/icon="res://icon.png"
 
 [autoload]
 
+Hyperlog="*res://addons/hyperlog/hyperlog.tscn"
 Projectiles="*res://entities/bullets/Projectiles.gd"
 NodeUtil="*res://lib/NodeUtil.gd"
 RandomUtil="*res://lib/RandomUtil.gd"
 FactionUtil="*res://FactionUtil.gd"
+HyperLog="*res://addons/hyperlog/hyperlog.tscn"
 
 [display]
 
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/hyperlog/plugin.cfg" )
 
 [gui]
 

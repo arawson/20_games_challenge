@@ -10,7 +10,7 @@ func _process(delta):
 		var tracker = trackers[i]
 		var label_name = name_container.get_child(i)
 		var label_value = value_container.get_child(i)
-		
+
 		var property_name = tracker.property_name
 		var value = tracker.format(tracker.get_value())
 		label_name.text = property_name
