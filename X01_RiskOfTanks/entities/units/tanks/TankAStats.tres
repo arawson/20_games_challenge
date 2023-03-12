@@ -7,3 +7,5 @@ script = ExtResource( 1 )
 speed_max = 300.0
 turn_max = 3.0
 base_health = 100.0
+spawn_delay_base = 0.5
+stagger_delay_base = 0.5

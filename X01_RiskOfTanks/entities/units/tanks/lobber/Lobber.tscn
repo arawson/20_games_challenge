@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://entities/units/tanks/lobber/lobber.gd" type="Script" id=1]
+[ext_resource path="res://assets/kenney_topdowntanksredux/tankBody_darkLarge.png" type="Texture" id=2]
+[ext_resource path="res://assets/kenney_topdowntanksredux/specialBarrel5.png" type="Texture" id=3]
+[ext_resource path="res://entities/units/tanks/lobber/lobber_controller.gd" type="Script" id=4]
+[ext_resource path="res://entities/units/tanks/lobber/lobber_state_machine.gd" type="Script" id=5]
+[ext_resource path="res://lib/proc/proc_pool.gd" type="Script" id=6]
+[ext_resource path="res://lib/proc/inventory.gd" type="Script" id=7]
+[ext_resource path="res://entities/units/tanks/lobber/lobber_stats.tres" type="Resource" id=8]
+[ext_resource path="res://entities/abilities/nothing.tres" type="Resource" id=9]
+[ext_resource path="res://entities/units/tanks/lobber/spawning.gd" type="Script" id=10]
+[ext_resource path="res://entities/units/tanks/lobber/searching.gd" type="Script" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 28, 16 )
+
+[node name="LobberBody" type="KinematicBody2D"]
+script = ExtResource( 1 )
+unit_stats_base = ExtResource( 8 )
+ability_f_base = ExtResource( 9 )
+ability_space_base = ExtResource( 9 )
+ability_lmb_base = ExtResource( 9 )
+
+[node name="TankBodyDarkLarge" type="Sprite" parent="."]
+rotation = -1.5708
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="SpecialBarrel5" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 3 )
+offset = Vector2( 0, -6 )
+
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+avoidance_enabled = true
+
+[node name="LobberController" type="Node2D" parent="."]
+script = ExtResource( 4 )
+unit_path = NodePath("..")
+proc_pool_path = NodePath("ProcPool")
+inventory_path = NodePath("Inventory")
+
+[node name="LobberStateMachine" type="Node" parent="LobberController"]
+script = ExtResource( 5 )
+start_state = NodePath("Spawning")
+unit_path = NodePath("../..")
+controller_path = NodePath("..")
+
+[node name="Spawning" type="Node" parent="LobberController/LobberStateMachine"]
+script = ExtResource( 10 )
+
+[node name="Searching" type="Node" parent="LobberController/LobberStateMachine"]
+script = ExtResource( 11 )
+
+[node name="Wandering" type="Node" parent="LobberController/LobberStateMachine"]
+
+[node name="Travelling" type="Node" parent="LobberController/LobberStateMachine"]
+
+[node name="Lobbing" type="Node" parent="LobberController/LobberStateMachine"]
+
+[node name="Staggering" type="Node" parent="LobberController/LobberStateMachine"]
+
+[node name="Dieing" type="Node" parent="LobberController/LobberStateMachine"]
+
+[node name="ProcPool" type="Node2D" parent="LobberController"]
+script = ExtResource( 6 )
+
+[node name="Inventory" type="Node" parent="LobberController"]
+script = ExtResource( 7 )
+
+[connection signal="state_changed" from="LobberController/LobberStateMachine" to="LobberController" method="_on_LobberStateMachine_state_changed"]
