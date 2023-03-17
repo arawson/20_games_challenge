@@ -21,23 +21,12 @@ func _physics_process(_delta):
 	unit.target_vector = target.global_position
 
 
-# TODO move this into FactionUtil
 func retarget():
-	var factions = FactionUtil.get_other_faction_containers(faction_id)
-	var nearest_target: FactionMember = null
-	var nearest_target_d2: float = INF
-	
-	for faction in factions:
-		for node in faction.get_children():
-			var faction_member = node as FactionMember
-			if faction_member == null:
-				continue
-			var d2 = global_position.distance_squared_to(faction_member.global_position)
-			if d2 < nearest_target_d2:
-				nearest_target = faction_member
-				nearest_target_d2 = d2
-	
-	target = nearest_target
+	target = get_nearest_hostile()
+
+	if target == null:
+		return
+
 	var _e = target.connect("tree_exited", self, "_on_tree_exited_target")
 
 

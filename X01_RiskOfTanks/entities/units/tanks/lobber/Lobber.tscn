@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://entities/units/tanks/lobber/lobber.gd" type="Script" id=1]
 [ext_resource path="res://assets/kenney_topdowntanksredux/tankBody_darkLarge.png" type="Texture" id=2]
@@ -11,6 +11,11 @@
 [ext_resource path="res://entities/abilities/nothing.tres" type="Resource" id=9]
 [ext_resource path="res://entities/units/tanks/lobber/spawning.gd" type="Script" id=10]
 [ext_resource path="res://entities/units/tanks/lobber/searching.gd" type="Script" id=11]
+[ext_resource path="res://entities/units/tanks/lobber/wandering.gd" type="Script" id=12]
+[ext_resource path="res://entities/units/tanks/lobber/travelling.gd" type="Script" id=13]
+[ext_resource path="res://entities/units/tanks/lobber/lobbing.gd" type="Script" id=14]
+[ext_resource path="res://entities/units/tanks/lobber/staggering.gd" type="Script" id=15]
+[ext_resource path="res://entities/units/tanks/lobber/dieing.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 28, 16 )
@@ -58,14 +63,20 @@ script = ExtResource( 10 )
 script = ExtResource( 11 )
 
 [node name="Wandering" type="Node" parent="LobberController/LobberStateMachine"]
+script = ExtResource( 12 )
 
 [node name="Travelling" type="Node" parent="LobberController/LobberStateMachine"]
+script = ExtResource( 13 )
+nav_agent_path = NodePath("../../../NavAgent")
 
 [node name="Lobbing" type="Node" parent="LobberController/LobberStateMachine"]
+script = ExtResource( 14 )
 
 [node name="Staggering" type="Node" parent="LobberController/LobberStateMachine"]
+script = ExtResource( 15 )
 
 [node name="Dieing" type="Node" parent="LobberController/LobberStateMachine"]
+script = ExtResource( 16 )
 
 [node name="ProcPool" type="Node2D" parent="LobberController"]
 script = ExtResource( 6 )

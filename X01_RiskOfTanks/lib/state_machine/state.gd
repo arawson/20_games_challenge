@@ -10,6 +10,7 @@ extends Node
 # warning-ignore:unused_signal
 signal finished(next_state)
 
+
 # Initialize the state. E.g. change the animation.
 func enter():
 	pass
@@ -29,8 +30,8 @@ func update(_delta):
 func _on_animation_finished(_anim_name):
 	pass
 
-func _signal_next_state(next: State) -> void:
+func _signal_next_state(next: State, pop: bool = false) -> void:
 	if (next == null):
 		printerr("State Error: next state was null");
 		return
-	emit_signal("finished", next)
+	emit_signal("finished", next, pop)

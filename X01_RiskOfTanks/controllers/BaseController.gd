@@ -25,7 +25,7 @@ func _ready():
 func attach_gui(gui: GUI) -> void:
 	if unit == null:
 		return
-	
+
 	gui.connect_health_bar(unit)
 	gui.connect_abilities(unit)
 
@@ -55,3 +55,23 @@ func _setup_projectiles(projs: Array):
 		if p == null:
 			continue
 		_setup_projectile(p)
+
+
+
+
+func get_nearest_hostile() -> FactionMember:
+	var nearest_target: FactionMember = null
+	var nearest_target_d2: float = INF
+	var factions = FactionUtil.get_other_faction_containers(faction_id)
+
+	for faction in factions:
+		for node in faction.get_children():
+			var faction_member = node as FactionMember
+			if faction_member == null:
+				continue
+			var d2 = global_position.distance_squared_to(faction_member.global_position)
+			if d2 < nearest_target_d2:
+				nearest_target = faction_member
+				nearest_target_d2 = d2
+
+	return nearest_target

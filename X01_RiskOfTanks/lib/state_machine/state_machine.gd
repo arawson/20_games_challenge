@@ -31,6 +31,8 @@ func _ready():
 			obj.name = child
 			obj.path = self.get_path_to(child)
 			var err = child.connect("finished", self, "_change_state")
+			child.set_physics_process(false)
+			child.set_process_input(false)
 			if err:
 				printerr(err)
 
@@ -40,8 +42,7 @@ func _ready():
 # Handle custom state-transition logic here.
 # warning_ignore(unused_argument)
 func _prepare_change_state(from: State, to: State) -> void:
-	# when I get back from my run I want to fill in the logic which calls
-	# this new function, which is meant to be overriden
+	# TODO is there any sensible universal logic here?
 	pass
 
 func initialize(initial_state: State):
@@ -76,12 +77,15 @@ func _on_animation_finished(anim_name: String):
 func _change_state(new_state: State, pop : bool = false) -> void:
 	if not _active:
 		return
-	
+
 	# This is the hook to allow the derived machines to handle custom logic
 	# on state transition.
 	_prepare_change_state(current_state, new_state)
 
 	current_state.exit()
+
+	current_state.set_physics_process(false)
+	current_state.set_process_input(false)
 
 	if pop:
 		states_stack.pop_front()
@@ -89,7 +93,10 @@ func _change_state(new_state: State, pop : bool = false) -> void:
 		states_stack[0] = new_state
 
 	current_state = states_stack[0]
-	
+
+	current_state.set_physics_process(true)
+	current_state.set_process_input(true)
+
 	emit_signal("state_changed", current_state)
 
 	if !pop:
