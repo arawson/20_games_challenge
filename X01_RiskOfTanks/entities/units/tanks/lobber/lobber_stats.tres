@@ -4,8 +4,11 @@
 
 [resource]
 script = ExtResource( 1 )
-speed_max = 100.0
+speed_max = 50.0
 turn_max = 5.0
 base_health = 200.0
 spawn_delay_base = 0.5
 stagger_delay_base = 0.5
+chase_initiation_range = 400.0
+chase_re_eval_time = 15.0
+attack_initiation_range = 150.0

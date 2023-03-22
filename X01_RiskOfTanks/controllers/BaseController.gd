@@ -21,6 +21,7 @@ func _ready():
 	assert(inventory != null)
 
 	proc_pool.originator = unit.get_path()
+	faction_id = unit.faction_id
 
 func attach_gui(gui: GUI) -> void:
 	if unit == null:

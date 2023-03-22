@@ -5,6 +5,7 @@ var target: FactionMember = null
 onready var state_machine = $LobberStateMachine
 onready var searching = $LobberStateMachine/Searching
 
+
 func _on_LobberStateMachine_state_changed(current_state):
 	pass
 

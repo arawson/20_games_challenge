@@ -22,6 +22,16 @@ func _ready():
 		funcref(self, "trigger_ability_f")
 	]
 
+	Navigation2DServer.agent_set_map($NavigationObstacle2D.get_rid(), get_world_2d().navigation_map)
+
+	var logger = HyperLog.log(self)
+	# Sometimes push_back in the log method doesn't actually add the container to the
+	# list of nodes, which is a big weird
+	# work around that by only using HyperLog.log(self) once and re-using the return value
+	logger.offset(Vector2(20,20))
+	logger.text("self")
+
+
 func _trigger_ability(slot: int, aim_vector: Vector2) -> Array:
 	return _trigger_fns[slot].call_func(aim_vector)
 
@@ -60,7 +70,7 @@ func _physics_process(delta):
 	turn += _input_direction.x * turn_max * delta * turn_boost
 	velocity.y = _input_direction.y * speed_max * speed_boost
 	turn = wrapf(turn, -PI, +PI)
-	
+
 	velocity = velocity.rotated(turn)
 	rotation = turn
 	velocity = move_and_slide(velocity)

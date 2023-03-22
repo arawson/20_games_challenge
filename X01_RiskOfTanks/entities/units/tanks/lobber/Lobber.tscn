@@ -40,8 +40,6 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, -6 )
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
-path_desired_distance = 5.0
-target_desired_distance = 5.0
 avoidance_enabled = true
 
 [node name="LobberController" type="Node2D" parent="."]
