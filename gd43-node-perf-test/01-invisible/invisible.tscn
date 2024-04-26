@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://30ia4gihcnf2"]
+
+[ext_resource type="Script" path="res://01-invisible/invisible.gd" id="1_griyt"]
+
+[node name="Invisible" type="Node2D"]
+script = ExtResource("1_griyt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 828.0
+offset_bottom = 32.0
+text = "Each of these Godot Icons will have a number of Node (not Node2D, just Node) children with scripts added."
+
+[node name="SystemPerf" type="RichTextLabel" parent="."]
+auto_translate_mode = 1
+offset_left = -1.0
+offset_top = 30.0
+offset_right = 827.0
+offset_bottom = 62.0
+text = "System Performance"
+
+[node name="SystemInfo" type="RichTextLabel" parent="."]
+auto_translate_mode = 1
+offset_left = -2.0
+offset_top = 60.0
+offset_right = 826.0
+offset_bottom = 92.0
+text = "System Info"
+
+[node name="SceneStats" type="RichTextLabel" parent="."]
+auto_translate_mode = 1
+offset_left = 4.0
+offset_top = 101.0
+offset_right = 822.0
+offset_bottom = 140.0
+text = "Scene Stats"
+
+[node name="Stressors" type="Node" parent="."]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 12.0
+offset_top = 139.0
+offset_right = 1139.0
+offset_bottom = 173.0
+text = "MORE NODES!"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

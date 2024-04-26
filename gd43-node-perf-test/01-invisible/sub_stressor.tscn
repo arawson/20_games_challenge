@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5lckv77cfvid"]
+
+[ext_resource type="Script" path="res://01-invisible/sub_stressor.gd" id="1_j606q"]
+
+[node name="SubStressor" type="Node"]
+script = ExtResource("1_j606q")

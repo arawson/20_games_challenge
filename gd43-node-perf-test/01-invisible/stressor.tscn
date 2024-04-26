@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://1wmakag6xpq4"]
+
+[ext_resource type="Texture2D" uid="uid://di76yqqhwcit2" path="res://icon.svg" id="1_12224"]
+[ext_resource type="Script" path="res://01-invisible/stressor.gd" id="2_6coms"]
+
+[node name="Stressor" type="Sprite2D"]
+position = Vector2(572, 436)
+texture = ExtResource("1_12224")
+script = ExtResource("2_6coms")
