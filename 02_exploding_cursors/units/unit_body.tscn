@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://sxubne03dixk"]
+
+[ext_resource type="Texture2D" uid="uid://cmtux1fxg250f" path="res://placeholders/fantasy_borders/unit-block.png" id="1_rjs7f"]
+[ext_resource type="Texture2D" uid="uid://d3wnpfqd5ox4k" path="res://placeholders/fantasy_borders/unit-selection.png" id="2_a1xgo"]
+
+[node name="UnitBody" type="Sprite2D"]
+
+[node name="FactionColor" type="Sprite2D" parent="."]
+
+[node name="Border" type="Sprite2D" parent="."]
+texture = ExtResource("1_rjs7f")
+
+[node name="SelectionBorder" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_a1xgo")

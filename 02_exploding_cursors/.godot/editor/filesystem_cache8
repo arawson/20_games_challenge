@@ -1,8 +1,12 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1714328649
+::res://::1714330571
 icon.svg::CompressedTexture2D::4858200200283689461::1714321135::1714321142::1::::<><>::
 README.md::TextFile::-1::1714325791::0::1::::<><>::
-::res://lib/::1714321926
+::res://lib/::1714331444
+faction.gd::GDScript::-1::1714330533::0::1::::Faction<>Node<>::
+faction_manager.gd::GDScript::-1::1714330109::0::1::::<>Node<>::
+faction_base.gd::GDScript::-1::1714331620::0::1::::<>Resource<>::
+util.gd::GDScript::-1::1714331053::0::1::::<>Node<>::
 ::res://placeholders/::1714328778
 ::res://placeholders/cursors/::1714321904
 arrow_e.png::CompressedTexture2D::7866513073851727015::1714321803::1714321904::1::::<><>::
@@ -125,7 +129,7 @@ faction-red.png::CompressedTexture2D::5963597848712594741::1714327754::171432796
 unit-block.png::CompressedTexture2D::5655587455870123687::1701574903::1714327963::1::::<><>::
 unit-head.png::CompressedTexture2D::4511850098481600614::1714326992::1714327963::1::::<><>::
 unit-selection.png::CompressedTexture2D::9170782378858658032::1714327552::1714327963::1::::<><>::
-::res://placeholders/splash/::1714328780
+::res://placeholders/splash/::1714328783
 GodotLogo.png::CompressedTexture2D::8644428540534665903::1714328725::1714328783::1::::<><>::
 programming vtuber logo LICENSE.md::TextFile::-1::1714328741::0::1::::<><>::
 ::res://placeholders/terrain/::1714327963
@@ -134,7 +138,13 @@ normal.png::CompressedTexture2D::4718834042179299659::1714327955::1714327963::1:
 ::res://placeholders/tiny_dungeons/::1714321903
 License.txt::TextFile::-1::1714321893::0::1::::<><>::
 tilemap.png::CompressedTexture2D::114671855073944373::1714321873::1714321903::1::::<><>::
-::res://playground/::1714328469
-playground.tscn::PackedScene::2117933124979242079::1714328469::0::1::::<><>::uid://4a1fhvbuelqc::::res://terrain/terrain_tiles.tres
-::res://terrain/::1714328469
-terrain_tiles.tres::TileSet::2037064436461068046::1714328469::0::1::::<><>::
+::res://playground/::1714331008
+playground.tscn::PackedScene::2117933124979242079::1714331008::0::1::::<><>::uid://4a1fhvbuelqc::::res://terrain/terrain_tiles.tres
+::res://terrain/::1714329732
+map_controller.gd::GDScript::-1::1714329761::0::1::::<>TileMap<>::
+terrain_tiles.tres::TileSet::2037064436461068046::1714329537::0::1::::<><>::uid://b8h3rimy75sid::::res://placeholders/terrain/normal.png
+::res://units/::1714331445
+unit.gd::GDScript::-1::1714331185::0::1::::<>Node<>::
+unit.tscn::PackedScene::110295357026220124::1714331137::0::1::::<><>::res://units/unit.gd
+unit_body.tscn::PackedScene::1312096689633392432::1714330036::0::1::::<><>::
+unit_head.tscn::PackedScene::645661296666458464::1714331445::0::1::::<><>::uid://b5jtrn180ul8i::::res://placeholders/fantasy_borders/unit-head.png<>uid://d3wnpfqd5ox4k::::res://placeholders/fantasy_borders/unit-selection.png

@@ -11,9 +11,20 @@ config_version=5
 [application]
 
 config/name="02_exploding_cursors"
+run/main_scene="res://playground/playground.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 boot_splash/image="res://placeholders/splash/GodotLogo.png"
 config/icon="res://icon.svg"
+
+[autoload]
+
+FactionManager="*res://lib/faction_manager.gd"
+Util="*res://lib/util.gd"
+
+[display]
+
+window/size/mode=3
+window/handheld/orientation=1
 
 [input]
 

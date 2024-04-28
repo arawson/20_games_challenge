@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UnitBase" load_steps=3 format=3 uid="uid://c782har6isrnx"]
+
+[ext_resource type="Texture2D" uid="uid://blaa1xqvjddaq" path="res://placeholders/cursors/look_a.png" id="1_hgw5r"]
+[ext_resource type="Script" path="res://units/unit_base.gd" id="1_ktw4e"]
+
+[resource]
+script = ExtResource("1_ktw4e")
+icon = ExtResource("1_hgw5r")
+name = "Scout"
