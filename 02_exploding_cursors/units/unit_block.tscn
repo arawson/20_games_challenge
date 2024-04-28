@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://bmecwpjyvt1kt" path="res://units/invalid.tres" id="2_xgl5g"]
 [ext_resource type="Texture2D" uid="uid://7xb78bq7nbrd" path="res://placeholders/invalid_unit.png" id="4_5e7wb"]
 
-[node name="UnitHead" type="Node2D"]
+[node name="UnitBlock" type="Node2D"]
 script = ExtResource("1_vp8o3")
 is_head = true
 unit_base = ExtResource("2_xgl5g")

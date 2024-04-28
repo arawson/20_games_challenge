@@ -1,3 +1,4 @@
+class_name UnitBlock
 extends Node2D
 
 
@@ -37,6 +38,8 @@ var border_body = preload("res://units/unit_block.tscn")
 		faction_background.texture = faction.faction_base.background
 		faction = value
 
+
+@export var grid_position: Vector2i = Vector2i.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

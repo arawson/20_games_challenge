@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FactionBase" load_steps=2 format=3 uid="uid://146a8eniubpu"]
 
-[ext_resource type="Script" path="res://lib/faction_base.gd" id="1_nexrx"]
+[ext_resource type="Script" path="res://factions/faction_base.gd" id="1_nexrx"]
 
 [resource]
 script = ExtResource("1_nexrx")

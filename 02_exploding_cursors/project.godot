@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-FactionManager="*res://lib/faction_manager.gd"
+FactionManager="*res://factions/faction_manager.gd"
 Util="*res://lib/util.gd"
 
 [display]
