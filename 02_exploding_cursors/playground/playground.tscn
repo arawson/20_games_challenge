@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://5f7bw2ghd3kt"]
+
+[ext_resource type="TileSet" uid="uid://4a1fhvbuelqc" path="res://terrain/terrain_tiles.tres" id="1_k24fm"]
+
+[node name="Playground" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_k24fm")
+format = 2
