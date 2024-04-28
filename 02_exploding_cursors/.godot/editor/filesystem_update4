@@ -12,3 +12,7 @@ res://factions/red.tres
 res://factions/blue.tres
 res://units/unit_base.gd
 res://units/scout.tres
+res://units/unit_head.gd
+res://units/unit_block.tscn
+res://units/invalid.tres
+res://factions/invalid.tres

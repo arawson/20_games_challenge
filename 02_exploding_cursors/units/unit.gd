@@ -1,6 +1,5 @@
 extends Node
 
-@export var 
 
 
 func _ready() -> void:

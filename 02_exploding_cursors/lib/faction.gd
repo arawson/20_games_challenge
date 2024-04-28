@@ -3,7 +3,7 @@ extends Node
 
 
 @export var faction_id: int = -1
-
+@export var faction_base: FactionBase
 
 
 # Called when the node enters the scene tree for the first time.

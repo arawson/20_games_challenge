@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="UnitBase" load_steps=3 format=3 uid="uid://bmecwpjyvt1kt"]
+
+[ext_resource type="Texture2D" uid="uid://7xb78bq7nbrd" path="res://placeholders/invalid_unit.png" id="1_eymbb"]
+[ext_resource type="Script" path="res://units/unit_base.gd" id="1_fr732"]
+
+[resource]
+script = ExtResource("1_fr732")
+icon = ExtResource("1_eymbb")
+name = "Unknown"
