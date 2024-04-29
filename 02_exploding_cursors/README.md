@@ -5,9 +5,9 @@ Use the innate power of cursors to secure your computer!
  2. Units take up squares on the grid.
 ## Turn Concepts
  1. A turn is over when a faction confirms it is over.
-     1. A faction may end a turn early.
+	 1. A faction may end a turn early.
  2. A unit can use abilities, move, and/or attack.
-     1. Most units end their actions with an ability or attack.
+	 1. Most units end their actions with an ability or attack.
 ## Assets
 ### Dimensions
 ### Color Scheme

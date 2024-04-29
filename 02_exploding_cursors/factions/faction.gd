@@ -3,6 +3,8 @@ extends Node
 
 
 @export var faction_base: FactionBase
+@export var controller: FactionController
+@export var map_controller: MapController
 
 
 func _ready() -> void:

@@ -1,5 +1,8 @@
-class_name MapController
-extends TileMap
+extends FactionController
+
+
+func turn_ready(_start_faction: String):
+	pass
 
 
 func _ready() -> void:

@@ -1,22 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://5f7bw2ghd3kt"]
+[gd_scene load_steps=9 format=3 uid="uid://5f7bw2ghd3kt"]
 
+[ext_resource type="Script" path="res://playground/playground.gd" id="1_4guag"]
 [ext_resource type="TileSet" uid="uid://4a1fhvbuelqc" path="res://terrain/terrain_tiles.tres" id="1_k24fm"]
 [ext_resource type="Script" path="res://terrain/map_controller.gd" id="2_u0emu"]
 [ext_resource type="Script" path="res://factions/faction.gd" id="2_wy1i6"]
+[ext_resource type="Resource" uid="uid://cslo0l2c2xbof" path="res://factions/red.tres" id="5_qgbfs"]
+[ext_resource type="Script" path="res://factions/control/faction_controller.gd" id="5_se3fa"]
+[ext_resource type="Resource" uid="uid://146a8eniubpu" path="res://factions/blue.tres" id="6_2we2b"]
+[ext_resource type="Script" path="res://factions/control/player_faction_controller.gd" id="6_cinfg"]
 
 [node name="Playground" type="Node2D"]
+script = ExtResource("1_4guag")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(1, 0)
 tile_set = ExtResource("1_k24fm")
 format = 2
-layer_0/tile_data = PackedInt32Array(65537, 1, 0, 65538, 1, 0, 131074, 1, 0, 131073, 1, 0)
+layer_0/tile_data = PackedInt32Array(65537, 1, 0, 65538, 1, 0, 131074, 1, 0, 131073, 1, 0, 65539, 1, 0, 131075, 1, 0, 131076, 1, 0, 65540, 1, 0, 65541, 1, 0, 131077, 1, 0, 196612, 1, 0, 262148, 1, 0, 327684, 1, 0, 393220, 1, 0, 196613, 1, 0, 262149, 1, 0, 327685, 1, 0, 393221, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 196611, 1, 0, 262150, 1, 0)
 script = ExtResource("2_u0emu")
 
 [node name="Factions" type="Node" parent="."]
 
-[node name="RedFaction" type="Node" parent="Factions"]
+[node name="RedFaction" type="Node" parent="Factions" node_paths=PackedStringArray("controller", "map_controller")]
 script = ExtResource("2_wy1i6")
+faction_base = ExtResource("5_qgbfs")
+controller = NodePath("Dummy")
+map_controller = NodePath("../../TileMap")
 
-[node name="BlueFaction" type="Node" parent="Factions"]
+[node name="Dummy" type="Node" parent="Factions/RedFaction"]
+script = ExtResource("5_se3fa")
+
+[node name="BlueFaction" type="Node" parent="Factions" node_paths=PackedStringArray("controller", "map_controller")]
 script = ExtResource("2_wy1i6")
+faction_base = ExtResource("6_2we2b")
+controller = NodePath("Player")
+map_controller = NodePath("../../TileMap")
+
+[node name="Player" type="Node" parent="Factions/BlueFaction"]
+script = ExtResource("6_cinfg")
