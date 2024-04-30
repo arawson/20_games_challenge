@@ -1,16 +1,17 @@
 [gd_scene load_steps=9 format=3 uid="uid://5f7bw2ghd3kt"]
 
-[ext_resource type="Script" path="res://playground/playground.gd" id="1_4guag"]
+[ext_resource type="Script" path="res://lib/game_controller.gd" id="1_4guag"]
 [ext_resource type="TileSet" uid="uid://4a1fhvbuelqc" path="res://terrain/terrain_tiles.tres" id="1_k24fm"]
 [ext_resource type="Script" path="res://terrain/map_controller.gd" id="2_u0emu"]
 [ext_resource type="Script" path="res://factions/faction.gd" id="2_wy1i6"]
 [ext_resource type="Resource" uid="uid://cslo0l2c2xbof" path="res://factions/red.tres" id="5_qgbfs"]
-[ext_resource type="Script" path="res://factions/control/faction_controller.gd" id="5_se3fa"]
 [ext_resource type="Resource" uid="uid://146a8eniubpu" path="res://factions/blue.tres" id="6_2we2b"]
-[ext_resource type="Script" path="res://factions/control/player_faction_controller.gd" id="6_cinfg"]
+[ext_resource type="Script" path="res://factions/player_faction.gd" id="6_rx0ub"]
+[ext_resource type="PackedScene" uid="uid://c6fmfovjas75e" path="res://ui/ui.tscn" id="7_vba30"]
 
-[node name="Playground" type="Node2D"]
+[node name="Playground" type="Node2D" node_paths=PackedStringArray("turn_order")]
 script = ExtResource("1_4guag")
+turn_order = [NodePath("Factions/BlueFaction"), NodePath("Factions/RedFaction")]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(1, 0)
@@ -21,20 +22,14 @@ script = ExtResource("2_u0emu")
 
 [node name="Factions" type="Node" parent="."]
 
-[node name="RedFaction" type="Node" parent="Factions" node_paths=PackedStringArray("controller", "map_controller")]
+[node name="RedFaction" type="Node" parent="Factions" node_paths=PackedStringArray("map_controller")]
 script = ExtResource("2_wy1i6")
 faction_base = ExtResource("5_qgbfs")
-controller = NodePath("Dummy")
 map_controller = NodePath("../../TileMap")
 
-[node name="Dummy" type="Node" parent="Factions/RedFaction"]
-script = ExtResource("5_se3fa")
-
-[node name="BlueFaction" type="Node" parent="Factions" node_paths=PackedStringArray("controller", "map_controller")]
-script = ExtResource("2_wy1i6")
+[node name="BlueFaction" type="Node" parent="Factions" node_paths=PackedStringArray("map_controller")]
+script = ExtResource("6_rx0ub")
 faction_base = ExtResource("6_2we2b")
-controller = NodePath("Player")
 map_controller = NodePath("../../TileMap")
 
-[node name="Player" type="Node" parent="Factions/BlueFaction"]
-script = ExtResource("6_cinfg")
+[node name="UI" parent="." instance=ExtResource("7_vba30")]

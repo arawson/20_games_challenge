@@ -18,12 +18,16 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-FactionManager="*res://factions/faction_manager.gd"
 Util="*res://lib/util.gd"
-TurnManager="*res://lib/turn_manager.gd"
+MainBus="*res://lib/main_bus.gd"
+
+[debug]
+
+gdscript/warnings/unused_signal=0
 
 [display]
 
+window/size/mode=3
 window/handheld/orientation=1
 
 [input]
