@@ -1,6 +1,10 @@
+class_name UI
 extends Control
+
+
+signal turn_completed()
 
 
 func _on_end_turn_pressed() -> void:
 	print("ui turn end")
-	MainBus.ui_turn_completed.emit()
+	turn_completed.emit()

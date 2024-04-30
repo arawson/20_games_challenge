@@ -27,9 +27,10 @@ script = ExtResource("2_wy1i6")
 faction_base = ExtResource("5_qgbfs")
 map_controller = NodePath("../../TileMap")
 
-[node name="BlueFaction" type="Node" parent="Factions" node_paths=PackedStringArray("map_controller")]
+[node name="BlueFaction" type="Node" parent="Factions" node_paths=PackedStringArray("ui", "map_controller")]
 script = ExtResource("6_rx0ub")
+ui = NodePath("UI")
 faction_base = ExtResource("6_2we2b")
 map_controller = NodePath("../../TileMap")
 
-[node name="UI" parent="." instance=ExtResource("7_vba30")]
+[node name="UI" parent="Factions/BlueFaction" instance=ExtResource("7_vba30")]

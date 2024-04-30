@@ -31,4 +31,4 @@ func _on_faction_turn_completed(faction: String):
 	turn_index += 1
 	if turn_index >= len(turn_order):
 		turn_index = 0
-	turn_order[turn_index].turn_ready()
+	turn_order[turn_index].turn_ready.call_deferred()
