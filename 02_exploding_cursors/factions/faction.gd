@@ -7,6 +7,7 @@ signal turn_completed(faction: String)
 
 @export var faction_base: FactionBase
 @export var map_controller: MapController
+@export var unit_container: Node
 
 
 @onready var faction: String = faction_base.name
@@ -15,6 +16,12 @@ signal turn_completed(faction: String)
 func _ready() -> void:
 	assert(faction_base != null)
 	assert(map_controller != null)
+	assert(unit_container != null)
+
+	for c in unit_container.get_children():
+		var unit = c as Unit
+		assert(unit != null)
+		
 
 
 func _process(_delta: float) -> void:

@@ -1,6 +1,8 @@
+class_name Unit
 extends Node
 
 
+var faction: String
 var blocks: Array[UnitBlock]
 
 

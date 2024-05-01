@@ -13,24 +13,33 @@
 script = ExtResource("1_4guag")
 turn_order = [NodePath("Factions/BlueFaction"), NodePath("Factions/RedFaction")]
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("blocks")]
 position = Vector2(1, 0)
 tile_set = ExtResource("1_k24fm")
 format = 2
 layer_0/tile_data = PackedInt32Array(65537, 1, 0, 65538, 1, 0, 131074, 1, 0, 131073, 1, 0, 65539, 1, 0, 131075, 1, 0, 131076, 1, 0, 65540, 1, 0, 65541, 1, 0, 131077, 1, 0, 196612, 1, 0, 262148, 1, 0, 327684, 1, 0, 393220, 1, 0, 196613, 1, 0, 262149, 1, 0, 327685, 1, 0, 393221, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 196611, 1, 0, 262150, 1, 0)
 script = ExtResource("2_u0emu")
+blocks = NodePath("Blocks")
+
+[node name="Blocks" type="Node" parent="TileMap"]
 
 [node name="Factions" type="Node" parent="."]
 
-[node name="RedFaction" type="Node" parent="Factions" node_paths=PackedStringArray("map_controller")]
+[node name="RedFaction" type="Node" parent="Factions" node_paths=PackedStringArray("map_controller", "unit_container")]
 script = ExtResource("2_wy1i6")
 faction_base = ExtResource("5_qgbfs")
 map_controller = NodePath("../../TileMap")
+unit_container = NodePath("Units")
 
-[node name="BlueFaction" type="Node" parent="Factions" node_paths=PackedStringArray("ui", "map_controller")]
+[node name="Units" type="Node" parent="Factions/RedFaction"]
+
+[node name="BlueFaction" type="Node" parent="Factions" node_paths=PackedStringArray("ui", "map_controller", "unit_container")]
 script = ExtResource("6_rx0ub")
 ui = NodePath("UI")
 faction_base = ExtResource("6_2we2b")
 map_controller = NodePath("../../TileMap")
+unit_container = NodePath("Units")
 
 [node name="UI" parent="Factions/BlueFaction" instance=ExtResource("7_vba30")]
+
+[node name="Units" type="Node" parent="Factions/BlueFaction"]

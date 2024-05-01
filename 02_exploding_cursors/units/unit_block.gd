@@ -1,3 +1,4 @@
+## A tracker for a Unit's blocks which lives under the map.
 class_name UnitBlock
 extends Node2D
 
@@ -9,6 +10,10 @@ extends Node2D
 
 var border_head = preload("res://placeholders/fantasy_borders/unit-head.png")
 var border_body = preload("res://units/unit_block.tscn")
+
+
+# Maintain a back-reference to the unit which created us.
+@export var unit: Unit
 
 
 @export var is_head: bool:
@@ -39,7 +44,8 @@ var border_body = preload("res://units/unit_block.tscn")
 		faction = value
 
 
-@export var grid_position: Vector2i = Vector2i.ZERO
+@export var coordinates: Vector2i = Vector2i.ZERO
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
