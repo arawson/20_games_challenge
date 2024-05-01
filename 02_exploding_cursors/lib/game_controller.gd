@@ -4,6 +4,7 @@ extends Node2D
 @export var turn_order: Array[Faction] = []
 var turn_index: int = 0
 var faction_by_name: Dictionary = {}
+var turn_counter: int = 1
 
 
 func _ready() -> void:
@@ -11,6 +12,7 @@ func _ready() -> void:
 	for t in turn_order:
 		_register_faction(t)
 
+	_on_turn_top()
 	turn_order[turn_index].turn_ready()
 
 
@@ -24,6 +26,10 @@ func _register_faction(faction: Faction):
 	faction.turn_completed.connect(_on_faction_turn_completed)
 
 
+func _on_turn_top():
+	for f in turn_order:
+		f.turn_top(turn_counter)
+
 func _on_faction_turn_completed(faction: String):
 	print("_on_faction_turn_completed: %s" % faction)
 	assert(faction_by_name.has(faction))
@@ -31,4 +37,6 @@ func _on_faction_turn_completed(faction: String):
 	turn_index += 1
 	if turn_index >= len(turn_order):
 		turn_index = 0
+		turn_counter += 1
+		_on_turn_top()
 	turn_order[turn_index].turn_ready.call_deferred()

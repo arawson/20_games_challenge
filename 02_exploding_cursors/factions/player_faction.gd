@@ -24,3 +24,6 @@ func _on_ui_turn_completed():
 		turn_completed.emit(faction_base.name)
 	_is_turn_active = false
 
+
+func turn_top(turn_number: int):
+	ui.turn_number = turn_number

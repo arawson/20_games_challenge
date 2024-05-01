@@ -24,3 +24,7 @@ func _process(_delta: float) -> void:
 func turn_ready():
 	print("dummy faction starts and ends turn immediately")
 	turn_completed.emit(faction)
+
+
+func turn_top(_turn_number: int):
+	pass

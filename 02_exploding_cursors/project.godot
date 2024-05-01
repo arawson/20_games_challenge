@@ -31,6 +31,10 @@ window/size/viewport_width=640
 window/size/viewport_height=480
 window/handheld/orientation=1
 
+[gui]
+
+theme/custom="res://ui/kenney/kenneyUI-green.tres"
+
 [input]
 
 move_up={

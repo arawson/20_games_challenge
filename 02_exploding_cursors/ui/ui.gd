@@ -5,6 +5,16 @@ extends Control
 signal turn_completed()
 
 
+@export var turn_number: int:
+	get:
+		return turn_number
+	set(value):
+		turn_number = value
+		turn_counter.text = "Turn #%d" % value
+
+@onready var turn_counter = %TurnCounter
+
+
 func _on_end_turn_pressed() -> void:
 	print("ui turn end")
 	turn_completed.emit()
