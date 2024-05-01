@@ -39,3 +39,7 @@ A unit must track these things:
  3. How many moves or actions it has left this turn.
 A unit must respond to these events:
  1. Taking damage.
+## Control Scheme
+ 1. A mouse or other pointer can be used to:
+    1. Select unit blocks
+	2. Activate unit actions

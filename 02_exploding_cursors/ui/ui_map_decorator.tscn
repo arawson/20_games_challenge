@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://0c8l14gky6mn"]
+
+[ext_resource type="Script" path="res://ui/ui_map_decorator.gd" id="1_fo3vm"]
+[ext_resource type="Texture2D" uid="uid://d3wnpfqd5ox4k" path="res://placeholders/fantasy_borders/unit-selection.png" id="2_lvnyp"]
+[ext_resource type="Texture2D" uid="uid://v6544gh4bgmo" path="res://placeholders/cursors/arrow_n.png" id="3_3yjwj"]
+[ext_resource type="Texture2D" uid="uid://cek8fj56wyagk" path="res://placeholders/cursors/arrow_s.png" id="4_lmlnf"]
+[ext_resource type="Texture2D" uid="uid://bb4o1iwaxehj8" path="res://placeholders/cursors/arrow_w.png" id="5_jenu7"]
+[ext_resource type="Texture2D" uid="uid://dkcuk6dfdd1l8" path="res://placeholders/cursors/arrow_e.png" id="6_60vwd"]
+
+[node name="UiMapDecorator" type="Node"]
+script = ExtResource("1_fo3vm")
+
+[node name="UnitCursor" type="Node2D" parent="."]
+
+[node name="BlockHighlight" type="Sprite2D" parent="UnitCursor"]
+texture = ExtResource("2_lvnyp")
+
+[node name="ArrowN" type="Sprite2D" parent="UnitCursor"]
+position = Vector2(0, -44)
+texture = ExtResource("3_3yjwj")
+
+[node name="ArrowS" type="Sprite2D" parent="UnitCursor"]
+position = Vector2(0, 44)
+texture = ExtResource("4_lmlnf")
+
+[node name="ArrowW" type="Sprite2D" parent="UnitCursor"]
+position = Vector2(-44, 0)
+texture = ExtResource("5_jenu7")
+
+[node name="ArrowE" type="Sprite2D" parent="UnitCursor"]
+position = Vector2(44, 0)
+texture = ExtResource("6_60vwd")
