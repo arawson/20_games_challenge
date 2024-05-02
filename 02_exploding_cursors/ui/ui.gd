@@ -36,3 +36,14 @@ func _on_input_unit_selected(unit: Unit, block: UnitBlock):
 func _on_input_nothing_selected(coords: Vector2i, global_pos: Vector2):
 	map_cursor.global_position = global_pos
 	pass
+
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_action_just_pressed("move_up"):
+		MainBus.input_inject_selection.emit(map_cursor.global_position + Vector2(0, -30))
+	elif Input.is_action_just_pressed("move_down"):
+		MainBus.input_inject_selection.emit(map_cursor.global_position + Vector2(0, 30))
+	elif Input.is_action_just_pressed("move_right"):
+		MainBus.input_inject_selection.emit(map_cursor.global_position + Vector2(30, 0))
+	elif Input.is_action_just_pressed("move_left"):
+		MainBus.input_inject_selection.emit(map_cursor.global_position + Vector2(-30, 0))

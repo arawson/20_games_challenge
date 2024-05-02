@@ -43,6 +43,7 @@ map_controller = NodePath("../../TileMap")
 unit_container = NodePath("Units")
 
 [node name="UI" parent="Factions/BlueFaction" instance=ExtResource("7_vba30")]
+mouse_filter = 1
 
 [node name="MapCursor" parent="Factions/BlueFaction/UI" instance=ExtResource("9_88q0i")]
 

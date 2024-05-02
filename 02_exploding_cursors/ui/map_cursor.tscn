@@ -14,17 +14,21 @@ script = ExtResource("1_ylnhl")
 texture = ExtResource("2_lvnyp")
 
 [node name="ArrowN" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -44)
 texture = ExtResource("3_3yjwj")
 
 [node name="ArrowS" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, 44)
 texture = ExtResource("4_lmlnf")
 
 [node name="ArrowW" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-44, 0)
 texture = ExtResource("5_jenu7")
 
 [node name="ArrowE" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(44, 0)
 texture = ExtResource("6_60vwd")
