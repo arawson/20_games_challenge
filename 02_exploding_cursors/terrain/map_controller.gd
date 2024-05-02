@@ -9,7 +9,7 @@ var block_store: Dictionary = {}
 
 
 func _ready() -> void:
-	pass # Replace with function body.
+	MainBus.input_inject_selection.connect(_on_input_inject_selection)
 
 
 func _process(_delta: float) -> void:
@@ -22,6 +22,16 @@ func place_block(block: UnitBlock, coords: Vector2i):
 	block.coordinates = coords
 
 
+func _on_input_inject_selection(global_pos: Vector2) -> void:
+	var coords = local_to_map(to_local(global_pos))
+	var block = block_store.get(coords)
+	if block:
+		MainBus.input_unit_selected.emit(block.unit)
+	else:
+		MainBus.input_nothing_selected.emit(
+			coords, to_global(map_to_local(coords)))
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if (
 	event.is_action_pressed("pointer_action")
@@ -31,7 +41,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		var coords = local_to_map(get_local_mouse_position())
 		var block = block_store.get(coords)
 		if block:
-			MainBus.input_unit_selected.emit(block.unit)
+			MainBus.input_unit_selected.emit(block.unit, block)
 		else:
-			MainBus.input_nothing_selected.emit(coords)
+			MainBus.input_nothing_selected.emit(
+				coords, to_global(map_to_local(coords)))
 	pass

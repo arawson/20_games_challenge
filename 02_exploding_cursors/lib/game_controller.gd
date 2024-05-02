@@ -7,8 +7,14 @@ var faction_by_name: Dictionary = {}
 var turn_counter: int = 1
 
 
+@onready var gizmos = $Gizmos
+
+
 func _ready() -> void:
 	assert(turn_order.size() > 0)
+	assert(gizmos != null)
+	assert(gizmos.get_node("CursorStartPos") != null)
+
 	for t in turn_order:
 		_register_faction(t)
 

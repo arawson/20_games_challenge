@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://5f7bw2ghd3kt"]
+[gd_scene load_steps=12 format=3 uid="uid://5f7bw2ghd3kt"]
 
 [ext_resource type="Script" path="res://lib/game_controller.gd" id="1_4guag"]
 [ext_resource type="TileSet" uid="uid://4a1fhvbuelqc" path="res://terrain/terrain_tiles.tres" id="1_k24fm"]
@@ -8,14 +8,15 @@
 [ext_resource type="Resource" uid="uid://146a8eniubpu" path="res://factions/blue.tres" id="6_2we2b"]
 [ext_resource type="Script" path="res://factions/player_faction.gd" id="6_rx0ub"]
 [ext_resource type="PackedScene" uid="uid://c6fmfovjas75e" path="res://ui/ui.tscn" id="7_vba30"]
-[ext_resource type="PackedScene" uid="uid://0c8l14gky6mn" path="res://ui/ui_map_decorator.tscn" id="9_88q0i"]
+[ext_resource type="PackedScene" uid="uid://0c8l14gky6mn" path="res://ui/map_cursor.tscn" id="9_88q0i"]
+[ext_resource type="Texture2D" uid="uid://ceoa2xm3hdx2y" path="res://placeholders/cursors/hand_thin_point.png" id="10_gus74"]
+[ext_resource type="Script" path="res://gizmos/cursor_start_pos.gd" id="11_jywuj"]
 
 [node name="Playground" type="Node2D" node_paths=PackedStringArray("turn_order")]
 script = ExtResource("1_4guag")
 turn_order = [NodePath("Factions/BlueFaction"), NodePath("Factions/RedFaction")]
 
 [node name="TileMap" type="TileMap" parent="." node_paths=PackedStringArray("blocks")]
-position = Vector2(1, 0)
 tile_set = ExtResource("1_k24fm")
 format = 2
 layer_0/tile_data = PackedInt32Array(65537, 1, 0, 65538, 1, 0, 131074, 1, 0, 131073, 1, 0, 65539, 1, 0, 131075, 1, 0, 131076, 1, 0, 65540, 1, 0, 65541, 1, 0, 131077, 1, 0, 196612, 1, 0, 262148, 1, 0, 327684, 1, 0, 393220, 1, 0, 196613, 1, 0, 262149, 1, 0, 327685, 1, 0, 393221, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 393222, 1, 0, 393223, 1, 0, 393224, 1, 0, 196611, 1, 0, 262150, 1, 0)
@@ -43,6 +44,13 @@ unit_container = NodePath("Units")
 
 [node name="UI" parent="Factions/BlueFaction" instance=ExtResource("7_vba30")]
 
-[node name="UiMapDecorator" parent="Factions/BlueFaction/UI" instance=ExtResource("9_88q0i")]
+[node name="MapCursor" parent="Factions/BlueFaction/UI" instance=ExtResource("9_88q0i")]
 
 [node name="Units" type="Node" parent="Factions/BlueFaction"]
+
+[node name="Gizmos" type="Node" parent="."]
+
+[node name="CursorStartPos" type="Sprite2D" parent="Gizmos"]
+position = Vector2(218, 127)
+texture = ExtResource("10_gus74")
+script = ExtResource("11_jywuj")
