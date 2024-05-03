@@ -46,3 +46,21 @@ func _unhandled_input(event: InputEvent) -> void:
 			MainBus.input_nothing_selected.emit(
 				coords, to_global(map_to_local(coords)))
 	pass
+
+
+func _align_node(n: Node2D) -> Vector2i:
+	var coords = local_to_map(to_local(n.global_position))
+	n.global_position = to_global(map_to_local(coords))
+	return coords
+
+
+func collect_unit_blocks(unit: Unit):
+	for n in blocks.get_children():
+		var block = n as UnitBlock
+		assert(block != null)
+
+		# we're gonna use the name of the faction+unit (just the unit)
+		# to figure out the blocks which belong to it on startup
+		if (block.name.begins_with(unit.name)):
+			unit.blocks.append(block)
+			block.coords = _align_node(block)

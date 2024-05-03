@@ -1,16 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://5f7bw2ghd3kt"]
+[gd_scene load_steps=15 format=3 uid="uid://5f7bw2ghd3kt"]
 
 [ext_resource type="Script" path="res://lib/game_controller.gd" id="1_4guag"]
 [ext_resource type="TileSet" uid="uid://4a1fhvbuelqc" path="res://terrain/terrain_tiles.tres" id="1_k24fm"]
 [ext_resource type="Script" path="res://terrain/map_controller.gd" id="2_u0emu"]
 [ext_resource type="Script" path="res://factions/faction.gd" id="2_wy1i6"]
+[ext_resource type="PackedScene" uid="uid://jg07g8xjabqm" path="res://units/unit_block.tscn" id="4_073c0"]
 [ext_resource type="Resource" uid="uid://cslo0l2c2xbof" path="res://factions/red.tres" id="5_qgbfs"]
 [ext_resource type="Resource" uid="uid://146a8eniubpu" path="res://factions/blue.tres" id="6_2we2b"]
 [ext_resource type="Script" path="res://factions/player_faction.gd" id="6_rx0ub"]
 [ext_resource type="PackedScene" uid="uid://c6fmfovjas75e" path="res://ui/ui.tscn" id="7_vba30"]
 [ext_resource type="PackedScene" uid="uid://0c8l14gky6mn" path="res://ui/map_cursor.tscn" id="9_88q0i"]
 [ext_resource type="Texture2D" uid="uid://ceoa2xm3hdx2y" path="res://placeholders/cursors/hand_thin_point.png" id="10_gus74"]
+[ext_resource type="PackedScene" uid="uid://btosv764rqoi" path="res://units/unit.tscn" id="11_1dwen"]
 [ext_resource type="Script" path="res://gizmos/cursor_start_pos.gd" id="11_jywuj"]
+[ext_resource type="Resource" uid="uid://c782har6isrnx" path="res://units/scout.tres" id="12_p512b"]
 
 [node name="Playground" type="Node2D" node_paths=PackedStringArray("turn_order")]
 script = ExtResource("1_4guag")
@@ -24,6 +27,9 @@ script = ExtResource("2_u0emu")
 blocks = NodePath("Blocks")
 
 [node name="Blocks" type="Node" parent="TileMap"]
+
+[node name="Blue_1_1" parent="TileMap/Blocks" instance=ExtResource("4_073c0")]
+position = Vector2(214, 214)
 
 [node name="Factions" type="Node" parent="."]
 
@@ -48,6 +54,9 @@ mouse_filter = 1
 [node name="MapCursor" parent="Factions/BlueFaction/UI" instance=ExtResource("9_88q0i")]
 
 [node name="Units" type="Node" parent="Factions/BlueFaction"]
+
+[node name="Blue_1" parent="Factions/BlueFaction/Units" instance=ExtResource("11_1dwen")]
+base = ExtResource("12_p512b")
 
 [node name="Gizmos" type="Node" parent="."]
 

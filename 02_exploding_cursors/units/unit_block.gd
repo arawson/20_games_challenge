@@ -16,15 +16,17 @@ var border_body = preload("res://units/unit_block.tscn")
 @export var unit: Unit
 
 
-@export var is_head: bool:
+@export var is_head: bool = false:
 	get:
 		return is_head
 	set(value):
-		unit_icon.visible = value
-		if value:
-			border.texture = border_head
-		else:
-			border.texture = border_body
+		if unit_icon:
+			unit_icon.visible = value
+		if border:
+			if value:
+				border.texture = border_head
+			else:
+				border.texture = border_body
 		is_head = value
 
 
@@ -32,7 +34,8 @@ var border_body = preload("res://units/unit_block.tscn")
 	get:
 		return unit_base
 	set(value):
-		unit_icon.texture = value.icon
+		if unit_icon:
+			unit_icon.texture = value.icon
 		unit_base = value
 
 
@@ -44,14 +47,11 @@ var border_body = preload("res://units/unit_block.tscn")
 		faction = value
 
 
-@export var coordinates: Vector2i = Vector2i.ZERO
+@export var coords: Vector2i = Vector2i.ZERO
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+	assert(unit_icon != null)
+	assert(border_head != null)
+	assert(border_body != null)
+	assert(faction_background != null)

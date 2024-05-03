@@ -19,9 +19,15 @@ func _ready() -> void:
 	assert(unit_container != null)
 
 	for c in unit_container.get_children():
+		# unit_container is already a list of our units so just validate them
 		var unit = c as Unit
 		assert(unit != null)
-		
+		unit.faction = self
+		map_controller.collect_unit_blocks(unit)
+		for block in unit.blocks:
+			block.faction = self
+			block.unit = unit
+			block.unit_base = unit.base
 
 
 func _process(_delta: float) -> void:
