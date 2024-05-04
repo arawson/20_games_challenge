@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="FactionBase" load_steps=2 format=3 uid="uid://146a8eniubpu"]
+[gd_resource type="Resource" script_class="FactionBase" load_steps=3 format=3 uid="uid://146a8eniubpu"]
 
 [ext_resource type="Script" path="res://factions/faction_base.gd" id="1_nexrx"]
+[ext_resource type="Texture2D" uid="uid://bb5kryn5webbo" path="res://placeholders/faction_colors/faction-blue.png" id="1_sgbsm"]
 
 [resource]
 script = ExtResource("1_nexrx")
+background = ExtResource("1_sgbsm")
 name = "Blue"

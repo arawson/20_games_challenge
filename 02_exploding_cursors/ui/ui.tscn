@@ -35,4 +35,18 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "End Turn"
 
+[node name="Bottom" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UnitLabel" type="Label" parent="Bottom"]
+layout_mode = 2
+text = "Empty Space"
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/EndTurn" to="." method="_on_end_turn_pressed"]

@@ -9,7 +9,16 @@ var block_store: Dictionary = {}
 
 
 func _ready() -> void:
+	assert(blocks != null)
 	MainBus.input_inject_selection.connect(_on_input_inject_selection)
+
+	for c in blocks.get_children():
+		var b = c as UnitBlock
+		assert(b != null)
+		
+		var coords = local_to_map(to_local(b.global_position))
+		assert(!block_store.has(coords))
+		block_store[coords] = b
 
 
 func _process(_delta: float) -> void:
@@ -26,7 +35,7 @@ func _on_input_inject_selection(global_pos: Vector2) -> void:
 	var coords = local_to_map(to_local(global_pos))
 	var block = block_store.get(coords)
 	if block:
-		MainBus.input_unit_selected.emit(block.unit)
+		MainBus.input_unit_selected.emit(block.unit, block)
 	else:
 		MainBus.input_nothing_selected.emit(
 			coords, to_global(map_to_local(coords)))
@@ -45,7 +54,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		else:
 			MainBus.input_nothing_selected.emit(
 				coords, to_global(map_to_local(coords)))
-	pass
 
 
 func _align_node(n: Node2D) -> Vector2i:

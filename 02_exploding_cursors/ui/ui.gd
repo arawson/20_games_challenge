@@ -6,6 +6,7 @@ signal turn_completed()
 
 
 @onready var map_cursor: Node2D = $MapCursor
+@onready var unit_label: Label = $Bottom/UnitLabel
 
 
 @export var turn_number: int:
@@ -30,12 +31,15 @@ func _on_end_turn_pressed() -> void:
 
 
 func _on_input_unit_selected(unit: Unit, block: UnitBlock):
-	pass
+	LogDuck.d("unit selected")
+	map_cursor.global_position = block.global_position
+	unit_label.text = unit.base.name
 
 
 func _on_input_nothing_selected(coords: Vector2i, global_pos: Vector2):
+	LogDuck.d("nothing selected")
 	map_cursor.global_position = global_pos
-	pass
+	unit_label.text = "Nothing"
 
 
 func _input(_event: InputEvent) -> void:
