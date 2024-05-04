@@ -20,31 +20,32 @@ var border_body = preload("res://units/unit_block.tscn")
 	get:
 		return is_head
 	set(value):
-		if unit_icon:
+		is_head = value
+		if is_inside_tree():
 			unit_icon.visible = value
-		if border:
 			if value:
 				border.texture = border_head
 			else:
 				border.texture = border_body
-		is_head = value
 
 
 @export var unit_base: UnitBase:
 	get:
 		return unit_base
 	set(value):
-		if unit_icon:
-			unit_icon.texture = value.icon
 		unit_base = value
+		if is_inside_tree():
+			unit_icon.texture = value.icon
 
 
 @export var faction: Faction:
 	get:
 		return faction
 	set(value):
-		faction_background.texture = faction.faction_base.background
+		assert(value != null)
 		faction = value
+		if is_inside_tree():
+			faction_background.texture = faction.faction_base.background
 
 
 @export var coords: Vector2i = Vector2i.ZERO

@@ -28,8 +28,9 @@ blocks = NodePath("Blocks")
 
 [node name="Blocks" type="Node" parent="TileMap"]
 
-[node name="Blue_1_1" parent="TileMap/Blocks" instance=ExtResource("4_073c0")]
+[node name="Blue_1_1" parent="TileMap/Blocks" node_paths=PackedStringArray("faction") instance=ExtResource("4_073c0")]
 position = Vector2(214, 214)
+faction = NodePath("../../../Factions/BlueFaction")
 
 [node name="Factions" type="Node" parent="."]
 
