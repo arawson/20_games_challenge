@@ -28,6 +28,8 @@ func _ready() -> void:
 			block.faction = self
 			block.unit = unit
 			block.unit_base = unit.base
+			block.is_head = block.is_head
+		unit.health = unit.blocks.size()
 
 
 func _process(_delta: float) -> void:

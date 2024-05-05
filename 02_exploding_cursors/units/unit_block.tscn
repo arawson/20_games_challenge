@@ -9,7 +9,6 @@
 
 [node name="UnitBlock" type="Node2D"]
 script = ExtResource("1_vp8o3")
-is_head = true
 unit_base = ExtResource("2_xgl5g")
 
 [node name="FactionBackground" type="Sprite2D" parent="."]

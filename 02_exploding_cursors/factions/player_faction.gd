@@ -14,8 +14,11 @@ func _ready():
 
 
 func turn_ready():
-	print("player turn start")
+	LogDuck.d("player turn start")
 	_is_turn_active = true
+	for c in unit_container.get_children():
+		var u = c as Unit
+		u.turn_ready()
 
 
 func _on_ui_turn_completed():

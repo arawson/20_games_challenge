@@ -33,7 +33,7 @@ func _on_end_turn_pressed() -> void:
 func _on_input_unit_selected(unit: Unit, block: UnitBlock):
 	LogDuck.d("unit selected")
 	map_cursor.global_position = block.global_position
-	unit_label.text = unit.base.name
+	unit_label.text = "%s - Moves Left: %d" % [unit.base.name, unit.movement_left]
 
 
 func _on_input_nothing_selected(coords: Vector2i, global_pos: Vector2):

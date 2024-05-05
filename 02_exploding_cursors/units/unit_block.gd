@@ -9,7 +9,7 @@ extends Node2D
 
 
 var border_head = preload("res://placeholders/fantasy_borders/unit-head.png")
-var border_body = preload("res://units/unit_block.tscn")
+var border_body = preload("res://placeholders/fantasy_borders/unit-block.png")
 
 
 # Maintain a back-reference to the unit which created us.
