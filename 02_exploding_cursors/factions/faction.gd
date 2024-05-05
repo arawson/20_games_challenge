@@ -13,6 +13,9 @@ signal turn_completed(faction: String)
 @onready var faction: String = faction_base.name
 
 
+var _my_turn: bool = false
+
+
 func _ready() -> void:
 	assert(faction_base != null)
 	assert(map_controller != null)
@@ -32,14 +35,23 @@ func _ready() -> void:
 		unit.health = unit.blocks.size()
 
 
-func _process(_delta: float) -> void:
-	pass
-
-
 func turn_ready():
-	print("dummy faction starts and ends turn immediately")
-	turn_completed.emit(faction)
+	_my_turn = true
+	_turn_ready()
 
 
-func turn_top(_turn_number: int):
+func _turn_ready():
 	pass
+
+
+func turn_top(turn_number: int):
+	_turn_top(turn_number)
+
+
+func _turn_top(_turn_number: int):
+	pass
+
+
+func _turn_end():
+	_my_turn = false
+	turn_completed.emit(faction)

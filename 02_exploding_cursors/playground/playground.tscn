@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://lib/game_controller.gd" id="1_4guag"]
 [ext_resource type="TileSet" uid="uid://4a1fhvbuelqc" path="res://terrain/terrain_tiles.tres" id="1_k24fm"]
 [ext_resource type="Script" path="res://terrain/map_controller.gd" id="2_u0emu"]
-[ext_resource type="Script" path="res://factions/faction.gd" id="2_wy1i6"]
 [ext_resource type="PackedScene" uid="uid://jg07g8xjabqm" path="res://units/unit_block.tscn" id="4_073c0"]
+[ext_resource type="Script" path="res://factions/dummy_faction.gd" id="5_bil8d"]
 [ext_resource type="Resource" uid="uid://cslo0l2c2xbof" path="res://factions/red.tres" id="5_qgbfs"]
 [ext_resource type="Resource" uid="uid://146a8eniubpu" path="res://factions/blue.tres" id="6_2we2b"]
 [ext_resource type="Script" path="res://factions/player_faction.gd" id="6_rx0ub"]
@@ -40,7 +40,7 @@ faction = NodePath("../../../Factions/BlueFaction")
 [node name="Factions" type="Node" parent="."]
 
 [node name="RedFaction" type="Node" parent="Factions" node_paths=PackedStringArray("map_controller", "unit_container")]
-script = ExtResource("2_wy1i6")
+script = ExtResource("5_bil8d")
 faction_base = ExtResource("5_qgbfs")
 map_controller = NodePath("../../TileMap")
 unit_container = NodePath("Units")

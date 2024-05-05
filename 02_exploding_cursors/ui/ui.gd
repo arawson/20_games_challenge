@@ -43,12 +43,18 @@ func _on_input_unit_selected(unit: Unit, block: UnitBlock):
 		button.text = a.name
 		button.icon = a.icon
 		action_cards.add_child(button)
+		button.pressed.connect(_on_action_button_pressed.bind(unit, a))
 
 
-func _on_input_nothing_selected(coords: Vector2i, global_pos: Vector2):
+func _on_action_button_pressed(unit: Unit, action: Action):
+	LogDuck.d("action button pressed", unit.name, action.name)
+
+
+func _on_input_nothing_selected(_coords: Vector2i, global_pos: Vector2):
 	LogDuck.d("nothing selected")
 	map_cursor.global_position = global_pos
 	unit_label.text = "Nothing"
+	Util.delete_all_children(action_cards)
 
 
 func _input(_event: InputEvent) -> void:

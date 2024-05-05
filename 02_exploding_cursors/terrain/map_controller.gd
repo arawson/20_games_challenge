@@ -8,6 +8,15 @@ extends TileMap
 var block_store: Dictionary = {}
 
 
+func move_unit(unit: Unit, dir: Util.Direction, cursor_pos: Vector2):
+	# get unit head
+	var head = unit.get_head()
+	# check if head would land on open terrain
+	# TODO grab the occupancy checking code out of rainshadow
+	# check if head would collide with another unit
+
+
+
 func _ready() -> void:
 	assert(blocks != null)
 	MainBus.input_inject_selection.connect(_on_input_inject_selection)
