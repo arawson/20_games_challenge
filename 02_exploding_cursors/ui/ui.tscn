@@ -35,6 +35,10 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "End Turn"
 
+[node name="ActionCards" type="HFlowContainer" parent="PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="Bottom" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7

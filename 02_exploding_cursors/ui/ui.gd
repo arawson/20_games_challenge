@@ -7,6 +7,7 @@ signal turn_completed()
 
 @onready var map_cursor: Node2D = $MapCursor
 @onready var unit_label: Label = $Bottom/UnitLabel
+@onready var action_cards: Container = %ActionCards
 
 
 @export var turn_number: int:
@@ -34,6 +35,14 @@ func _on_input_unit_selected(unit: Unit, block: UnitBlock):
 	LogDuck.d("unit selected")
 	map_cursor.global_position = block.global_position
 	unit_label.text = "%s - Moves Left: %d" % [unit.base.name, unit.movement_left]
+
+	Util.delete_all_children(action_cards)
+	for a in unit.base.actions:
+		LogDuck.d("add unit action %s" % a.name)
+		var button = Button.new()
+		button.text = a.name
+		button.icon = a.icon
+		action_cards.add_child(button)
 
 
 func _on_input_nothing_selected(coords: Vector2i, global_pos: Vector2):
