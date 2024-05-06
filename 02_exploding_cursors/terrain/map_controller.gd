@@ -8,9 +8,13 @@ extends TileMap
 var block_store: Dictionary = {}
 
 
+@onready var _mobility: int = get_layer_id("Mobility")
+
+
 func move_unit(unit: Unit, dir: Util.Direction, cursor_pos: Vector2):
 	# get unit head
 	var head = unit.get_head()
+	# var dest = Vector2i(cursor_pos + Util.displace direction)
 	# check if head would land on open terrain
 	# TODO grab the occupancy checking code out of rainshadow
 	# check if head would collide with another unit
@@ -28,10 +32,6 @@ func _ready() -> void:
 		var coords = local_to_map(to_local(b.global_position))
 		assert(!block_store.has(coords))
 		block_store[coords] = b
-
-
-func _process(_delta: float) -> void:
-	pass
 
 
 func place_block(block: UnitBlock, coords: Vector2i):
@@ -81,3 +81,10 @@ func collect_unit_blocks(unit: Unit):
 		if (block.name.begins_with(unit.name)):
 			unit.blocks.append(block)
 			block.coords = _align_node(block)
+
+
+func get_layer_id(layer: String) -> int:
+	for i in range(get_layers_count()):
+		if layer == get_layer_name(i):
+			return i
+	return -1
