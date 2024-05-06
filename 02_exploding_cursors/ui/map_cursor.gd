@@ -23,7 +23,8 @@ func _on_input_nothing_selected(_coords: Vector2i, _global_pos: Vector2):
 
 func _on_move_arrow_clicked(event: InputEvent, dir: Util.Direction):
 	if (event is InputEventMouseButton
-	and Input.is_action_just_pressed("action")):
+	and Input.is_action_just_pressed("pointer_action")):
+		LogDuck.d("_on_move_arrow_clicked")
 		MainBus.input_action_move.emit(dir, global_position)
 
 

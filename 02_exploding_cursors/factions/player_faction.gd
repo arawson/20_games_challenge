@@ -45,8 +45,10 @@ func _on_input_nothing_selected(_coords: Vector2i, _global_pos: Vector2):
 
 
 func _on_input_action_move(direction: Util.Direction, cursor_pos: Vector2):
+	LogDuck.d("_on_input_action_move", direction, cursor_pos)
 	if selected == null:
 		return
 	
+	# TODO this went boom
 	if map_controller.can_move(selected, direction, cursor_pos):
 		pass
