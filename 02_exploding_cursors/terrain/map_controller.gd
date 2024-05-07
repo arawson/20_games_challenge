@@ -11,14 +11,19 @@ var block_store: Dictionary = {}
 @onready var _mobility: int = get_layer_id("Mobility")
 
 
-func move_unit(unit: Unit, dir: Util.Direction, cursor_pos: Vector2):
+func move_unit(unit: Unit, dir: Util.Direction, cursor_pos: Vector2) -> bool:
 	# get unit head
 	var head = unit.get_head()
-	# var dest = Vector2i(cursor_pos + Util.displace direction)
+	var dest = cursor_pos + Util.displacement(dir)
+	var coords = local_to_map(to_local(dest))
 	# check if head would land on open terrain
+	var source = get_cell_source_id(_mobility, coords)
+	var tiledata = get_cell_tile_data(_mobility, coords)
+	if (not tiledata or not tiledata.get_custom_data("open")):
+		return false
 	# TODO grab the occupancy checking code out of rainshadow
 	# check if head would collide with another unit
-
+	return true
 
 
 func _ready() -> void:

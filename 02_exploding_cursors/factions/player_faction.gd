@@ -50,5 +50,5 @@ func _on_input_action_move(direction: Util.Direction, cursor_pos: Vector2):
 		return
 	
 	# TODO this went boom
-	if map_controller.can_move(selected, direction, cursor_pos):
+	if map_controller.move_unit(selected, direction, cursor_pos):
 		pass
