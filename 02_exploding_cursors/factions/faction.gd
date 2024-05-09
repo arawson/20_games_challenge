@@ -14,6 +14,7 @@ signal turn_completed(faction: String)
 
 
 var _my_turn: bool = false
+var turn_number: int = 0
 
 
 func _ready() -> void:
@@ -44,7 +45,8 @@ func _turn_ready():
 	pass
 
 
-func turn_top(turn_number: int):
+func turn_top(the_turn_number: int):
+	self.turn_number = the_turn_number
 	_turn_top(turn_number)
 
 

@@ -31,11 +31,13 @@ blocks = NodePath("Blocks")
 
 [node name="Blue_1_1" parent="TileMap/Blocks" node_paths=PackedStringArray("faction") instance=ExtResource("4_073c0")]
 position = Vector2(214, 214)
+turn_created = -1
 is_head = true
 faction = NodePath("../../../Factions/BlueFaction")
 
 [node name="Blue_1_2" parent="TileMap/Blocks" node_paths=PackedStringArray("faction") instance=ExtResource("4_073c0")]
 position = Vector2(216, 264)
+turn_created = -2
 faction = NodePath("../../../Factions/BlueFaction")
 
 [node name="Factions" type="Node" parent="."]

@@ -15,6 +15,8 @@ var border_body = preload("res://placeholders/fantasy_borders/unit-block.png")
 # Maintain a back-reference to the unit which created us.
 @export var unit: Unit
 
+@export var turn_created: int
+
 
 @export var is_head: bool = false:
 	get:

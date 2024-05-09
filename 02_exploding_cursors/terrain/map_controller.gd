@@ -12,17 +12,23 @@ var block_store: Dictionary = {}
 
 
 func move_unit(unit: Unit, dir: Util.Direction, cursor_pos: Vector2) -> bool:
-	# get unit head
 	var head = unit.get_head()
-	var dest = cursor_pos + Util.displacement(dir)
-	var coords = local_to_map(to_local(dest))
+	var coords = local_to_map(to_local(cursor_pos + Util.displacement(dir)))
+
 	# check if head would land on open terrain
 	var source = get_cell_source_id(_mobility, coords)
 	var tiledata = get_cell_tile_data(_mobility, coords)
 	if (not tiledata or not tiledata.get_custom_data("open")):
 		return false
-	# TODO grab the occupancy checking code out of rainshadow
+	
 	# check if head would collide with another unit
+	var existing_block = block_store.has(coords)
+	if existing_block and existing_block.unit != unit:
+		return false
+
+	# unit move is valid!
+	unit.move_head(dir)
+
 	return true
 
 
@@ -39,10 +45,19 @@ func _ready() -> void:
 		block_store[coords] = b
 
 
-func place_block(block: UnitBlock, coords: Vector2i):
+func attach_block(block: UnitBlock, coords: Vector2i):
 	assert(!block_store.has(coords))
+	assert(!blocks.has_child(block))
 	block_store[coords] = block
 	block.coordinates = coords
+	blocks.add_child(block)
+
+
+func detach_block(block: UnitBlock):
+	assert(blocks.has_child(block.name))
+	assert(block_store.has(block.coords))
+	blocks.remove_child(block)
+	block_store.erase(block.coords)
 
 
 func _on_input_inject_selection(global_pos: Vector2) -> void:
