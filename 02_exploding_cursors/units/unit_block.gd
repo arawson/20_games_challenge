@@ -58,3 +58,13 @@ func _ready() -> void:
 	assert(border_head != null)
 	assert(border_body != null)
 	assert(faction_background != null)
+
+
+func reinit() -> void:
+	unit_icon.visible = is_head
+	if is_head:
+		border.texture = border_head
+	else:
+		border.texture = border_body
+	unit_icon.texture = unit_base.icon
+	faction_background.texture = faction.faction_base.background	

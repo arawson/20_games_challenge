@@ -6,3 +6,5 @@ signal input_unit_selected(unit: Unit, unit_block: UnitBlock)
 signal input_nothing_selected(coords: Vector2i, global_pos: Vector2)
 
 signal input_action_move(direction: Util.Direction, cursor_pos: Vector2)
+
+signal unit_moved(unit: Unit, dir: Util.Direction, old_head_pos: Vector2)

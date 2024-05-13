@@ -17,6 +17,9 @@ const block_scene = preload("res://units/unit_block.tscn")
 
 func _ready() -> void:
 	assert(base != null)
+	# we can't mamke this assertion because the map load sequence assembles
+	# units out of their blocks by name
+	# assert(len(blocks) > 0) 
 
 
 func turn_ready() -> void:
@@ -51,23 +54,14 @@ func get_block_on(coords: Vector2i) -> UnitBlock:
 	return null
 
 
-func get_damage_block(dir: Util.Direction) -> UnitBlock:
-	var store: Dictionary = {}
-	for b in blocks:
-		store[b.coords] = b
-	var blocks_to_assign = blocks.duplicate()
-	var blocks_assigned: Array[UnitBlock] = []
-	
-	# build a contiguous body starting from the head
-	var head = get_head()
-	blocks_assigned.append(head)
-
-	# TODO figure out this algorithm
+func get_damage_block() -> UnitBlock:
+	return blocks.back()
 
 
 func move_head(dir: Util.Direction):
 	var head = get_head()
 	var old_head_coords = head.coords
+	var old_head_pos = head.global_position
 	var new_head_coords = head.coords + Util.displacementi(dir)
 
 	var conflict = get_block_on(new_head_coords)
@@ -84,16 +78,16 @@ func move_head(dir: Util.Direction):
 		faction.map_controller.attach_block(head, new_head_coords)
 
 		var filler = make_block()
-		blocks.append(filler)
+		blocks.insert(1, filler)
 		faction.map_controller.attach_block(filler, old_head_coords)
+		filler.reinit()
 		health += 1
 
 		# get rid of the oldest block if we have more blocks than health
 		if health > base.health_max:
-			# TODO
 			var deletable = get_damage_block()
 			faction.map_controller.detach_block(deletable)
 			deletable.queue_free()
 			health -= 1
 
-	pass
+	MainBus.unit_moved.emit(self, dir, old_head_pos)

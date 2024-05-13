@@ -12,6 +12,7 @@ var block_store: Dictionary = {}
 
 
 func move_unit(unit: Unit, dir: Util.Direction, cursor_pos: Vector2) -> bool:
+	# TODO this probably shouldn't be in the map, but in the unit instead
 	var head = unit.get_head()
 	var coords = local_to_map(to_local(cursor_pos + Util.displacement(dir)))
 
@@ -22,7 +23,7 @@ func move_unit(unit: Unit, dir: Util.Direction, cursor_pos: Vector2) -> bool:
 		return false
 	
 	# check if head would collide with another unit
-	var existing_block = block_store.has(coords)
+	var existing_block = block_store.get(coords)
 	if existing_block and existing_block.unit != unit:
 		return false
 
@@ -47,14 +48,15 @@ func _ready() -> void:
 
 func attach_block(block: UnitBlock, coords: Vector2i):
 	assert(!block_store.has(coords))
-	assert(!blocks.has_child(block))
+	assert(!blocks.get_node(NodePath(block.name)) != null)
 	block_store[coords] = block
-	block.coordinates = coords
+	block.coords = coords
+	block.global_position = to_global(map_to_local(coords))
 	blocks.add_child(block)
 
 
 func detach_block(block: UnitBlock):
-	assert(blocks.has_child(block.name))
+	assert(blocks.get_node(NodePath(block.name)))
 	assert(block_store.has(block.coords))
 	blocks.remove_child(block)
 	block_store.erase(block.coords)
