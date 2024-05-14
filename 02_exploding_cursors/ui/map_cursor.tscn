@@ -21,10 +21,10 @@ position = Vector2(0, -44)
 texture = ExtResource("3_3yjwj")
 
 [node name="RectN" type="TextureRect" parent="ArrowGroup"]
-offset_left = -5.0
-offset_top = -53.0
-offset_right = 5.0
-offset_bottom = -34.0
+offset_left = -9.0
+offset_top = -57.0
+offset_right = 10.0
+offset_bottom = -30.0
 mouse_filter = 0
 expand_mode = 1
 stretch_mode = 2
@@ -34,10 +34,10 @@ position = Vector2(0, 44)
 texture = ExtResource("4_lmlnf")
 
 [node name="RectS" type="TextureRect" parent="ArrowGroup"]
-offset_left = -5.0
-offset_top = 34.0
-offset_right = 5.0
-offset_bottom = 53.0
+offset_left = -9.0
+offset_top = 33.0
+offset_right = 9.0
+offset_bottom = 57.0
 mouse_filter = 0
 expand_mode = 1
 stretch_mode = 2
@@ -47,10 +47,10 @@ position = Vector2(-44, 0)
 texture = ExtResource("5_jenu7")
 
 [node name="RectW" type="TextureRect" parent="ArrowGroup"]
-offset_left = -52.0
-offset_top = -5.0
+offset_left = -55.0
+offset_top = -9.0
 offset_right = -33.0
-offset_bottom = 5.0
+offset_bottom = 9.0
 mouse_filter = 0
 expand_mode = 1
 stretch_mode = 2
@@ -60,10 +60,10 @@ position = Vector2(44, 0)
 texture = ExtResource("6_60vwd")
 
 [node name="RectE" type="TextureRect" parent="ArrowGroup"]
-offset_left = 34.0
-offset_top = -5.0
-offset_right = 53.0
-offset_bottom = 5.0
+offset_left = 32.0
+offset_top = -9.0
+offset_right = 56.0
+offset_bottom = 10.0
 mouse_filter = 0
 expand_mode = 1
 stretch_mode = 2

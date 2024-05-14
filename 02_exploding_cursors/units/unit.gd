@@ -17,7 +17,7 @@ const block_scene = preload("res://units/unit_block.tscn")
 
 func _ready() -> void:
 	assert(base != null)
-	# we can't mamke this assertion because the map load sequence assembles
+	# we can't make this assertion because the map load sequence assembles
 	# units out of their blocks by name
 	# assert(len(blocks) > 0) 
 
@@ -54,8 +54,8 @@ func get_block_on(coords: Vector2i) -> UnitBlock:
 	return null
 
 
-func get_damage_block() -> UnitBlock:
-	return blocks.back()
+func get_damage_block() -> int:
+	return len(blocks) - 1
 
 
 func move_head(dir: Util.Direction):
@@ -85,8 +85,10 @@ func move_head(dir: Util.Direction):
 
 		# get rid of the oldest block if we have more blocks than health
 		if health > base.health_max:
-			var deletable = get_damage_block()
+			var delete_i = get_damage_block()
+			var deletable = blocks[delete_i]
 			faction.map_controller.detach_block(deletable)
+			blocks.remove_at(delete_i)
 			deletable.queue_free()
 			health -= 1
 

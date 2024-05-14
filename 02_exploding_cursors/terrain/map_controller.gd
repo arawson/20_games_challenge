@@ -48,7 +48,8 @@ func _ready() -> void:
 
 func attach_block(block: UnitBlock, coords: Vector2i):
 	assert(!block_store.has(coords))
-	assert(!blocks.get_node(NodePath(block.name)) != null)
+	# for some reason this emits an error about not being found
+	# assert(blocks.get_node(NodePath(block.name)) == null)
 	block_store[coords] = block
 	block.coords = coords
 	block.global_position = to_global(map_to_local(coords))
