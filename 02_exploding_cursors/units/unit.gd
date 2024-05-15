@@ -10,6 +10,7 @@ var blocks: Array[UnitBlock] = []
 var health: int = 1
 var movement_left: int
 var actions_left: int
+var _movecounter: int = 1
 
 
 const block_scene = preload("res://units/unit_block.tscn")
@@ -42,8 +43,9 @@ func make_block() -> UnitBlock:
 	block.unit_base = base
 	block.faction = faction
 	block.is_head = false
-	block.name = "%s_%s" % [name, faction.turn_number]
-	block.turn_created = faction.turn_number
+	block.name = "%s_%s" % [name, _movecounter]
+	block.turn_created = _movecounter
+	_movecounter += 1
 	return block
 
 
@@ -55,11 +57,16 @@ func get_block_on(coords: Vector2i) -> UnitBlock:
 
 
 func get_damage_block() -> int:
-	var turn_created: int = -65536
+	var turn_created: int = 65535
 	var index: int = 0
+
+	# special case to handle the head
+	if len(blocks) == 1:
+		return 0
+	
 	for i in range(blocks.size()):
 		var block = blocks[i]
-		if turn_created < block.turn_created:
+		if turn_created > block.turn_created and not block.is_head:
 			index = i
 			turn_created = block.turn_created
 	return index
