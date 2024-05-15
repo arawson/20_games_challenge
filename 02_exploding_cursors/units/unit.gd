@@ -55,8 +55,14 @@ func get_block_on(coords: Vector2i) -> UnitBlock:
 
 
 func get_damage_block() -> int:
-	return len(blocks) - 1
-
+	var turn_created: int = -65536
+	var index: int = 0
+	for i in range(blocks.size()):
+		var block = blocks[i]
+		if turn_created < block.turn_created:
+			index = i
+			turn_created = block.turn_created
+	return index
 
 func move_head(dir: Util.Direction):
 	var head = get_head()
