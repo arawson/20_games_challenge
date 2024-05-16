@@ -13,6 +13,10 @@ var block_store: Dictionary = {}
 
 func move_unit(unit: Unit, dir: Util.Direction, cursor_pos: Vector2) -> bool:
 	# TODO this probably shouldn't be in the map, but in the unit instead
+	# What does the unit need from the map?
+	#   "Can I move here?"
+	#    "Am I the one being told to move?"
+	#       is that question better answered by the UI querying the map?
 	var head = unit.get_head()
 	var coords = local_to_map(to_local(cursor_pos + Util.displacement(dir)))
 
