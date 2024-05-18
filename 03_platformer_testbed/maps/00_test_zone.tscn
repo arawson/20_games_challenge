@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3h8wut3iooui"]
+
+[ext_resource type="Texture2D" uid="uid://0ynjw7dhwmj" path="res://icon.svg" id="1_4h42m"]
+[ext_resource type="PackedScene" uid="uid://dmpedge5qe3v0" path="res://entities/player/scugaroo/rabbug.tscn" id="2_xyuo6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n04k0"]
+size = Vector2(1004, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nwm4"]
+size = Vector2(42, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5lktj"]
+size = Vector2(20, 78)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bcrv6"]
+distance = -691.0
+
+[node name="00TestZone" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(581, 577)
+scale = Vector2(7.83594, 0.132812)
+texture = ExtResource("1_4h42m")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(287, 630)
+scale = Vector2(0.390625, 1)
+texture = ExtResource("1_4h42m")
+
+[node name="FullGround" type="StaticBody2D" parent="."]
+
+[node name="MiddleBlock" type="CollisionShape2D" parent="FullGround"]
+position = Vector2(581, 577)
+shape = SubResource("RectangleShape2D_n04k0")
+
+[node name="TinyBump" type="CollisionShape2D" parent="FullGround"]
+position = Vector2(286, 567)
+shape = SubResource("RectangleShape2D_3nwm4")
+
+[node name="GrabLedge" type="CollisionShape2D" parent="FullGround"]
+position = Vector2(415, 546)
+shape = SubResource("RectangleShape2D_5lktj")
+
+[node name="FallZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallZone"]
+shape = SubResource("WorldBoundaryShape2D_bcrv6")
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2(140, 542)
+
+[node name="Rabbug" parent="." instance=ExtResource("2_xyuo6")]
+position = Vector2(139, 541)
+
+[node name="Camera2D" type="Camera2D" parent="Rabbug"]
+zoom = Vector2(2, 2)
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(415, 571)
+scale = Vector2(0.15625, 1)
+texture = ExtResource("1_4h42m")

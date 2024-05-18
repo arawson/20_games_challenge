@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmpedge5qe3v0"]
+
+[ext_resource type="Texture2D" uid="uid://bg4058n1raw8a" path="res://placeholders/rabbug.png" id="1_4ubdm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ey7o"]
+radius = 8.0
+height = 22.0
+
+[node name="Rabbug" type="CharacterBody2D"]
+
+[node name="RabbugSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_4ubdm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("CapsuleShape2D_8ey7o")
