@@ -82,13 +82,13 @@ func _on_input_nothing_selected(_coords: Vector2i, global_pos: Vector2):
 func _input(_event: InputEvent) -> void:
 	# TODO replace with Util.displacement
 	if Input.is_action_just_pressed("move_up"):
-		MainBus.input_inject_selection.emit(map_cursor.global_position + Vector2(0, -30))
+		MainBus.input_inject_selection.emit(map_cursor.global_position + Util.displacement(Util.Direction.NORTH))
 	elif Input.is_action_just_pressed("move_down"):
-		MainBus.input_inject_selection.emit(map_cursor.global_position + Vector2(0, 30))
+		MainBus.input_inject_selection.emit(map_cursor.global_position + Util.displacement(Util.Direction.SOUTH))
 	elif Input.is_action_just_pressed("move_right"):
-		MainBus.input_inject_selection.emit(map_cursor.global_position + Vector2(30, 0))
+		MainBus.input_inject_selection.emit(map_cursor.global_position + Util.displacement(Util.Direction.EAST))
 	elif Input.is_action_just_pressed("move_left"):
-		MainBus.input_inject_selection.emit(map_cursor.global_position + Vector2(-30, 0))
+		MainBus.input_inject_selection.emit(map_cursor.global_position + Util.displacement(Util.Direction.WEST))
 
 
 func _on_unit_moved(unit: Unit, _direction: Util.Direction, _old_head_pos: Vector2):
