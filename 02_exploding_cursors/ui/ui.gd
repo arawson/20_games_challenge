@@ -105,3 +105,7 @@ func unit_no_moves(unit: Unit):
 func unit_blocked(unit: Unit):
 	if selected and selected.unit == unit:
 		sound_blocked.playing = true
+
+
+func unit_not_movable():
+	sound_blocked.playing = true

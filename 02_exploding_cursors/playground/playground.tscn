@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://5f7bw2ghd3kt"]
+[gd_scene load_steps=17 format=3 uid="uid://5f7bw2ghd3kt"]
 
 [ext_resource type="Script" path="res://lib/game_controller.gd" id="1_4guag"]
 [ext_resource type="TileSet" uid="uid://4a1fhvbuelqc" path="res://terrain/terrain_tiles.tres" id="1_k24fm"]
@@ -8,7 +8,9 @@
 [ext_resource type="Resource" uid="uid://cslo0l2c2xbof" path="res://factions/red.tres" id="5_qgbfs"]
 [ext_resource type="Resource" uid="uid://146a8eniubpu" path="res://factions/blue.tres" id="6_2we2b"]
 [ext_resource type="Script" path="res://factions/player_faction.gd" id="6_rx0ub"]
+[ext_resource type="Script" path="res://units/unit.gd" id="7_3rj1v"]
 [ext_resource type="PackedScene" uid="uid://c6fmfovjas75e" path="res://ui/ui.tscn" id="7_vba30"]
+[ext_resource type="Resource" uid="uid://c1jhva1bj1dr7" path="res://units/bulk_transfer.tres" id="8_sh3k6"]
 [ext_resource type="PackedScene" uid="uid://0c8l14gky6mn" path="res://ui/map_cursor.tscn" id="9_88q0i"]
 [ext_resource type="Texture2D" uid="uid://ceoa2xm3hdx2y" path="res://placeholders/cursors/hand_thin_point.png" id="10_gus74"]
 [ext_resource type="PackedScene" uid="uid://btosv764rqoi" path="res://units/unit.tscn" id="11_1dwen"]
@@ -40,6 +42,17 @@ position = Vector2(216, 264)
 turn_created = -2
 faction = NodePath("../../../Factions/BlueFaction")
 
+[node name="Red_1_1" parent="TileMap/Blocks" node_paths=PackedStringArray("faction") instance=ExtResource("4_073c0")]
+position = Vector2(120, 117)
+turn_created = -1
+is_head = true
+faction = NodePath("../../../Factions/RedFaction")
+
+[node name="Red_1_2" parent="TileMap/Blocks" node_paths=PackedStringArray("faction") instance=ExtResource("4_073c0")]
+position = Vector2(120, 72)
+turn_created = -2
+faction = NodePath("../../../Factions/RedFaction")
+
 [node name="Factions" type="Node" parent="."]
 
 [node name="RedFaction" type="Node" parent="Factions" node_paths=PackedStringArray("map_controller", "unit_container")]
@@ -49,6 +62,10 @@ map_controller = NodePath("../../TileMap")
 unit_container = NodePath("Units")
 
 [node name="Units" type="Node" parent="Factions/RedFaction"]
+
+[node name="Red_1" type="Node" parent="Factions/RedFaction/Units"]
+script = ExtResource("7_3rj1v")
+base = ExtResource("8_sh3k6")
 
 [node name="BlueFaction" type="Node" parent="Factions" node_paths=PackedStringArray("ui", "map_controller", "unit_container")]
 script = ExtResource("6_rx0ub")
