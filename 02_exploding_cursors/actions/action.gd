@@ -7,4 +7,4 @@ extends Resource
 @export var distance: int
 @export var icon: Texture2D
 @export var damage: int
-@export var action: Script
+@export var special: Script
