@@ -5,8 +5,8 @@ extends Node
 signal turn_completed(faction: String)
 
 
+@export var navigation_service: NavigationService
 @export var faction_base: FactionBase
-@export var map_controller: MapController
 @export var unit_container: Node
 
 
@@ -19,7 +19,7 @@ var turn_number: int = 0
 
 func _ready() -> void:
 	assert(faction_base != null)
-	assert(map_controller != null)
+	assert(navigation_service != null)
 	assert(unit_container != null)
 
 	for c in unit_container.get_children():
@@ -27,7 +27,7 @@ func _ready() -> void:
 		var unit = c as Unit
 		assert(unit != null)
 		unit.faction = self
-		map_controller.collect_unit_blocks(unit)
+		navigation_service.collect_unit_blocks(unit)
 		for block in unit.blocks:
 			block.faction = self
 			block.unit = unit

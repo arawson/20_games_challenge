@@ -60,8 +60,7 @@ func _on_input_action_move(direction: Util.Direction, cursor_pos: Vector2):
 		ui.unit_no_moves(selected)
 		return
 	
-	# TODO this went boom
-	if map_controller.can_move_unit(selected, direction, cursor_pos):
+	if navigation_service.can_move_unit(selected, direction, cursor_pos):
 		selected.move_head(direction)
 	else:
 		ui.unit_blocked(selected)

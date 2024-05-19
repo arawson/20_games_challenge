@@ -80,19 +80,19 @@ func move_head(dir: Util.Direction):
 	var conflict = get_block_on(new_head_coords)
 	if conflict != null:
 		# then swap head with that block
-		faction.map_controller.detach_block(head)
-		faction.map_controller.detach_block(conflict)
-		faction.map_controller.attach_block(head, new_head_coords)
-		faction.map_controller.attach_block(conflict, old_head_coords)
+		faction.navigation_service.detach_block(head)
+		faction.navigation_service.detach_block(conflict)
+		faction.navigation_service.attach_block(head, new_head_coords)
+		faction.navigation_service.attach_block(conflict, old_head_coords)
 		conflict.turn_created = faction.turn_number
 
 	else:
-		faction.map_controller.detach_block(head)
-		faction.map_controller.attach_block(head, new_head_coords)
+		faction.navigation_service.detach_block(head)
+		faction.navigation_service.attach_block(head, new_head_coords)
 
 		var filler = make_block()
 		blocks.insert(1, filler)
-		faction.map_controller.attach_block(filler, old_head_coords)
+		faction.navigation_service.attach_block(filler, old_head_coords)
 		filler.reinit()
 		health += 1
 
@@ -100,7 +100,7 @@ func move_head(dir: Util.Direction):
 		if health > base.health_max:
 			var delete_i = get_damage_block()
 			var deletable = blocks[delete_i]
-			faction.map_controller.detach_block(deletable)
+			faction.navigation_service.detach_block(deletable)
 			blocks.remove_at(delete_i)
 			deletable.queue_free()
 			health -= 1

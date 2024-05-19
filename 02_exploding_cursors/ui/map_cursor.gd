@@ -2,6 +2,11 @@ extends Node2D
 
 
 @onready var arrow_group: Node2D = %ArrowGroup
+@onready var overlay: TileMapLayer = %CursorOverlay
+
+
+const tile_action_highlight = Vector2i(0, 0)
+const tile_action_source = 1
 
 
 # Design Problem as of 2024-05-12: Shouldn't the map cursor have all of its
@@ -49,3 +54,21 @@ func _on_rect_w_gui_input(event:InputEvent) -> void:
 
 func _on_rect_e_gui_input(event:InputEvent) -> void:
 	_on_move_arrow_clicked(event, Util.Direction.EAST)
+
+
+func _clear_action():
+	overlay.clear()
+
+
+func activate_action(action: Action):
+	_clear_action()
+
+	var d2 = action.distance**2
+	for x in range(-action.distance, action.distance + 1, 1):
+		for y in range(-action.distance, action.distance+ 1, 1):
+			var coords = Vector2i(x,y)
+			LogDuck.d("Set overlay on ", coords)
+			# TODO check that source isn't on top of us
+			if coords.distance_squared_to(Vector2i.ZERO) <= d2 and not coords == Vector2i.ZERO:
+				LogDuck.d("set overlay cell")
+				overlay.set_cell(coords, tile_action_source, tile_action_highlight)

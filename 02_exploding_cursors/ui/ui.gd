@@ -70,7 +70,7 @@ func _on_input_unit_selected(_unit: Unit, block: UnitBlock):
 # one of the cells targettable by the action.
 func _on_action_button_pressed(unit: Unit, action: Action):
 	LogDuck.d("action button pressed", unit.name, action.name)
-
+	map_cursor.activate_action(action)
 
 
 func _on_input_nothing_selected(_coords: Vector2i, global_pos: Vector2):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://0c8l14gky6mn"]
+[gd_scene load_steps=8 format=3 uid="uid://0c8l14gky6mn"]
 
 [ext_resource type="Script" path="res://ui/map_cursor.gd" id="1_ylnhl"]
 [ext_resource type="Texture2D" uid="uid://d3wnpfqd5ox4k" path="res://placeholders/fantasy_borders/unit-selection.png" id="2_lvnyp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cek8fj56wyagk" path="res://placeholders/cursors/arrow_s.png" id="4_lmlnf"]
 [ext_resource type="Texture2D" uid="uid://bb4o1iwaxehj8" path="res://placeholders/cursors/arrow_w.png" id="5_jenu7"]
 [ext_resource type="Texture2D" uid="uid://dkcuk6dfdd1l8" path="res://placeholders/cursors/arrow_e.png" id="6_60vwd"]
+[ext_resource type="TileSet" uid="uid://cxwii7edrb30r" path="res://ui/map_cursor_overlay.tres" id="7_4k2w2"]
 
 [node name="MapCursor" type="Node2D"]
 script = ExtResource("1_ylnhl")
@@ -67,6 +68,11 @@ offset_bottom = 10.0
 mouse_filter = 0
 expand_mode = 1
 stretch_mode = 2
+
+[node name="CursorOverlay" type="TileMapLayer" parent="."]
+unique_name_in_owner = true
+position = Vector2(-24, -24)
+tile_set = ExtResource("7_4k2w2")
 
 [connection signal="gui_input" from="ArrowGroup/RectN" to="." method="_on_rect_n_gui_input"]
 [connection signal="gui_input" from="ArrowGroup/RectS" to="." method="_on_rect_s_gui_input"]
