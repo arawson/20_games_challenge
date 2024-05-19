@@ -66,11 +66,13 @@ func _on_input_unit_selected(_unit: Unit, block: UnitBlock):
 	selected = block
 
 
-# Setup the UI to execute the action if the cursor gets pushed to
-# one of the cells targettable by the action.
 func _on_action_button_pressed(unit: Unit, action: Action):
-	LogDuck.d("action button pressed", unit.name, action.name)
-	map_cursor.activate_action(action)
+	MainBus.input_action_selected.emit(unit, action)
+
+
+func activate_action(unit: Unit, action: Action):
+	if selected and selected.unit == unit:
+		map_cursor.activate_action(unit, action)
 
 
 func _on_input_nothing_selected(_coords: Vector2i, global_pos: Vector2):
@@ -108,6 +110,12 @@ func unit_no_moves(unit: Unit):
 func unit_blocked(unit: Unit):
 	if selected and selected.unit == unit:
 		sound_blocked.playing = true
+
+
+func unit_no_actions(unit: Unit):
+	if selected and selected.unit == unit:
+		# TODO put unique sound
+		sound_no_moves.playing = true
 
 
 func unit_not_movable():

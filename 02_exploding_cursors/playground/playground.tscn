@@ -82,7 +82,9 @@ unit_container = NodePath("Units")
 [node name="UI" parent="Factions/BlueFaction" instance=ExtResource("7_vba30")]
 mouse_filter = 1
 
-[node name="MapCursor" parent="Factions/BlueFaction/UI" instance=ExtResource("9_88q0i")]
+[node name="MapCursor" parent="Factions/BlueFaction/UI" node_paths=PackedStringArray("navigation_service", "faction") instance=ExtResource("9_88q0i")]
+navigation_service = NodePath("../../../../Services/NavigationService")
+faction = NodePath("../..")
 
 [node name="Units" type="Node" parent="Factions/BlueFaction"]
 

@@ -10,3 +10,6 @@ description = "Weak attack that floods an enemy with easily filtered network pac
 distance = 1
 icon = ExtResource("1_1gwfm")
 damage = 1
+target_enemies = true
+target_friendlies = false
+target_empties = false

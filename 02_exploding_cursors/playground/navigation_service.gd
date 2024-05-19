@@ -72,7 +72,7 @@ func attach_block(block: UnitBlock, coords: Vector2i):
 	# assert(blocks.get_node(NodePath(block.name)) == null)
 	block_store[coords] = block
 	block.coords = coords
-	block.global_position = layer_navigation.to_global(layer_navigation.map_to_local(coords))
+	block.global_position = layer_navigation.map_to_global(coords)
 	blocks.add_child(block)
 
 
@@ -81,6 +81,11 @@ func detach_block(block: UnitBlock):
 	assert(block_store.has(block.coords))
 	blocks.remove_child(block)
 	block_store.erase(block.coords)
+
+
+func block_at(coords: Vector2i, pos: Vector2 = Vector2.ZERO) -> UnitBlock:
+	var map_coords = layer_navigation.global_to_map(pos) + coords
+	return block_store.get(map_coords)
 
 
 #endregion
@@ -117,7 +122,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			MainBus.input_unit_selected.emit(block.unit, block)
 		else:
 			MainBus.input_nothing_selected.emit(
-				coords, layer_navigation.to_global(layer_navigation.map_to_local(coords)))
+				coords, layer_navigation.map_to_global(coords)
+			)
 
 
 #endregion

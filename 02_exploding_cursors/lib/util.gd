@@ -4,6 +4,10 @@ extends Node
 enum Direction { NORTH, EAST, WEST, SOUTH}
 
 
+const Godot = preload("res://icon.svg")
+const HalfDisplacement = Vector2(24, 24)
+
+
 func delete_all_children(node: Node):
 	for child in node.get_children():
 		child.queue_free()

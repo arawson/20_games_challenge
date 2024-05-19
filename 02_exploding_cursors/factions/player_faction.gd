@@ -14,6 +14,8 @@ func _ready():
 	MainBus.input_unit_selected.connect(_on_input_unit_selected)
 	MainBus.input_nothing_selected.connect(_on_input_nothing_selected)
 	MainBus.input_action_move.connect(_on_input_action_move)
+	MainBus.input_action_selected.connect(_on_input_action_selected)
+	MainBus.input_action_confirmed.connect(_on_input_action_confirmed)
 
 
 func _turn_ready():
@@ -33,7 +35,7 @@ func _on_ui_turn_completed():
 		_turn_end()
 
 
-func turn_top(the_turn_number: int):
+func _turn_top(the_turn_number: int):
 	ui.turn_number = the_turn_number
 
 
@@ -49,14 +51,15 @@ func _on_input_nothing_selected(_coords: Vector2i, _global_pos: Vector2):
 
 
 func _on_input_action_move(direction: Util.Direction, cursor_pos: Vector2):
-	# TODO is this a good place to put the query to the map?
+	if !_my_turn:
+		return
+
 	LogDuck.d("_on_input_action_move", direction, cursor_pos)
 	if selected == null:
 		ui.unit_not_movable()
 		return
 
 	if selected.movement_left <= 0:
-		# TODO go ding
 		ui.unit_no_moves(selected)
 		return
 	
@@ -65,3 +68,32 @@ func _on_input_action_move(direction: Util.Direction, cursor_pos: Vector2):
 	else:
 		ui.unit_blocked(selected)
 	
+
+func _on_input_action_selected(unit: Unit, action: Action):
+	assert(unit != null)
+	assert(action != null)
+	assert(unit.faction == self)
+	assert(unit.base.actions.find(action) != -1)
+
+	if !_my_turn:
+		return
+
+	if unit.actions_left <= 0:
+		ui.unit_no_actions(unit)
+		return
+
+	ui.activate_action(unit, action)
+
+
+func _on_input_action_confirmed(unit: Unit, action: Action,
+coords: Vector2i, block: UnitBlock):
+	assert(unit != null)
+	assert(action != null)
+	assert(not action.target_empties or not block)
+	assert(not action.target_enemies or (block and block.faction != self))
+	assert(not action.target_friendlies or (block and block.faction == self))
+	
+	if !_my_turn:
+		return
+
+	#TODO what should apply actions to units? probably a combat service

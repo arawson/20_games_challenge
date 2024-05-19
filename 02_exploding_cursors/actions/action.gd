@@ -8,3 +8,6 @@ extends Resource
 @export var icon: Texture2D
 @export var damage: int
 @export var special: Script
+@export var target_enemies: bool
+@export var target_friendlies: bool
+@export var target_empties: bool
