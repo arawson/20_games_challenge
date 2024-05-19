@@ -105,4 +105,5 @@ func move_head(dir: Util.Direction):
 			deletable.queue_free()
 			health -= 1
 
+	movement_left -= 1
 	MainBus.unit_moved.emit(self, dir, old_head_pos)

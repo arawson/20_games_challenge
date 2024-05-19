@@ -11,17 +11,10 @@ var block_store: Dictionary = {}
 @onready var _mobility: int = get_layer_id("Mobility")
 
 
-func move_unit(unit: Unit, dir: Util.Direction, cursor_pos: Vector2) -> bool:
-	# TODO this probably shouldn't be in the map, but in the unit instead
-	# What does the unit need from the map?
-	#   "Can I move here?"
-	#    "Am I the one being told to move?"
-	#       is that question better answered by the UI querying the map?
-	var head = unit.get_head()
+func can_move_unit(unit: Unit, dir: Util.Direction, cursor_pos: Vector2) -> bool:
 	var coords = local_to_map(to_local(cursor_pos + Util.displacement(dir)))
 
 	# check if head would land on open terrain
-	var source = get_cell_source_id(_mobility, coords)
 	var tiledata = get_cell_tile_data(_mobility, coords)
 	if (not tiledata or not tiledata.get_custom_data("open")):
 		return false
@@ -32,8 +25,6 @@ func move_unit(unit: Unit, dir: Util.Direction, cursor_pos: Vector2) -> bool:
 		return false
 
 	# unit move is valid!
-	unit.move_head(dir)
-
 	return true
 
 

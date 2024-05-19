@@ -15,7 +15,6 @@ extends Node2D
 func _ready() -> void:
 	MainBus.input_unit_selected.connect(_on_input_unit_selected)
 	MainBus.input_nothing_selected.connect(_on_input_nothing_selected)
-	MainBus.unit_moved.connect(_on_unit_moved)
 
 
 func _on_input_unit_selected(_unit: Unit, unit_block: UnitBlock):
@@ -50,10 +49,3 @@ func _on_rect_w_gui_input(event:InputEvent) -> void:
 
 func _on_rect_e_gui_input(event:InputEvent) -> void:
 	_on_move_arrow_clicked(event, Util.Direction.EAST)
-
-
-func _on_unit_moved(unit: Unit, _dir: Util.Direction, old_head_pos: Vector2):
-	if global_position.distance_squared_to(old_head_pos) >= 25:
-		return
-	
-	MainBus.input_inject_selection.emit(unit.get_head().global_position)

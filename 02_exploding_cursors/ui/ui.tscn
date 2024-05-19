@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6fmfovjas75e"]
+[gd_scene load_steps=4 format=3 uid="uid://c6fmfovjas75e"]
 
 [ext_resource type="Script" path="res://ui/ui.gd" id="1_b81vn"]
+[ext_resource type="AudioStream" uid="uid://bnawmo7m03gjo" path="res://placeholders/interface_sounds/error_008_terrain_blocked.mp3" id="2_isje8"]
+[ext_resource type="AudioStream" uid="uid://dnfn15ry7x1w4" path="res://placeholders/interface_sounds/error_006_no_moves.mp3" id="3_ab3jo"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -52,5 +54,15 @@ grow_vertical = 0
 [node name="UnitLabel" type="Label" parent="Bottom"]
 layout_mode = 2
 text = "Empty Space"
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Blocked" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("2_isje8")
+bus = &"UI Bus"
+
+[node name="NoMoves" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_ab3jo")
+bus = &"UI Bus"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/EndTurn" to="." method="_on_end_turn_pressed"]

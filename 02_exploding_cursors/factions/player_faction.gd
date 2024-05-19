@@ -18,19 +18,23 @@ func _ready():
 
 func _turn_ready():
 	LogDuck.d("player turn start")
+
 	for c in unit_container.get_children():
 		var u = c as Unit
 		u.turn_ready()
+	
+	# UI goes last so it can update all its visuals
+	ui.turn_ready()
 
 
 func _on_ui_turn_completed():
-	print("player turn end")
+	LogDuck.d("Player turn end")
 	if _my_turn:
 		_turn_end()
 
 
-func turn_top(turn_number: int):
-	ui.turn_number = turn_number
+func turn_top(the_turn_number: int):
+	ui.turn_number = the_turn_number
 
 
 func _on_input_unit_selected(unit: Unit, _unit_block: UnitBlock):
@@ -49,7 +53,15 @@ func _on_input_action_move(direction: Util.Direction, cursor_pos: Vector2):
 	LogDuck.d("_on_input_action_move", direction, cursor_pos)
 	if selected == null:
 		return
+
+	if selected.movement_left <= 0:
+		# TODO go ding
+		ui.unit_no_moves(selected)
+		return
 	
 	# TODO this went boom
-	if map_controller.move_unit(selected, direction, cursor_pos):
-		pass
+	if map_controller.can_move_unit(selected, direction, cursor_pos):
+		selected.move_head(direction)
+	else:
+		ui.unit_blocked(selected)
+	
