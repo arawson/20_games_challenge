@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmpedge5qe3v0"]
+[gd_scene load_steps=4 format=3 uid="uid://dmpedge5qe3v0"]
 
 [ext_resource type="Texture2D" uid="uid://bg4058n1raw8a" path="res://placeholders/rabbug.png" id="1_4ubdm"]
+[ext_resource type="Script" path="res://entities/player/scugaroo/rabbug.gd" id="1_n3b3r"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ey7o"]
 radius = 8.0
 height = 22.0
 
 [node name="Rabbug" type="CharacterBody2D"]
+script = ExtResource("1_n3b3r")
 
 [node name="RabbugSprite" type="Sprite2D" parent="."]
 texture_filter = 1
