@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://yhghjsm47son"]
+
+[ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_0kjv5"]
+[ext_resource type="PackedScene" uid="uid://gkvinfkbye6d" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_nr25g"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="TestScene" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="PauseController" type="Node" parent="TestScene"]
+script = ExtResource("1_0kjv5")
+pause_menu_packed = ExtResource("2_nr25g")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.665, 3.505)
