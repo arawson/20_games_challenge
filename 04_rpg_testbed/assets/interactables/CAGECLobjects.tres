@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://3tv32vpychj0"]
+
+[ext_resource type="Texture2D" uid="uid://b40m51h0fdm07" path="res://assets/interactables/CAGECLobjects.png" id="1_m3784"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gq8gr"]
+atlas = ExtResource("1_m3784")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6e5r"]
+atlas = ExtResource("1_m3784")
+region = Rect2(16, 0, 16, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gq8gr")
+}],
+"loop": true,
+"name": &"lever_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6e5r")
+}],
+"loop": true,
+"name": &"lever_right",
+"speed": 5.0
+}]

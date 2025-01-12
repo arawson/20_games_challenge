@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx4wk7cdofise"]
+
+[ext_resource type="Script" path="res://scenes/characters/fboy/fboy.gd" id="1_75lcm"]
+[ext_resource type="Texture2D" uid="uid://5uds5ct3mnqk" path="res://assets/characters/fboy/fboy.png" id="2_ia0dy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xjlx"]
+radius = 7.0
+
+[node name="Fboy" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_75lcm")
+
+[node name="Fboy" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+texture = ExtResource("2_ia0dy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8xjlx")
