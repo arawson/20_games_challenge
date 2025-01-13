@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://gkvinfkbye6d" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_nr25g"]
 [ext_resource type="PackedScene" uid="uid://dx4wk7cdofise" path="res://scenes/characters/fboy/fboy.tscn" id="3_fu1o0"]
 [ext_resource type="TileSet" uid="uid://b5y4lf80ynyvw" path="res://assets/static/opengltestroom.tres" id="4_ex5af"]
-[ext_resource type="PackedScene" uid="uid://b7odi7t87eotj" path="res://assets/interactables/lever.tscn" id="5_x55qs"]
+[ext_resource type="PackedScene" uid="uid://b7odi7t87eotj" path="res://scenes/interactables/lever.tscn" id="5_x55qs"]
 
 [node name="Node3D" type="Node2D"]
 

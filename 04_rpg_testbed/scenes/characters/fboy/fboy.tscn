@@ -1,18 +1,92 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx4wk7cdofise"]
+[gd_scene load_steps=11 format=3 uid="uid://dx4wk7cdofise"]
 
 [ext_resource type="Script" path="res://scenes/characters/fboy/fboy.gd" id="1_75lcm"]
 [ext_resource type="Texture2D" uid="uid://5uds5ct3mnqk" path="res://assets/characters/fboy/fboy.png" id="2_ia0dy"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_arn0y"]
+atlas = ExtResource("2_ia0dy")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inm0q"]
+atlas = ExtResource("2_ia0dy")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w308m"]
+atlas = ExtResource("2_ia0dy")
+region = Rect2(32, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_reos6"]
+atlas = ExtResource("2_ia0dy")
+region = Rect2(48, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae0qo"]
+atlas = ExtResource("2_ia0dy")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl205"]
+atlas = ExtResource("2_ia0dy")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4trs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arn0y")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inm0q")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w308m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_reos6")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae0qo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl205")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xjlx"]
-radius = 7.0
+radius = 6.0
 
 [node name="Fboy" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_75lcm")
 
-[node name="Fboy" type="Sprite2D" parent="."]
-position = Vector2(-1, -1)
-texture = ExtResource("2_ia0dy")
+[node name="FboyAnimation" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_k4trs")
+animation = &"walk_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8xjlx")
+
+[node name="InteractionCast" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 4.445)
+enabled = false
+target_position = Vector2(20, 0)
+collision_mask = 2
+collide_with_areas = true
