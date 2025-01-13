@@ -21,6 +21,7 @@ AppConfig="*res://addons/maaacks_game_template/base/scenes/autoloads/app_config.
 SceneLoader="*res://addons/maaacks_game_template/base/scenes/autoloads/scene_loader.tscn"
 ProjectMusicController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_music_controller.tscn"
 ProjectUISoundController="*res://addons/maaacks_game_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -29,7 +30,7 @@ window/size/viewport_height=720
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg")
+enabled=PackedStringArray("res://addons/maaacks_game_template/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [gui]
 

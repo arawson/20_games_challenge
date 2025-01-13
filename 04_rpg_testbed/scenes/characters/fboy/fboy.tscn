@@ -78,7 +78,7 @@ script = ExtResource("1_75lcm")
 [node name="FboyAnimation" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_k4trs")
-animation = &"walk_left"
+animation = &"idle_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8xjlx")
