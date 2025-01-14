@@ -5,21 +5,21 @@
 [ext_resource type="AudioStream" uid="uid://4xfgyncagu5j" path="res://assets/interactables/lever_hit.wav" id="3_xmd2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pau4q"]
-size = Vector2(14, 7)
+size = Vector2(14, 20.5)
 
 [node name="Lever" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_2tjwh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.5)
-shape = SubResource("RectangleShape2D_pau4q")
-
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = ExtResource("1_pa8fc")
 animation = &"lever_left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5.25)
+shape = SubResource("RectangleShape2D_pau4q")
 
 [node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true

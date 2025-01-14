@@ -70,6 +70,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xjlx"]
 radius = 6.0
+height = 22.0
 
 [node name="Fboy" type="CharacterBody2D"]
 motion_mode = 1
@@ -81,6 +82,7 @@ sprite_frames = SubResource("SpriteFrames_k4trs")
 animation = &"idle_right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
 shape = SubResource("CapsuleShape2D_8xjlx")
 
 [node name="InteractionCast" type="RayCast2D" parent="."]
