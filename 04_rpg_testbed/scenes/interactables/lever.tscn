@@ -14,11 +14,12 @@ script = ExtResource("1_2tjwh")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
+position = Vector2(8, 16)
 sprite_frames = ExtResource("1_pa8fc")
 animation = &"lever_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 5.25)
+position = Vector2(8, 16)
 shape = SubResource("RectangleShape2D_pau4q")
 
 [node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]

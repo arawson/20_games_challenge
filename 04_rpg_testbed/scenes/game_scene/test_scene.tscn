@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://yhghjsm47son"]
+[gd_scene load_steps=12 format=4 uid="uid://yhghjsm47son"]
 
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_0kjv5"]
 [ext_resource type="PackedScene" uid="uid://gkvinfkbye6d" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_nr25g"]
 [ext_resource type="PackedScene" uid="uid://dx4wk7cdofise" path="res://scenes/characters/fboy/fboy.tscn" id="3_fu1o0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_2ct0p"]
 [ext_resource type="TileSet" uid="uid://b5y4lf80ynyvw" path="res://assets/static/opengltestroom.tres" id="4_ex5af"]
+[ext_resource type="PackedScene" uid="uid://w7vwokbpva30" path="res://scenes/interactables/test_scene/door.tscn" id="5_6fghk"]
 [ext_resource type="PackedScene" uid="uid://b7odi7t87eotj" path="res://scenes/interactables/lever.tscn" id="5_x55qs"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_bvynx"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_yynva"]
@@ -28,7 +29,6 @@ texture = ExtResource("9_w0waq")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -100
-position = Vector2(1, 0)
 tile_map_data = PackedByteArray("AAAAAAAAAAAGAAAAAAAAAAEAAAAGAAEAAAAAAAIAAAAFAAAAAAADAAQAAAADAAEAAAAEAAQAAAADAAEAAAAFAAQAAAADAAEAAAAGAAQAAAADAAEAAAAHAAQAAAADAAEAAAAIAP7/AAABAAAAAAAIAP//AAABAAEAAAAIAAAAAAABAAAAAAAIAAEAAAABAAEAAAAIAAIAAAABAAAAAAAIAAMAAAABAAEAAAAIAAQAAAAEAAEAAAA=")
 tile_set = ExtResource("4_ex5af")
 
@@ -41,7 +41,10 @@ position = Vector2(66, 48)
 
 [node name="Lever" parent="YSortZone" instance=ExtResource("5_x55qs")]
 y_sort_enabled = true
-position = Vector2(34, 49)
+position = Vector2(24, 32)
+
+[node name="Door" parent="YSortZone" instance=ExtResource("5_6fghk")]
+position = Vector2(112, -64)
 
 [node name="TestScene" type="Control" parent="."]
 layout_mode = 3
@@ -77,3 +80,6 @@ zoom = Vector2(4, 4)
 tween_resource = SubResource("Resource_du6d0")
 dead_zone_width = 0.31
 dead_zone_height = 0.34
+
+[connection signal="activated" from="YSortZone/Lever" to="YSortZone/Door" method="open"]
+[connection signal="deactivated" from="YSortZone/Lever" to="YSortZone/Door" method="close"]

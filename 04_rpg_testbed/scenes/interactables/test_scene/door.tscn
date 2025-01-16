@@ -1,3 +1,21 @@
-[gd_scene format=3 uid="uid://ndwq0qgrnapd"]
+[gd_scene load_steps=4 format=3 uid="uid://w7vwokbpva30"]
 
-[node name="Door" type="StaticBody2D"]
+[ext_resource type="Script" path="res://scenes/interactables/test_scene/door.gd" id="1_hj1p6"]
+[ext_resource type="Texture2D" uid="uid://d1cik8t3tyg7v" path="res://assets/static/opengltestscreen.png" id="2_mccik"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g83m0"]
+size = Vector2(16, 32)
+
+[node name="Door" type="StaticBody2D" node_paths=PackedStringArray("hide_this")]
+script = ExtResource("1_hj1p6")
+hide_this = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 16)
+shape = SubResource("RectangleShape2D_g83m0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 16)
+texture = ExtResource("2_mccik")
+region_enabled = true
+region_rect = Rect2(16, 0, 16, 32)
