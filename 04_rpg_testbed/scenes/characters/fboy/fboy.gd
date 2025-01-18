@@ -13,38 +13,40 @@ func _ready() -> void:
 	pass
 
 
+var _horizontal: int
+var _vertical: int
 func _physics_process(delta: float) -> void:
-	var horizontal = int(Input.get_axis("move_left", "move_right"))
-	var vertical = int(Input.get_axis("move_up", "move_down"))
+	velocity = Vector2(_horizontal*move_speed.x, _vertical*move_speed.y)
 
-	velocity = Vector2(horizontal*move_speed.x, vertical*move_speed.y)
+	if _horizontal != 0 or _vertical != 0:
+		interaction_cast.target_position = Vector2(_horizontal, _vertical).normalized() * interact_distance
 
-	if horizontal != 0 or vertical != 0:
-		interaction_cast.target_position = Vector2(horizontal, vertical).normalized() * interact_distance
-
-	if horizontal != pointing.x or vertical != pointing.y:
-		print("horizontal = ", horizontal)
+	if _horizontal != pointing.x or _vertical != pointing.y:
+		print("_horizontal = ", _horizontal)
 		print("fboy: pointing was ", pointing)
 		print("fboy: mismatch pointing vector")
-		match horizontal:
+		match _horizontal:
 			-1:
 				animation.play("walk_left")
 			1:
 				animation.play("walk_right")
 			0:
-				print("fboy: horizontal 0")
+				print("fboy: _horizontal 0")
 				print("fboy: pointing was ", pointing)
 				match pointing.x:
 					-1:
 						animation.play("idle_left")
 					1:
 						animation.play("idle_right")
-		pointing = Vector2i(horizontal, vertical)
+		pointing = Vector2i(_horizontal, _vertical)
 
 	move_and_slide()
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	_horizontal = int(Input.get_axis("move_left", "move_right"))
+	_vertical = int(Input.get_axis("move_up", "move_down"))
+
 	if Input.is_action_just_pressed("interact"):
 		print("fboy: test interaction")
 		interaction_cast.enabled = true
@@ -58,3 +60,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		if "activate" in collider:
 			print("fboy: activate the thing")
 			collider.activate()
+			DialogueManager.show_example_dialogue_balloon(load("res://dialog/opengltestroom.dialogue"), "start")

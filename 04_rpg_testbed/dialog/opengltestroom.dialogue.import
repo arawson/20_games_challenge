@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://ctcfvkr2gbeuy"
+path="res://.godot/imported/opengltestroom.dialogue-ff2328ecbeab29aead80ae3531eb4336.tres"
+
+[deps]
+
+source_file="res://dialog/opengltestroom.dialogue"
+dest_files=["res://.godot/imported/opengltestroom.dialogue-ff2328ecbeab29aead80ae3531eb4336.tres"]
+
+[params]
+
+defaults=true
