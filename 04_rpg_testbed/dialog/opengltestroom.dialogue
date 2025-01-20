@@ -13,3 +13,16 @@ Nathan: For more information see the online documentation.
 ~ start
 FBoy: This is some prime testing area right here!
 => END
+
+~ ready
+FBoy: Where am I?
+FBoy: How did I get here?
+FBoy: ...
+FBoy: The last thing I remember is that creepy girl stabbing me with that fancy knife.
+FBoy: ...
+FBoy: Better get to exploring, I'm not gonna just rot in a place like this!
+=> END
+
+~ lever_first
+FBoy: Seems like that did something...
+=> END

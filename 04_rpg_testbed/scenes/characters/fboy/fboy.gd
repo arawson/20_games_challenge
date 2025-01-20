@@ -44,8 +44,8 @@ func _physics_process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	_horizontal = int(Input.get_axis("move_left", "move_right"))
-	_vertical = int(Input.get_axis("move_up", "move_down"))
+	_horizontal = snappedi(Input.get_axis("move_left", "move_right")+0.27, 1)
+	_vertical = snappedi(Input.get_axis("move_up", "move_down")+0.27, 1)
 
 	if Input.is_action_just_pressed("interact"):
 		print("fboy: test interaction")
@@ -60,4 +60,3 @@ func _unhandled_input(event: InputEvent) -> void:
 		if "activate" in collider:
 			print("fboy: activate the thing")
 			collider.activate()
-			DialogueManager.show_example_dialogue_balloon(load("res://dialog/opengltestroom.dialogue"), "start")
