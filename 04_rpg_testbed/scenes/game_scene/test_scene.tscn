@@ -42,9 +42,6 @@ y_sort_enabled = true
 [node name="Fboy" parent="YSortZone" instance=ExtResource("3_fu1o0")]
 y_sort_enabled = true
 position = Vector2(66, 48)
-pointing = Vector2i(1, 0)
-move_speed = Vector2(60, 40)
-interact_distance = 20.0
 
 [node name="Lever" parent="YSortZone" instance=ExtResource("5_x55qs")]
 y_sort_enabled = true

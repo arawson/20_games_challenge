@@ -1,5 +1,9 @@
 extends Node2D
 
 
+var dialog = preload("res://dialog/opengltestroom.dialogue")
+
+
 func _ready() -> void:
-	DialogueManager.show_example_dialogue_balloon(load("res://dialog/opengltestroom.dialogue"), "ready")
+	# Util.show_balloon(dialog, "ready")
+	pass

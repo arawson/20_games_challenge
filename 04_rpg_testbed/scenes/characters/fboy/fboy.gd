@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var pointing: Vector2i = Vector2i(1, 0)
+@export var pointing: Vector2 = Vector2(1, 0)
 @export var move_speed: Vector2 = Vector2(60, 40)
 @export var interact_distance: float = 20
 
@@ -13,10 +13,11 @@ func _ready() -> void:
 	pass
 
 
-var _horizontal: int
-var _vertical: int
+var _horizontal: float
+var _vertical: float
 func _physics_process(delta: float) -> void:
-	velocity = Vector2(_horizontal*move_speed.x, _vertical*move_speed.y)
+	var sub_velocity = Vector2(_horizontal, _vertical).normalized()
+	velocity = Vector2(sub_velocity.x*move_speed.x, sub_velocity.y*move_speed.y)
 
 	if _horizontal != 0 or _vertical != 0:
 		interaction_cast.target_position = Vector2(_horizontal, _vertical).normalized() * interact_distance
@@ -25,27 +26,27 @@ func _physics_process(delta: float) -> void:
 		print("_horizontal = ", _horizontal)
 		print("fboy: pointing was ", pointing)
 		print("fboy: mismatch pointing vector")
-		match _horizontal:
-			-1:
-				animation.play("walk_left")
-			1:
-				animation.play("walk_right")
-			0:
-				print("fboy: _horizontal 0")
-				print("fboy: pointing was ", pointing)
-				match pointing.x:
-					-1:
-						animation.play("idle_left")
-					1:
-						animation.play("idle_right")
-		pointing = Vector2i(_horizontal, _vertical)
+		if _horizontal < 0:
+			animation.play("walk_left")
+		elif _horizontal > 0:
+			animation.play("walk_right")
+		else:
+			print("fboy: _horizontal 0")
+			print("fboy: pointing was ", pointing)
+			if pointing.x < 0:
+				animation.play("idle_left")
+			elif pointing.x > 0:
+				animation.play("idle_right")
+		pointing = Vector2(_horizontal, _vertical)
 
 	move_and_slide()
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	_horizontal = snappedi(Input.get_axis("move_left", "move_right")+0.27, 1)
-	_vertical = snappedi(Input.get_axis("move_up", "move_down")+0.27, 1)
+func _unhandled_input(_event: InputEvent) -> void:
+	_horizontal = Input.get_axis("move_left", "move_right")
+	_vertical = Input.get_axis("move_up", "move_down")
+	# print("fboy: axis: ", Input.get_axis("move_up", "move_down")*1.65, " ", Input.get_axis("move_left", "move_right")*1.65)
+	# print("fboy: real axis: ", _vertical, " ", _horizontal)
 
 	if Input.is_action_just_pressed("interact"):
 		print("fboy: test interaction")
