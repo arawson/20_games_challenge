@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=4 uid="uid://yhghjsm47son"]
 
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_0kjv5"]
-[ext_resource type="Script" path="res://scenes/game_scene/opengltestroom.gd" id="1_w8sss"]
+[ext_resource type="Script" path="res://scenes/game_scene/rooms/opengltestroom.gd" id="1_w8sss"]
 [ext_resource type="PackedScene" uid="uid://gkvinfkbye6d" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_nr25g"]
 [ext_resource type="PackedScene" uid="uid://dx4wk7cdofise" path="res://scenes/characters/fboy/fboy.tscn" id="3_fu1o0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_2ct0p"]

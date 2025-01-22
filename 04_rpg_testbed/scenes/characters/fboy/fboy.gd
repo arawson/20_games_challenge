@@ -15,7 +15,7 @@ func _ready() -> void:
 
 var _horizontal: float
 var _vertical: float
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var sub_velocity = Vector2(_horizontal, _vertical).normalized()
 	velocity = Vector2(sub_velocity.x*move_speed.x, sub_velocity.y*move_speed.y)
 
@@ -23,16 +23,16 @@ func _physics_process(delta: float) -> void:
 		interaction_cast.target_position = Vector2(_horizontal, _vertical).normalized() * interact_distance
 
 	if _horizontal != pointing.x or _vertical != pointing.y:
-		print("_horizontal = ", _horizontal)
-		print("fboy: pointing was ", pointing)
-		print("fboy: mismatch pointing vector")
+		# print("_horizontal = ", _horizontal)
+		# print("fboy: pointing was ", pointing)
+		# print("fboy: mismatch pointing vector")
 		if _horizontal < 0:
 			animation.play("walk_left")
 		elif _horizontal > 0:
 			animation.play("walk_right")
 		else:
-			print("fboy: _horizontal 0")
-			print("fboy: pointing was ", pointing)
+			# print("fboy: _horizontal 0")
+			# print("fboy: pointing was ", pointing)
 			if pointing.x < 0:
 				animation.play("idle_left")
 			elif pointing.x > 0:
@@ -49,15 +49,15 @@ func _unhandled_input(_event: InputEvent) -> void:
 	# print("fboy: real axis: ", _vertical, " ", _horizontal)
 
 	if Input.is_action_just_pressed("interact"):
-		print("fboy: test interaction")
+		# print("fboy: test interaction")
 		interaction_cast.enabled = true
 		interaction_cast.force_raycast_update()
 		interaction_cast.enabled = false
 		var collider = interaction_cast.get_collider()
 		if collider == null:
 			return
-		print("fboy: collider found")
+		# print("fboy: collider found")
 		
 		if "activate" in collider:
-			print("fboy: activate the thing")
+			# print("fboy: activate the thing")
 			collider.activate()

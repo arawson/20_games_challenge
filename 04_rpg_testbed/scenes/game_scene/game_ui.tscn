@@ -28,8 +28,8 @@ focused_viewport = NodePath("../ViewportContainer/ConfigurableSubViewport")
 [node name="LevelLoader" type="Node" parent="." node_paths=PackedStringArray("level_container")]
 script = ExtResource("3_b8jlh")
 level_container = NodePath("../ViewportContainer/ConfigurableSubViewport")
-files = Array[String](["res://scenes/game_scene/levels/level_1.tscn", "res://scenes/game_scene/levels/level_2.tscn", "res://scenes/game_scene/levels/level_3.tscn"])
-directory = "res://scenes/game_scene/levels"
+files = Array[String](["res://scenes/game_scene/rooms/opengltestroom.tscn"])
+directory = "res://scenes/game_scene/rooms"
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("4_elswi")]
 
@@ -47,6 +47,7 @@ stretch = true
 
 [node name="ConfigurableSubViewport" type="SubViewport" parent="ViewportContainer"]
 handle_input_locally = false
+canvas_item_default_texture_filter = 0
 audio_listener_enable_2d = true
 audio_listener_enable_3d = true
 size = Vector2i(1280, 720)

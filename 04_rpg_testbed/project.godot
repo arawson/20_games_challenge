@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Can A Guy Escape Cyber Limbo?"
-run/main_scene="res://scenes/game_scene/test_scene.tscn"
+run/main_scene="res://scenes/game_scene/game_ui.tscn"
 config/features=PackedStringArray("4.3")
 config/icon="res://icon.png"
 
@@ -33,6 +33,7 @@ general/balloon_path="res://dialog/balloon.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
