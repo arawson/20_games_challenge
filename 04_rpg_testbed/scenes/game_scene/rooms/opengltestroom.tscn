@@ -1,8 +1,6 @@
-[gd_scene load_steps=15 format=4 uid="uid://yhghjsm47son"]
+[gd_scene load_steps=13 format=4 uid="uid://yhghjsm47son"]
 
-[ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_0kjv5"]
 [ext_resource type="Script" path="res://scenes/game_scene/rooms/opengltestroom.gd" id="1_w8sss"]
-[ext_resource type="PackedScene" uid="uid://gkvinfkbye6d" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_nr25g"]
 [ext_resource type="PackedScene" uid="uid://dx4wk7cdofise" path="res://scenes/characters/fboy/fboy.tscn" id="3_fu1o0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_2ct0p"]
 [ext_resource type="TileSet" uid="uid://b5y4lf80ynyvw" path="res://assets/static/opengltestroom.tres" id="4_ex5af"]
@@ -49,20 +47,6 @@ position = Vector2(24, 32)
 
 [node name="Door" parent="YSortZone" instance=ExtResource("5_6fghk")]
 position = Vector2(112, -64)
-
-[node name="TestScene" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-
-[node name="PauseController" type="Node" parent="TestScene"]
-script = ExtResource("1_0kjv5")
-pause_menu_packed = ExtResource("2_nr25g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
