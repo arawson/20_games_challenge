@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://yhghjsm47son"]
 
-[ext_resource type="Script" path="res://scenes/game_scene/rooms/opengltestroom.gd" id="1_w8sss"]
+[ext_resource type="Script" path="res://scenes/game_scene/rooms/room.gd" id="1_3eis7"]
 [ext_resource type="PackedScene" uid="uid://dx4wk7cdofise" path="res://scenes/characters/fboy/fboy.tscn" id="3_fu1o0"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_2ct0p"]
 [ext_resource type="TileSet" uid="uid://b5y4lf80ynyvw" path="res://assets/static/opengltestroom.tres" id="4_ex5af"]
@@ -19,7 +19,7 @@ transition = 1
 ease = 2
 
 [node name="OpenGLTestRoom" type="Node2D"]
-script = ExtResource("1_w8sss")
+script = ExtResource("1_3eis7")
 
 [node name="BackgroundBlackVoid" type="TextureRect" parent="."]
 z_index = -200
