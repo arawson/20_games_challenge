@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://blsij73lxlbrl"]
+[gd_scene load_steps=14 format=3 uid="uid://blsij73lxlbrl"]
 
 [ext_resource type="Script" path="res://addons/maaacks_game_template/extras/scripts/pause_menu_controller.gd" id="1_mgq6w"]
 [ext_resource type="PackedScene" uid="uid://gkvinfkbye6d" path="res://scenes/overlaid_menus/pause_menu.tscn" id="2_10mfm"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://2qu0aa7tw2t" path="res://scenes/overlaid_menus/game_won_menu.tscn" id="9_0pd2h"]
 [ext_resource type="PackedScene" uid="uid://dd1sgi1jm1cwk" path="res://scenes/overlaid_menus/level_lost_menu.tscn" id="10_37hvn"]
 [ext_resource type="PackedScene" uid="uid://dryqgda7fnsw" path="res://scenes/overlaid_menus/level_won_menu.tscn" id="11_h5xmp"]
+[ext_resource type="Script" path="res://scenes/game_scene/room_movement_manager.gd" id="12_kmopb"]
+[ext_resource type="Script" path="res://scenes/game_scene/room_level_loader.gd" id="13_askqa"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -25,7 +27,7 @@ script = ExtResource("1_mgq6w")
 pause_menu_packed = ExtResource("2_10mfm")
 focused_viewport = NodePath("../ViewportContainer/ConfigurableSubViewport")
 
-[node name="LevelLoader" type="Node" parent="." node_paths=PackedStringArray("level_container")]
+[node name="OldLevelLoader" type="Node" parent="." node_paths=PackedStringArray("level_container")]
 script = ExtResource("3_b8jlh")
 level_container = NodePath("../ViewportContainer/ConfigurableSubViewport")
 files = Array[String](["res://scenes/game_scene/rooms/opengltestroom.tscn"])
@@ -71,7 +73,7 @@ script = ExtResource("7_xo7fy")
 
 [node name="LevelListManager" type="Node" parent="." node_paths=PackedStringArray("level_list_loader", "level_loading_screen")]
 script = ExtResource("8_pv8tc")
-level_list_loader = NodePath("../LevelLoader")
+level_list_loader = NodePath("../OldLevelLoader")
 main_menu_scene = "res://scenes/menus/main_menu/main_menu_with_animations.tscn"
 ending_scene = "res://scenes/end_credits/end_credits.tscn"
 level_loading_screen = NodePath("../LevelLoadingScreen")
@@ -79,6 +81,12 @@ game_won_scene = ExtResource("9_0pd2h")
 level_lost_scene = ExtResource("10_37hvn")
 level_won_scene = ExtResource("11_h5xmp")
 
-[connection signal="level_load_started" from="LevelLoader" to="." method="_on_level_loader_level_load_started"]
-[connection signal="level_loaded" from="LevelLoader" to="." method="_on_level_loader_level_loaded"]
-[connection signal="levels_finished" from="LevelLoader" to="." method="_on_level_loader_levels_finished"]
+[node name="RoomMovementManager" type="Node" parent="."]
+script = ExtResource("12_kmopb")
+
+[node name="RoomLevelLoader" type="Node" parent="."]
+script = ExtResource("13_askqa")
+
+[connection signal="level_load_started" from="OldLevelLoader" to="." method="_on_level_loader_level_load_started"]
+[connection signal="level_loaded" from="OldLevelLoader" to="." method="_on_level_loader_level_loaded"]
+[connection signal="levels_finished" from="OldLevelLoader" to="." method="_on_level_loader_levels_finished"]

@@ -1,10 +1,10 @@
 extends Node2D
 
 
-signal room_exited(destination: String)
+signal room_exited(destination: String, direction: String, parameter: String)
 
 
-@export var room_name: String
+@export_file("*.tscn") var room_name: String
 
 
 # Called when the node enters the scene tree for the first time.

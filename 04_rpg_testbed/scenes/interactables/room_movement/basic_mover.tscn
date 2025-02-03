@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbud48uda0aa3"]
+
+[ext_resource type="Script" path="res://scenes/interactables/room_movement/basic_mover.gd" id="1_ssvj2"]
+
+[node name="BasicMover" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ssvj2")

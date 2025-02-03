@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://yhghjsm47son"]
+[gd_scene load_steps=15 format=4 uid="uid://yhghjsm47son"]
 
 [ext_resource type="Script" path="res://scenes/game_scene/rooms/room.gd" id="1_3eis7"]
 [ext_resource type="PackedScene" uid="uid://dx4wk7cdofise" path="res://scenes/characters/fboy/fboy.tscn" id="3_fu1o0"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="7_bvynx"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="8_yynva"]
 [ext_resource type="Texture2D" uid="uid://d6ci87o64cdo" path="res://assets/backgrounds/opengltest_solidblack.png" id="9_w0waq"]
+[ext_resource type="PackedScene" uid="uid://cbud48uda0aa3" path="res://scenes/interactables/room_movement/basic_mover.tscn" id="12_ibbfk"]
 [ext_resource type="Script" path="res://scenes/interactables/dialog/dialog_trigger_simple.gd" id="12_r6l2y"]
 [ext_resource type="Resource" uid="uid://ctcfvkr2gbeuy" path="res://dialog/opengltestroom.dialogue" id="13_lpgnb"]
 
@@ -17,6 +18,9 @@ script = ExtResource("8_yynva")
 duration = 1.0
 transition = 1
 ease = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0d0r"]
+size = Vector2(34, 29)
 
 [node name="OpenGLTestRoom" type="Node2D"]
 script = ExtResource("1_3eis7")
@@ -75,6 +79,13 @@ dead_zone_height = 0.34
 script = ExtResource("12_r6l2y")
 dialogue_resource = ExtResource("13_lpgnb")
 dialogue_start = "lever_first"
+
+[node name="BasicMover" parent="." instance=ExtResource("12_ibbfk")]
+position = Vector2(121, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicMover"]
+position = Vector2(7, -0.5)
+shape = SubResource("RectangleShape2D_j0d0r")
 
 [connection signal="activated" from="YSortZone/Lever" to="YSortZone/Door" method="open"]
 [connection signal="activated" from="YSortZone/Lever" to="Dialogs/LeverFirstTrigger" method="activate"]

@@ -41,6 +41,10 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
+	# move on to deal with automatic collision interactions
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+
 
 func _unhandled_input(_event: InputEvent) -> void:
 	_horizontal = Input.get_axis("move_left", "move_right")
