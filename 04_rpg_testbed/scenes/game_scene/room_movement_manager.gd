@@ -1,11 +1,13 @@
+## Manages movement between rooms and picking the initial room on load.
 extends Node
 
 
-## Manages movement between rooms and picking the initial room on load.
+func _ready() -> void:
+	RoomBus.room_change.connect
 
 
 ## Handles all moving
-func _on_room_exited(destination: String, direction: String, parameter: String) -> void:
+func _on_room_change(destination_scene: String, direction: String, parameter: String) -> void:
 	pass
 
 
