@@ -23,6 +23,7 @@ ease = 2
 size = Vector2(34, 29)
 
 [node name="OpenGLTestRoom" type="Node2D"]
+editor_description = "The little joke for me is that I'm not using OpenGL. Godot might be, but I'm not."
 script = ExtResource("1_3eis7")
 
 [node name="BackgroundBlackVoid" type="TextureRect" parent="."]
@@ -80,10 +81,12 @@ script = ExtResource("12_r6l2y")
 dialogue_resource = ExtResource("13_lpgnb")
 dialogue_start = "lever_first"
 
-[node name="BasicMover" parent="." instance=ExtResource("12_ibbfk")]
+[node name="Portals" type="Node2D" parent="."]
+
+[node name="BasicMover" parent="Portals" instance=ExtResource("12_ibbfk")]
 position = Vector2(121, -48)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BasicMover"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portals/BasicMover"]
 position = Vector2(7, -0.5)
 shape = SubResource("RectangleShape2D_j0d0r")
 

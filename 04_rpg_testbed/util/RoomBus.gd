@@ -11,5 +11,5 @@ func _ready() -> void:
 
 # Tell the bus that a room change should happen. The bus then filters and tweaks
 # room changes to make sure that they are valid.
-func do_room_change(destination: String, direction: String, parameter: String):
+func request_room_change(destination: String, direction: String, parameter: String):
 	room_change.emit(destination, direction, parameter)

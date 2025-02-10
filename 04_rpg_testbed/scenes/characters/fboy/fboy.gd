@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var pointing: Vector2 = Vector2(1, 0)
 @export var move_speed: Vector2 = Vector2(60, 40)
 @export var interact_distance: float = 20
+@export var just_entered_room: bool = false
 
 
 @onready var interaction_cast = %InteractionCast
@@ -43,7 +44,18 @@ func _physics_process(_delta: float) -> void:
 
 	# move on to deal with automatic collision interactions
 	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
+		var colliding_body = get_slide_collision(i).get_collider()
+		# Check if we're looking at a portal
+		if "is_portal" in colliding_body and colliding_body.is_portal():
+			_physics_process_portal(colliding_body)
+		
+
+#section Physics Sub-Sub-Routines
+func _physics_process_portal(port: Object) -> void:
+	# pulled this out i
+	just_entered_room = true
+	RoomBus.request_room_change(port.get_destination(), port.get_direction(), port.get_parameter())
+#endsection
 
 
 func _unhandled_input(_event: InputEvent) -> void:
