@@ -29,7 +29,7 @@ focused_viewport = NodePath("../ViewportContainer/ConfigurableSubViewport")
 [node name="OldLevelLoader" type="Node" parent="." node_paths=PackedStringArray("level_container")]
 script = ExtResource("3_b8jlh")
 level_container = NodePath("../ViewportContainer/ConfigurableSubViewport")
-files = Array[String](["res://scenes/game_scene/rooms/opengltestroom.tscn", "res://scenes/game_scene/rooms/opengltestroomnorth.tscn"])
+files = Array[String](["res://scenes/game_scene/rooms/opengltesthallway.tscn", "res://scenes/game_scene/rooms/opengltestroom.tscn", "res://scenes/game_scene/rooms/opengltestroomnorth.tscn"])
 directory = "res://scenes/game_scene/rooms"
 
 [node name="BackgroundMusicPlayer" parent="." instance=ExtResource("4_elswi")]

@@ -4,17 +4,29 @@ extends Node
 
 
 signal room_load_started
-signal level_loaded
+signal room_loaded
 
 
+@export_group("Plumbing")
 @export_dir var directory: String :
 	set(value):
 		directory = value
 		_refresh_files()
 @export var room_container: Node
 
+@export_group("Settings IDK")
+@export var auto_load : bool = true
+
+
+@export var force_room: String
+
 
 var current_room: Node
+var current_room_name: String:
+	set(value):
+		current_room_name = value
+
+
 var files : Dictionary
 
 
@@ -25,10 +37,44 @@ func _ready() -> void:
 	else:
 		RoomBus.room_change.connect(_on_room_change)
 
+	if auto_load:
+		load_current_room()
+
 
 ## Handles all moving
 func _on_room_change(destination_scene: String, direction: String, parameter: String) -> void:
 	pass
+
+
+func get_current_level_name() -> String:
+	return current_room_name if force_room == "" else force_room
+
+
+func load_current_room():
+	load_room(get_current_level_name())
+
+
+func load_room(room_name: String):
+	if is_instance_valid(current_room):
+		current_room.queue_free()
+		await current_room.tree_exited
+		current_room = null
+	var room_file = get_room_file(room_name)
+	if room_file == null:
+		# TODO error handling around bad rooms!
+		return
+	SceneLoader.load_scene(room_file, true)
+	room_load_started.emit()
+	await SceneLoader.scene_loaded
+	current_room = _attach_room(SceneLoader.get_resource())
+	room_loaded.emit()
+
+
+func _attach_room(room_resource: Resource):
+	assert(room_container != null, "room container is null")
+	var instance = room_resource.instantiate()
+	room_container.call_deferred("add_child", instance)
+	return instance
 
 
 func _refresh_files():
