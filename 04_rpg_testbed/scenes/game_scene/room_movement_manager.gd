@@ -2,6 +2,10 @@
 ## Manages movement between rooms and picking the initial room on load.
 extends Node
 
+# TODO refer to level_list_manager.gd while working on this
+
+# TODO connect room_load_started, room_loaded in game ui scene
+# TODO decide what should be the equivalent of levels_finished
 
 signal room_load_started
 signal room_loaded
@@ -12,7 +16,9 @@ signal room_loaded
 	set(value):
 		directory = value
 		_refresh_files()
+@export var files : Dictionary
 @export var room_container: Node
+
 
 @export_group("Settings IDK")
 @export var auto_load : bool = true
@@ -27,7 +33,6 @@ var current_room_name: String:
 		current_room_name = value
 
 
-var files : Dictionary
 
 
 func _ready() -> void:
@@ -37,11 +42,11 @@ func _ready() -> void:
 	else:
 		RoomBus.room_change.connect(_on_room_change)
 
-	if auto_load:
-		load_current_room()
+		if auto_load:
+			load_current_room()
 
 
-## Handles all moving
+## Handles all moving between rooms
 func _on_room_change(destination_scene: String, direction: String, parameter: String) -> void:
 	pass
 

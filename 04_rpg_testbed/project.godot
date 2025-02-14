@@ -25,6 +25,7 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Util="*res://util/Util.gd"
 RoomBus="*res://util/RoomBus.gd"
+Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [dialogue_manager]
 
@@ -38,7 +39,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/maaacks_game_template/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [gui]
 
