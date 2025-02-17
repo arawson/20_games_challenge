@@ -1,4 +1,4 @@
-# @tool TODO turn this on when I'm ready
+@tool
 ## Manages movement between rooms and picking the initial room on load.
 extends Node
 
@@ -22,9 +22,7 @@ signal room_loaded
 
 @export_group("Settings IDK")
 @export var auto_load : bool = true
-
-
-@export var force_room: String
+@export_file("*.tscn") var force_room: String
 
 
 var current_room: Node
@@ -33,12 +31,10 @@ var current_room_name: String:
 		current_room_name = value
 
 
-
-
 func _ready() -> void:
 	if Engine.is_editor_hint():
-		_refresh_files()
 		files.clear()
+		_refresh_files()
 	else:
 		RoomBus.room_change.connect(_on_room_change)
 
@@ -48,7 +44,8 @@ func _ready() -> void:
 
 ## Handles all moving between rooms
 func _on_room_change(destination_scene: String, direction: String, parameter: String) -> void:
-	pass
+	print("RMM: Room Change: destination: ", destination_scene, " direction: ",
+	direction, " parameter: ", parameter)
 
 
 func get_current_level_name() -> String:

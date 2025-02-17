@@ -85,6 +85,9 @@ dialogue_start = "lever_first"
 
 [node name="BasicMover" parent="Portals" instance=ExtResource("12_ibbfk")]
 position = Vector2(121, -48)
+destination = "res://scenes/game_scene/rooms/opengltesthallway.tscn"
+direction = "NORTH"
+parameter = "test"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portals/BasicMover"]
 position = Vector2(7, -0.5)

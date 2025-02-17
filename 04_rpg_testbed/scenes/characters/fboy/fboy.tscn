@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dx4wk7cdofise"]
+[gd_scene load_steps=12 format=3 uid="uid://dx4wk7cdofise"]
 
 [ext_resource type="Script" path="res://scenes/characters/fboy/fboy.gd" id="1_75lcm"]
 [ext_resource type="Texture2D" uid="uid://5uds5ct3mnqk" path="res://assets/characters/fboy/fboy.png" id="2_ia0dy"]
@@ -72,8 +72,10 @@ animations = [{
 radius = 6.0
 height = 22.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ugxk8"]
+radius = 5.0
+
 [node name="Fboy" type="CharacterBody2D"]
-collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_75lcm")
 
@@ -93,3 +95,15 @@ enabled = false
 target_position = Vector2(20, 0)
 collision_mask = 2
 collide_with_areas = true
+
+[node name="RoomMonitor" type="Area2D" parent="."]
+editor_description = "Why did I use a whole area here? IDK. I'm bad at making games I guess."
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomMonitor"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_ugxk8")
+
+[connection signal="area_entered" from="RoomMonitor" to="." method="_on_room_monitor_area_entered"]

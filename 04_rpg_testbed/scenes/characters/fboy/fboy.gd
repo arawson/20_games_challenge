@@ -43,19 +43,13 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 	# move on to deal with automatic collision interactions
-	for i in get_slide_collision_count():
-		var colliding_body = get_slide_collision(i).get_collider()
+	# for i in get_slide_collision_count():
+		# var colliding_body = get_slide_collision(i).get_collider()
 		# Check if we're looking at a portal
-		if "is_portal" in colliding_body and colliding_body.is_portal():
-			_physics_process_portal(colliding_body)
-		
+		# if "is_portal" in colliding_body and colliding_body.is_portal():
+			# _physics_process_portal(colliding_body)
 
-#section Physics Sub-Sub-Routines
-func _physics_process_portal(port: Object) -> void:
-	# pulled this out i
-	just_entered_room = true
-	RoomBus.request_room_change(port.get_destination(), port.get_direction(), port.get_parameter())
-#endsection
+
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -77,3 +71,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 		if "activate" in collider:
 			# print("fboy: activate the thing")
 			collider.activate()
+
+
+func _on_room_monitor_area_entered(area: Area2D) -> void:
+	if "is_portal" in area and area.is_portal():
+		just_entered_room = true
+		RoomBus.request_room_change(area.get_destination(), area.get_direction(), area.get_parameter())
