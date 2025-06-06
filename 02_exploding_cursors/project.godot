@@ -30,7 +30,10 @@ gdscript/warnings/unused_signal=0
 
 window/size/viewport_width=640
 window/size/viewport_height=480
-window/handheld/orientation=1
+window/size/mode=2
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/handheld/orientation=6
 
 [editor_plugins]
 
