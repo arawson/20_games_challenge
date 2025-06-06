@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6fmfovjas75e"]
 
-[ext_resource type="Script" path="res://ui/ui.gd" id="1_b81vn"]
+[ext_resource type="Script" uid="uid://covq2d6xxn0fi" path="res://ui/ui.gd" id="1_b81vn"]
 [ext_resource type="AudioStream" uid="uid://bnawmo7m03gjo" path="res://placeholders/interface_sounds/error_008_terrain_blocked.mp3" id="2_isje8"]
 [ext_resource type="AudioStream" uid="uid://dnfn15ry7x1w4" path="res://placeholders/interface_sounds/error_006_no_moves.mp3" id="3_ab3jo"]
 

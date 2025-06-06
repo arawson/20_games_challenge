@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FactionBase" load_steps=3 format=3 uid="uid://cslo0l2c2xbof"]
 
 [ext_resource type="Texture2D" uid="uid://cq72t5txbx1v2" path="res://placeholders/faction_colors/faction-red.png" id="1_55ow6"]
-[ext_resource type="Script" path="res://factions/faction_base.gd" id="1_j1dm7"]
+[ext_resource type="Script" uid="uid://bdhuy5lx8t7p" path="res://factions/faction_base.gd" id="1_j1dm7"]
 
 [resource]
 script = ExtResource("1_j1dm7")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://jg07g8xjabqm"]
 
 [ext_resource type="Texture2D" uid="uid://b5jtrn180ul8i" path="res://placeholders/fantasy_borders/unit-head.png" id="1_obxfl"]
-[ext_resource type="Script" path="res://units/unit_block.gd" id="1_vp8o3"]
+[ext_resource type="Script" uid="uid://b3fnhh1eojcpk" path="res://units/unit_block.gd" id="1_vp8o3"]
 [ext_resource type="Texture2D" uid="uid://dwe0t8iqv58nw" path="res://placeholders/faction_colors/faction-invalid.png" id="2_faged"]
 [ext_resource type="Texture2D" uid="uid://d3wnpfqd5ox4k" path="res://placeholders/fantasy_borders/unit-selection.png" id="2_kwpep"]
 [ext_resource type="Resource" uid="uid://bmecwpjyvt1kt" path="res://units/invalid.tres" id="2_xgl5g"]

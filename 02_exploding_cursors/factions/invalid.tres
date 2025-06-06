@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FactionBase" load_steps=3 format=3 uid="uid://cj80f5wjolc6f"]
 
-[ext_resource type="Script" path="res://factions/faction_base.gd" id="1_0n8wc"]
+[ext_resource type="Script" uid="uid://bdhuy5lx8t7p" path="res://factions/faction_base.gd" id="1_0n8wc"]
 [ext_resource type="Texture2D" uid="uid://dwe0t8iqv58nw" path="res://placeholders/faction_colors/faction-invalid.png" id="1_60sgi"]
 
 [resource]
